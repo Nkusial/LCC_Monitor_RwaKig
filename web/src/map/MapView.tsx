@@ -47,6 +47,30 @@ function collectCoordinatePairs(value: unknown, pairs: number[][]) {
   value.forEach((item) => collectCoordinatePairs(item, pairs))
 }
 
+function boundsFromFeatureCollection(
+  collection: FeatureCollection<Geometry>,
+): [[number, number], [number, number]] | null {
+  // Opening the map from AOI bounds prevents reviewers from landing on a
+  // generic basemap view and having to search for the Kigali monitoring area.
+  const pairs: number[][] = []
+  collection.features.forEach((feature) => {
+    if (feature.geometry && 'coordinates' in feature.geometry) {
+      collectCoordinatePairs(feature.geometry.coordinates, pairs)
+    }
+  })
+
+  if (pairs.length === 0) {
+    return null
+  }
+
+  const lngs = pairs.map(([lng]) => lng)
+  const lats = pairs.map(([, lat]) => lat)
+  return [
+    [Math.min(...lngs), Math.min(...lats)],
+    [Math.max(...lngs), Math.max(...lats)],
+  ]
+}
+
 function changePointsFromPolygons(
   changes: FeatureCollection<Geometry>,
 ): FeatureCollection<Point> {
@@ -345,6 +369,15 @@ export function MapView({
           'line-width': 3,
         },
       })
+
+      const aoiBounds = boundsFromFeatureCollection(aoi)
+      if (aoiBounds) {
+        map.fitBounds(aoiBounds, {
+          padding: { top: 56, bottom: 56, left: 56, right: 56 },
+          maxZoom: 13,
+          duration: 0,
+        })
+      }
 
       const rasterLayer = latestRasterRef.current
       if (rasterLayer) {
