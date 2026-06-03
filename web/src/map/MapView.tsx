@@ -77,8 +77,8 @@ function fitMapToAoi(map: Map, bounds: [[number, number], [number, number]]) {
   // the complete 20 x 20 km AOI visible when the hosted link opens.
   map.resize()
   map.fitBounds(bounds, {
-    padding: { top: 72, bottom: 72, left: 72, right: 72 },
-    maxZoom: 11.6,
+    padding: { top: 56, bottom: 56, left: 56, right: 56 },
+    maxZoom: 12.2,
     duration: 0,
   })
 }
