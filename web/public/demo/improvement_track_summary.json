@@ -1,0 +1,83 @@
+{
+  "phase": "phase_56_improvement_track_controls",
+  "purpose": "Coordinate the next reliability improvements without changing the current training, test, or publication boundaries.\n",
+  "publish_gate": {
+    "recommendation": "publish_supported_candidates",
+    "coregistration": {
+      "status": "passed",
+      "allowed_for_gate": true,
+      "grid_failure_count": 0,
+      "high_shift_warning_count": 0,
+      "checked_target_count": 8,
+      "method": "Grid metadata validation plus gradient-correlation integer shift diagnostics against Sentinel-2 NDVI. This is a no-GCP proxy check for prototype QA."
+    },
+    "temporal_consensus": {
+      "status": "passed",
+      "record_count": 12,
+      "mean_consensus_fraction": 0.848494,
+      "temporal_instability_fraction": 0.159035,
+      "thresholds": {
+        "minimum_mean_consensus_fraction": 0.75,
+        "maximum_temporal_instability_fraction": 0.25
+      }
+    },
+    "reliability": {
+      "status": "passed",
+      "mean_confidence": 0.889443,
+      "weak_source_compatibility": 0.866766,
+      "review_fraction": 0.31364,
+      "frozen_2026_mean_confidence": 0.537672,
+      "frozen_2026_review_fraction": 0.875615,
+      "accuracy_claim": "No field accuracy claim; this is model-risk and weak-evidence guidance."
+    },
+    "interpretation": "This gate ranks candidates for publication or review. It is not a field-validated accuracy assessment."
+  },
+  "ml_comparison_plan": {
+    "supervised_track": "U-Net weak-supervised segmentation baseline",
+    "supervised_report_count": 3,
+    "supervised_available_reports": [
+      "data/outputs/unet_v3_report.json",
+      "data/outputs/unet_v3_full_aoi_validation_report.json",
+      "data/outputs/unet_2026_proxy_benchmark_report.json"
+    ],
+    "unsupervised_track": "self-supervised encoder plus deep clustering/anomaly detection",
+    "unsupervised_report_count": 1,
+    "unsupervised_available_reports": [
+      "data/outputs/unsupervised_validation_report.json"
+    ],
+    "comparison_metrics": [
+      "weak_source_compatibility",
+      "review_fraction",
+      "entropy_or_cluster_ambiguity",
+      "temporal_stability",
+      "class_balance",
+      "geospatial_alignment_status"
+    ],
+    "boundary": "Compare reliability and review burden only. Do not claim field accuracy until independent expert or field labels exist.\n",
+    "next_action": "Add self-supervised embedding/deep-clustering outputs, then compare review burden and weak-source compatibility against the U-Net track."
+  },
+  "public_demo_packaging": {
+    "manifest": "data/outputs/public_demo_manifest.json",
+    "policy": "Public assets should be lightweight demo derivatives. Raw Sentinel scenes, GeoTIFF stacks, checkpoints, and credentials stay private/local.\n",
+    "private_roots": [
+      "data/raw",
+      "data/interim",
+      "data/processed",
+      "data/outputs",
+      "data/interim/models"
+    ]
+  },
+  "hosted_backend": {
+    "current_mode": "local_first_fastapi_postgis",
+    "deploy_when_required": true,
+    "production_requirements": [
+      "managed_or_self_hosted_postgis",
+      "HTTPS",
+      "CORS restriction",
+      "secret management",
+      "scheduled_pipeline_runner",
+      "object_storage_for_raster_artifacts",
+      "monitoring_and_backups"
+    ]
+  }
+}

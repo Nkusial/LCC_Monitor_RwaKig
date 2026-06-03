@@ -1,0 +1,39 @@
+{
+  "phase": "phase_48_class_imbalance_handling",
+  "input_patch_count": 960,
+  "output_patch_count": 841,
+  "input_split_counts": {
+    "train": 640,
+    "validation": 320,
+    "test": 0
+  },
+  "output_split_counts": {
+    "train": 521,
+    "validation": 320,
+    "test": 0
+  },
+  "input_class_pixel_counts": {
+    "1": 2630842,
+    "2": 1443649,
+    "3": 6837,
+    "4": 14949
+  },
+  "output_class_pixel_counts": {
+    "1": 2506039,
+    "2": 1396854,
+    "3": 6837,
+    "4": 14949
+  },
+  "balancing": {
+    "minority_classes": [
+      "3",
+      "4",
+      "5"
+    ],
+    "majority_limit_per_pair": 24,
+    "minority_multiplier": 2.0,
+    "dropped_majority_only_patch_count": 119,
+    "strategy": "retain all rare-class train patches, cap majority-only train patches per date, keep validation/test unchanged"
+  },
+  "accuracy_claim": "none; this is weak-supervision dataset balancing before model training"
+}

@@ -1,0 +1,40 @@
+name: realtime_LCC_Rwkig_gpu
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - fastapi
+  - uvicorn
+  - pydantic-settings
+  - sqlalchemy
+  - geoalchemy2
+  - psycopg
+  - geopandas
+  - shapely
+  - rasterio
+  - rioxarray
+  - xarray
+  - numpy
+  - pandas
+  - scikit-learn
+  - scipy
+  - matplotlib
+  - pyyaml
+  - pystac-client
+  - planetary-computer
+  - stackstac
+  - earthengine-api
+  - geemap
+  - pygis
+  - jupyterlab
+  - ipykernel
+  - nodejs
+  - pytest
+  - tqdm
+  - joblib
+  - pip
+  - pip:
+      - --index-url https://download.pytorch.org/whl/cu128
+      - torch
+      - torchvision

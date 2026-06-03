@@ -1,0 +1,105 @@
+project:
+  name: confidence-aware-landcover-monitor
+  aoi_path: configs/aoi.geojson
+  local_crs: EPSG:32735
+  master_grid_path: configs/master_grid.yaml
+  class_harmonization_path: configs/class_harmonization.yaml
+  weak_labels_path: configs/weak_labels.yaml
+  patch_dataset_path: configs/patch_dataset.yaml
+
+sentinel:
+  stac_api_url: https://planetarycomputer.microsoft.com/api/stac/v1
+  collections:
+    sentinel2: sentinel-2-l2a
+    sentinel1: sentinel-1-rtc
+  date_range:
+    start: "2025-01-01"
+    end: "2025-03-31"
+  max_cloud_cover: 30
+
+preprocessing:
+  reference_crs: EPSG:32735
+  reference_resolution_m: 10
+  monitoring_stack:
+    date_range:
+      start: "2024-12-01"
+      end: "2025-04-30"
+    max_pairs: 4
+    max_cloud_cover: 30
+    required_tiles:
+      - 35MRT
+      - 35MRU
+    sentinel1_search_days: 6
+    preferred_orbit: ascending
+  selected_pair:
+    optical:
+      collection: sentinel-2-l2a
+      date: "2025-02-20"
+      tiles:
+        - 35MRT
+        - 35MRU
+      scene_ids:
+        - S2B_MSIL2A_20250220T080859_R078_T35MRT_20250220T102720
+        - S2B_MSIL2A_20250220T080859_R078_T35MRU_20250220T102720
+      cloud_cover_percent: 3.0
+      bands:
+        blue: B02
+        green: B03
+        red: B04
+        nir: B08
+        swir1: B11
+    radar:
+      collection: sentinel-1-rtc
+      date: "2025-02-21"
+      scene_id: S1A_IW_GRDH_1SDV_20250221T162051_20250221T162116_057996_072897_rtc
+      orbit: ascending
+      polarizations:
+        - VV
+        - VH
+      time_gap_hours: 40.4
+
+training_scene_discovery:
+  date_range:
+    start: "2023-01-01"
+    end: "2026-05-07"
+  required_years:
+    - 2023
+    - 2024
+    - 2025
+  optional_years:
+    - 2026
+  preferred_max_cloud_cover: 10
+  fallback_max_cloud_cover: 20
+  max_optical_groups_per_year: 12
+  max_pairs_per_year: 4
+  sentinel1_search_days: 6
+  max_radar_time_gap_hours: 96
+  preferred_orbit: ascending
+  required_tiles:
+    - 35MRT
+    - 35MRU
+  split_by_year:
+    train:
+      - 2023
+      - 2024
+    validation:
+      - 2025
+    test:
+      - 2026
+
+paths:
+  raw: data/raw
+  interim: data/interim
+  processed: data/processed
+  catalog: data/catalog
+  outputs: data/outputs
+
+change_detection:
+  min_polygon_area_m2: 5000
+  confidence_threshold: 0.75
+  delta_thresholds:
+    ndvi_loss: -0.22
+    ndbi_gain: 0.16
+    ndwi_abs: 0.25
+    radar_ratio_abs: 0.3
+  output_prefix: monitoring_change

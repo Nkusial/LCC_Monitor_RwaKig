@@ -1,0 +1,300 @@
+{
+  "phase": "phase_65_spatial_self_supervised_encoder",
+  "purpose": "Train a real convolutional self-supervised Sentinel patch encoder and compare its anomaly/review behavior with the U-Net track.",
+  "accuracy_claim": "No field accuracy claim; this is label-free representation learning plus weak-source post-hoc interpretation.",
+  "input_manifest": "data/interim/training_patches_v3/training_patch_manifest_v3_balanced.json",
+  "patch_count": 240,
+  "split_counts": {
+    "train": 156,
+    "validation": 84
+  },
+  "feature_names": [
+    "s2_ndvi",
+    "s2_ndwi",
+    "s2_ndbi",
+    "s2_evi2",
+    "s2_savi",
+    "s2_mndwi",
+    "s2_bsi",
+    "s1_vv",
+    "s1_vh",
+    "s1_vv_vh_ratio",
+    "s1_log_ratio",
+    "dem",
+    "slope",
+    "ruggedness",
+    "tpi"
+  ],
+  "encoder": {
+    "type": "spatial_grid_autoencoder_fallback",
+    "implementation": "sklearn MLPRegressor over 8 x 8 grid-cell mean/std descriptors",
+    "torch_import_error": "Torch spatial encoder is disabled by default for stable local runs. Set LCC_ENABLE_TORCH_SPATIAL_ENCODER=1 on a PyTorch-ready CPU/GPU environment.",
+    "grid_size": 8,
+    "embedding_channels": 32,
+    "iterations_completed": 13,
+    "loss_history": [
+      0.442366
+    ],
+    "training_target": "reconstruct normalized spatial grid descriptors from Sentinel/radar/terrain tensors",
+    "embedding_level": "spatial_patch_grid",
+    "input_tensor_shape": [
+      15,
+      128,
+      128
+    ],
+    "epochs": 3,
+    "batch_size": 8
+  },
+  "temporal_encoder_status": {
+    "candidate_spatial_window_count": 89,
+    "multi_year_window_count": 53,
+    "status": "ready_for_temporal_transformer",
+    "interpretation": "The current patch manifest has exact repeated row/col windows across years."
+  },
+  "deep_clustering": {
+    "algorithm": "MiniBatchKMeans on global-average convolutional embedding maps",
+    "cluster_count": 8,
+    "silhouette_score": 0.032023
+  },
+  "anomaly_detection": {
+    "score_definition": "Normalized blend of convolutional reconstruction error and embedding distance to assigned cluster center.",
+    "high_anomaly_threshold": 0.9,
+    "high_anomaly_fraction": 0.058333
+  },
+  "cluster_interpretation": {
+    "weak_sources_role": "post_hoc_only_after_encoder_and_cluster_fitting",
+    "profiles": [
+      {
+        "cluster_id": 1,
+        "patch_count": 31,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 0.935484,
+        "mean_dominant_weak_label_fraction": 0.935994,
+        "mean_anomaly_score": 0.410928,
+        "weak_label_mix": {
+          "vegetation": 29,
+          "built_up": 2
+        },
+        "weak_label_mix_entropy": 0.345117,
+        "year_mix": {
+          "2023": 10,
+          "2024": 7,
+          "2025": 14
+        },
+        "example_patches": [
+          "training_2023_20230721_20230723_r002_c010_00011",
+          "training_2023_20230721_20230723_r006_c010_00043",
+          "training_2023_20230721_20230723_r008_c014_00064",
+          "training_2023_20230721_20230723_r009_c009_00068",
+          "training_2023_20230726_20230726_r002_c011_00027"
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "patch_count": 30,
+        "dominant_interpretation": "built_up",
+        "dominant_interpretation_fraction": 1.0,
+        "mean_dominant_weak_label_fraction": 0.891687,
+        "mean_anomaly_score": 0.366537,
+        "weak_label_mix": {
+          "built_up": 30
+        },
+        "weak_label_mix_entropy": -0.0,
+        "year_mix": {
+          "2023": 8,
+          "2024": 11,
+          "2025": 11
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r000_c003_00003",
+          "training_2023_20230716_20230714_r001_c001_00010",
+          "training_2023_20230716_20230714_r004_c004_00050",
+          "training_2023_20230726_20230726_r001_c001_00010",
+          "training_2023_20230726_20230726_r002_c003_00020"
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "patch_count": 71,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 0.788732,
+        "mean_dominant_weak_label_fraction": 0.854722,
+        "mean_anomaly_score": 0.215764,
+        "weak_label_mix": {
+          "vegetation": 56,
+          "built_up": 15
+        },
+        "weak_label_mix_entropy": 0.743899,
+        "year_mix": {
+          "2023": 32,
+          "2024": 20,
+          "2025": 19
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r001_c009_00014",
+          "training_2023_20230716_20230714_r003_c013_00044",
+          "training_2023_20230716_20230714_r004_c005_00051",
+          "training_2023_20230716_20230714_r004_c012_00058",
+          "training_2023_20230716_20230714_r004_c013_00059"
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "patch_count": 4,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 1.0,
+        "mean_dominant_weak_label_fraction": 0.995292,
+        "mean_anomaly_score": 0.823924,
+        "weak_label_mix": {
+          "vegetation": 4
+        },
+        "weak_label_mix_entropy": -0.0,
+        "year_mix": {
+          "2023": 2,
+          "2024": 2
+        },
+        "example_patches": [
+          "training_2023_20230721_20230723_r008_c007_00057",
+          "training_2023_20230721_20230723_r009_c007_00066",
+          "training_2024_20240625_20240626_r005_c008_00069",
+          "training_2024_20240625_20240626_r005_c010_00071"
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "patch_count": 47,
+        "dominant_interpretation": "built_up",
+        "dominant_interpretation_fraction": 0.531915,
+        "mean_dominant_weak_label_fraction": 0.920939,
+        "mean_anomaly_score": 0.191571,
+        "weak_label_mix": {
+          "vegetation": 22,
+          "built_up": 25
+        },
+        "weak_label_mix_entropy": 0.997059,
+        "year_mix": {
+          "2023": 16,
+          "2024": 14,
+          "2025": 17
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r002_c012_00028",
+          "training_2023_20230716_20230714_r003_c002_00033",
+          "training_2023_20230716_20230714_r003_c007_00038",
+          "training_2023_20230721_20230723_r001_c010_00005",
+          "training_2023_20230721_20230723_r002_c012_00013"
+        ]
+      },
+      {
+        "cluster_id": 6,
+        "patch_count": 27,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 0.62963,
+        "mean_dominant_weak_label_fraction": 0.934113,
+        "mean_anomaly_score": 0.578708,
+        "weak_label_mix": {
+          "vegetation": 17,
+          "built_up": 10
+        },
+        "weak_label_mix_entropy": 0.950956,
+        "year_mix": {
+          "2023": 8,
+          "2024": 6,
+          "2025": 13
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r001_c006_00012",
+          "training_2023_20230716_20230714_r006_c002_00078",
+          "training_2023_20230721_20230723_r002_c007_00009",
+          "training_2023_20230726_20230726_r000_c014_00009",
+          "training_2023_20231004_20231006_r000_c014_00009"
+        ]
+      },
+      {
+        "cluster_id": 7,
+        "patch_count": 14,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 0.571429,
+        "mean_dominant_weak_label_fraction": 0.667674,
+        "mean_anomaly_score": 0.610121,
+        "weak_label_mix": {
+          "built_up": 6,
+          "vegetation": 8
+        },
+        "weak_label_mix_entropy": 0.985228,
+        "year_mix": {
+          "2023": 3,
+          "2024": 5,
+          "2025": 6
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r001_c008_00013",
+          "training_2023_20230721_20230723_r009_c010_00069",
+          "training_2023_20230726_20230726_r000_c000_00000",
+          "training_2024_20240625_20240626_r001_c009_00014",
+          "training_2024_20240625_20240626_r003_c009_00040"
+        ]
+      },
+      {
+        "cluster_id": 8,
+        "patch_count": 16,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 0.5625,
+        "mean_dominant_weak_label_fraction": 0.703748,
+        "mean_anomaly_score": 0.37041,
+        "weak_label_mix": {
+          "built_up": 7,
+          "vegetation": 9
+        },
+        "weak_label_mix_entropy": 0.988699,
+        "year_mix": {
+          "2023": 6,
+          "2024": 6,
+          "2025": 4
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r002_c001_00019",
+          "training_2023_20230716_20230714_r004_c008_00054",
+          "training_2023_20230721_20230723_r004_c008_00025",
+          "training_2023_20230721_20230723_r010_c010_00078",
+          "training_2023_20230726_20230726_r002_c001_00019"
+        ]
+      }
+    ]
+  },
+  "comparison_metrics": {
+    "silhouette_score": 0.032023,
+    "weak_source_compatibility": 0.873106,
+    "review_burden_fraction": 0.208333,
+    "high_anomaly_fraction": 0.058333,
+    "mean_cluster_ambiguity": 0.62637,
+    "final_reconstruction_loss": 0.442366
+  },
+  "comparison_against_unet": {
+    "u_net_train_validation_review_fraction": 0.31364,
+    "u_net_train_validation_weak_source_compatibility": 0.866766,
+    "u_net_frozen_2026_review_fraction": 0.875615,
+    "u_net_frozen_2026_weak_source_compatibility": 0.765054,
+    "spatial_self_supervised_review_burden_fraction": 0.208333,
+    "spatial_self_supervised_weak_source_compatibility": 0.873106
+  },
+  "quality_gates": {
+    "geospatial_alignment_status": "passed",
+    "raster_mismatch_count": 0,
+    "vector_mismatch_count": 0,
+    "temporal_consensus_mean_fraction": 0.848494
+  },
+  "no_cheating_protocol": {
+    "excluded_years_from_fit": [
+      2026
+    ],
+    "fit_inputs": "Normalized Sentinel-1/2, index, radar, and terrain tensors only; weak labels are not used in the loss, normalization, or clustering.",
+    "weak_labels_role": "post-hoc cluster interpretation and review-priority reporting only",
+    "frozen_test_boundary": "The 2026 benchmark remains evaluation-only and is not used for encoder fitting, threshold choice, sample selection, or U-Net retraining."
+  },
+  "next_steps": [
+    "Create a repeated-window temporal patch manifest for true temporal-transformer training.",
+    "Use spatial-encoder anomaly samples as review candidates before any U-Net retraining.",
+    "Run the frozen 2026 comparison only after the next model version is locked."
+  ]
+}

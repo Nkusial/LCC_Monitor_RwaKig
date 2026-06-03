@@ -1,0 +1,116 @@
+{
+  "phase": "phase_53_reliability_uncertainty_control",
+  "purpose": "Focus the near-real-time monitor on reliability and uncertainty control when expert field/reference labels are not yet available.",
+  "accuracy_claim": "No field accuracy claim; this is model-risk and weak-evidence guidance.",
+  "no_cheating_boundary": {
+    "frozen_test_set": "test_2026_20260126_20260123",
+    "allowed": [
+      "Explain 2026 uncertainty and review burden.",
+      "Use train/validation reports to plan future model improvements.",
+      "Keep 2026 metrics as a frozen benchmark for later comparison."
+    ],
+    "forbidden": [
+      "Do not retrain from this result.",
+      "Do not tune thresholds, architecture, class weights, or pseudo-label filters from this result.",
+      "Do not claim field accuracy from weak-source agreement."
+    ]
+  },
+  "current_reliability_snapshot": {
+    "train_validation_mean_confidence": 0.889443,
+    "train_validation_mean_entropy": 0.170697,
+    "train_validation_review_fraction": 0.31364,
+    "train_validation_weak_compatibility": 0.866766,
+    "frozen_2026_mean_confidence": 0.537672,
+    "frozen_2026_mean_entropy": 0.654945,
+    "frozen_2026_review_fraction": 0.875615,
+    "frozen_2026_weak_compatibility": 0.765054
+  },
+  "driver_metrics": {
+    "confidence_gap_validation_to_2026": 0.351771,
+    "entropy_gap_2026_minus_validation": 0.484248,
+    "review_burden_gap_2026_minus_validation": 0.561975,
+    "weak_compatibility_gap_validation_minus_2026": 0.101712,
+    "test_low_confidence_fraction": 0.773345,
+    "test_high_entropy_fraction": 0.79476,
+    "test_weak_disagreement_fraction": 0.462878,
+    "test_weak_agreement_zone_fraction": 0.535459,
+    "strict_train_validation_pseudo_label_fraction": 0.30611,
+    "temporal_consensus_fraction_train_validation": 0.848494,
+    "temporal_instability_fraction_train_validation": 0.159035,
+    "weak_confidence_support_gap": 0.381478,
+    "rare_class_pixel_fraction_before_balancing": 0.005318,
+    "slope_p95_degrees": 28.98
+  },
+  "risk_drivers": [
+    {
+      "driver": "2026 domain/test-scene shift",
+      "risk_level": "high",
+      "evidence": "Mean confidence is much lower on the frozen 2026 benchmark than on train/validation full-AOI records.",
+      "safe_action": "Add cleaner train/validation scenes and retrain later, then evaluate once on the untouched 2026 benchmark."
+    },
+    {
+      "driver": "High entropy / class ambiguity",
+      "risk_level": "high",
+      "evidence": "Large 2026 areas have high normalized entropy.",
+      "safe_action": "Use entropy as a review-zone mask and avoid publishing low-certainty alerts as confident changes."
+    },
+    {
+      "driver": "Weak-source disagreement",
+      "risk_level": "high",
+      "evidence": "Dynamic World, ESA WorldCover, and OSM do not support the same class everywhere in the 2026 AOI.",
+      "safe_action": "Require stronger weak-source agreement for high-confidence zones and keep disagreement zones visible for review."
+    },
+    {
+      "driver": "Calibration gap",
+      "risk_level": "high",
+      "evidence": "Model probability and weak-source support are not yet well aligned.",
+      "safe_action": "Report calibrated reliability bands separately from raw model probability."
+    },
+    {
+      "driver": "Rare-class imbalance",
+      "risk_level": "high",
+      "evidence": "Water/moisture, bare/sparse, and mixed classes are much rarer than vegetation/built-up.",
+      "safe_action": "Keep class-balanced patch sampling and rare-class loss weighting in the next train/validation-only model iteration."
+    },
+    {
+      "driver": "Mountainous terrain effects",
+      "risk_level": "high",
+      "evidence": "Kigali AOI has steep terrain that can affect radar, shadow, moisture, and settlement signals.",
+      "safe_action": "Use DEM, slope, ruggedness, and TPI as model features and as review cues."
+    }
+  ],
+  "likely_changes_without_expert_samples": [
+    {
+      "change": "More honest confidence bands",
+      "expected_direction": "Raw confidence may increase or decrease, but reliability interpretation should improve.",
+      "why": "Calibration separates model probability from weak-source support instead of treating probability as truth."
+    },
+    {
+      "change": "Lower review burden on future validation scenes",
+      "expected_direction": "Review-zone fraction should decrease if train/validation-only retraining learns cleaner weak labels.",
+      "why": "Strict pseudo-label filtering and temporal consensus remove noisy labels before retraining."
+    },
+    {
+      "change": "Better stability of likely changes",
+      "expected_direction": "Single-date false alarms should decline when temporal persistence gates change publication.",
+      "why": "Persistent changes across multiple Sentinel-1/2 dates are more reliable than one-date spikes."
+    },
+    {
+      "change": "Improved class separation in terrain-affected areas",
+      "expected_direction": "Some bare/sparse, moisture, and built-up confusions should reduce.",
+      "why": "Slope and topographic position explain shadows, drainage, radar geometry, and settlement patterns."
+    },
+    {
+      "change": "No field-accuracy claim yet",
+      "expected_direction": "The system becomes more useful for screening, but not authoritative mapping.",
+      "why": "Expert samples are still required for confusion matrix, user accuracy, producer accuracy, and F1."
+    }
+  ],
+  "recommended_next_controls": [
+    "Publish reliability bands: supported, caution, review-required.",
+    "Gate change alerts using confidence, entropy, weak agreement, and temporal persistence.",
+    "Use only train/validation data for the next retraining cycle.",
+    "Reserve the frozen 2026 benchmark for a single later comparison after retraining.",
+    "Add a small expert sample later to convert reliability into true accuracy metrics."
+  ]
+}

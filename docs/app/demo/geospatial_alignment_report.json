@@ -1,0 +1,43 @@
+{
+  "phase": "geospatial_alignment_validation",
+  "status": "passed",
+  "master_grid": {
+    "path": "configs/master_grid.yaml",
+    "crs": "EPSG:32735",
+    "width": 2009,
+    "height": 1997,
+    "bounds": [
+      830650.0,
+      9774830.0,
+      850740.0,
+      9794800.0
+    ],
+    "transform": [
+      10.0,
+      0.0,
+      830650.0,
+      0.0,
+      -10.0,
+      9794800.0
+    ],
+    "tolerance": 0.001
+  },
+  "checked_raster_count": 414,
+  "checked_vector_count": 4,
+  "raster_mismatch_count": 0,
+  "vector_mismatch_count": 0,
+  "raster_family_counts": {
+    "processed_sentinel_features": 235,
+    "change_detection_outputs": 24,
+    "external_weak_sources": 12,
+    "unet_full_aoi": 55,
+    "unet_full_aoi_v3": 48,
+    "refined_pseudo_labels": 36,
+    "topography_features": 4
+  },
+  "skipped_raw_source_rasters": [
+    "dynamic_world_label.tif",
+    "dynamic_world_label_20260126.tif"
+  ],
+  "interpretation": "All downstream analysis rasters and WebGIS vectors are aligned to the same 10 m EPSG:32735 master grid. Raw provider exports are kept only as provenance and are harmonized before weak-label fusion."
+}

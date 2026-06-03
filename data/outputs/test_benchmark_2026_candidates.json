@@ -1,0 +1,665 @@
+{
+  "phase": "phase_47_2026_test_benchmark_discovery",
+  "purpose": "Find best 2026 cloud-free Sentinel-2/Sentinel-1 candidates for a clean held-out benchmark.",
+  "date_range": {
+    "start": "2026-01-01",
+    "end": "2026-05-07"
+  },
+  "required_tiles": [
+    "35MRT",
+    "35MRU"
+  ],
+  "preferred_max_cloud_cover": 10,
+  "fallback_max_cloud_cover": 20,
+  "complete_same_date_group_count": 32,
+  "strict_test_pair_count": 0,
+  "relaxed_candidate_pair_count": 32,
+  "best_complete_same_date_groups": [
+    {
+      "date": "2026-01-26",
+      "average_cloud_cover_percent": 15.09,
+      "max_tile_cloud_cover_percent": 23.07,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-01-26",
+          "tile": "35MRT",
+          "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRT_20260126T120623",
+          "cloud_cover_percent": 7.1,
+          "datetime": "2026-01-26T08:11:19.024000Z"
+        },
+        "35MRU": {
+          "date": "2026-01-26",
+          "tile": "35MRU",
+          "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRU_20260126T121017",
+          "cloud_cover_percent": 23.07,
+          "datetime": "2026-01-26T08:11:19.024000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-01-23",
+        "scene_id": "S1A_IW_GRDH_1SDV_20260123T162041_20260123T162106_062896_07E3BA_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 55.7
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-01-16",
+      "average_cloud_cover_percent": 15.36,
+      "max_tile_cloud_cover_percent": 29.75,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-01-16",
+          "tile": "35MRT",
+          "scene_id": "S2B_MSIL2A_20260116T081159_R078_T35MRT_20260116T105506",
+          "cloud_cover_percent": 29.75,
+          "datetime": "2026-01-16T08:11:59.024000Z"
+        },
+        "35MRU": {
+          "date": "2026-01-16",
+          "tile": "35MRU",
+          "scene_id": "S2B_MSIL2A_20260116T081159_R078_T35MRU_20260116T105506",
+          "cloud_cover_percent": 0.96,
+          "datetime": "2026-01-16T08:11:59.024000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-01-14",
+        "scene_id": "S1C_IW_GRDH_1SDV_20260114T033621_20260114T033646_005894_00BD02_rtc",
+        "orbit": "descending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 44.4
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-01-21",
+      "average_cloud_cover_percent": 27.4,
+      "max_tile_cloud_cover_percent": 40.74,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-01-21",
+          "tile": "35MRT",
+          "scene_id": "S2C_MSIL2A_20260121T081241_R078_T35MRT_20260121T115811",
+          "cloud_cover_percent": 40.74,
+          "datetime": "2026-01-21T08:12:41.025000Z"
+        },
+        "35MRU": {
+          "date": "2026-01-21",
+          "tile": "35MRU",
+          "scene_id": "S2C_MSIL2A_20260121T081241_R078_T35MRU_20260121T115811",
+          "cloud_cover_percent": 14.05,
+          "datetime": "2026-01-21T08:12:41.025000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-01-23",
+        "scene_id": "S1A_IW_GRDH_1SDV_20260123T162041_20260123T162106_062896_07E3BA_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 64.3
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-02-20",
+      "average_cloud_cover_percent": 29.66,
+      "max_tile_cloud_cover_percent": 41.52,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-02-20",
+          "tile": "35MRT",
+          "scene_id": "S2C_MSIL2A_20260220T080951_R078_T35MRT_20260220T113817",
+          "cloud_cover_percent": 17.81,
+          "datetime": "2026-02-20T08:09:51.025000Z"
+        },
+        "35MRU": {
+          "date": "2026-02-20",
+          "tile": "35MRU",
+          "scene_id": "S2C_MSIL2A_20260220T080951_R078_T35MRU_20260220T113817",
+          "cloud_cover_percent": 41.52,
+          "datetime": "2026-02-20T08:09:51.025000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-02-16",
+        "scene_id": "S1A_IW_GRDH_1SDV_20260216T162041_20260216T162106_063246_07F0DB_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 79.7
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-01-31",
+      "average_cloud_cover_percent": 46.84,
+      "max_tile_cloud_cover_percent": 52.21,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-01-31",
+          "tile": "35MRT",
+          "scene_id": "S2C_MSIL2A_20260131T081151_R078_T35MRT_20260131T120813",
+          "cloud_cover_percent": 41.46,
+          "datetime": "2026-01-31T08:11:51.025000Z"
+        },
+        "35MRU": {
+          "date": "2026-01-31",
+          "tile": "35MRU",
+          "scene_id": "S2C_MSIL2A_20260131T081151_R078_T35MRU_20260131T120813",
+          "cloud_cover_percent": 52.21,
+          "datetime": "2026-01-31T08:11:51.025000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-01-31",
+        "scene_id": "S1C_IW_GRDH_1SDV_20260131T034406_20260131T034431_006142_00C53B_rtc",
+        "orbit": "descending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 3.7
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-01-06",
+      "average_cloud_cover_percent": 42.63,
+      "max_tile_cloud_cover_percent": 53.54,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-01-06",
+          "tile": "35MRT",
+          "scene_id": "S2B_MSIL2A_20260106T081229_R078_T35MRT_20260106T105235",
+          "cloud_cover_percent": 31.72,
+          "datetime": "2026-01-06T08:12:29.024000Z"
+        },
+        "35MRU": {
+          "date": "2026-01-06",
+          "tile": "35MRU",
+          "scene_id": "S2B_MSIL2A_20260106T081229_R078_T35MRU_20260106T105235",
+          "cloud_cover_percent": 53.54,
+          "datetime": "2026-01-06T08:12:29.024000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-01-07",
+        "scene_id": "S1C_IW_GRDH_1SDV_20260107T034406_20260107T034431_005792_00B962_rtc",
+        "orbit": "descending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 27.7
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-01-03",
+      "average_cloud_cover_percent": 33.16,
+      "max_tile_cloud_cover_percent": 54.12,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-01-03",
+          "tile": "35MRT",
+          "scene_id": "S2A_MSIL2A_20260103T082521_R078_T35MRT_20260103T105213",
+          "cloud_cover_percent": 12.2,
+          "datetime": "2026-01-03T08:25:21.024000Z"
+        },
+        "35MRU": {
+          "date": "2026-01-03",
+          "tile": "35MRU",
+          "scene_id": "S2A_MSIL2A_20260103T082521_R078_T35MRU_20260103T105213",
+          "cloud_cover_percent": 54.12,
+          "datetime": "2026-01-03T08:25:21.024000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2025-12-30",
+        "scene_id": "S1A_IW_GRDH_1SDV_20251230T162044_20251230T162109_062546_07D6A8_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 79.7
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-03-17",
+      "average_cloud_cover_percent": 38.46,
+      "max_tile_cloud_cover_percent": 55.49,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-03-17",
+          "tile": "35MRT",
+          "scene_id": "S2B_MSIL2A_20260317T080559_R078_T35MRT_20260317T121335",
+          "cloud_cover_percent": 55.49,
+          "datetime": "2026-03-17T08:05:59.024000Z"
+        },
+        "35MRU": {
+          "date": "2026-03-17",
+          "tile": "35MRU",
+          "scene_id": "S2B_MSIL2A_20260317T080559_R078_T35MRU_20260317T121335",
+          "cloud_cover_percent": 21.43,
+          "datetime": "2026-03-17T08:05:59.024000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-03-15",
+        "scene_id": "S1C_IW_GRDH_1SDV_20260315T033620_20260315T033645_006769_00DACE_rtc",
+        "orbit": "descending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 44.4
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-04-06",
+      "average_cloud_cover_percent": 59.03,
+      "max_tile_cloud_cover_percent": 61.64,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-04-06",
+          "tile": "35MRT",
+          "scene_id": "S2B_MSIL2A_20260406T080609_R078_T35MRT_20260406T122700",
+          "cloud_cover_percent": 56.43,
+          "datetime": "2026-04-06T08:06:09.024000Z"
+        },
+        "35MRU": {
+          "date": "2026-04-06",
+          "tile": "35MRU",
+          "scene_id": "S2B_MSIL2A_20260406T080609_R078_T35MRU_20260406T122700",
+          "cloud_cover_percent": 61.64,
+          "datetime": "2026-04-06T08:06:09.024000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-04-05",
+        "scene_id": "S1A_IW_GRDH_1SDV_20260405T162041_20260405T162106_063946_080B39_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 7.7
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-03-14",
+      "average_cloud_cover_percent": 50.78,
+      "max_tile_cloud_cover_percent": 63.9,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-03-14",
+          "tile": "35MRT",
+          "scene_id": "S2A_MSIL2A_20260314T082521_R078_T35MRT_20260314T134509",
+          "cloud_cover_percent": 63.9,
+          "datetime": "2026-03-14T08:25:21.024000Z"
+        },
+        "35MRU": {
+          "date": "2026-03-14",
+          "tile": "35MRU",
+          "scene_id": "S2A_MSIL2A_20260314T082521_R078_T35MRU_20260314T134509",
+          "cloud_cover_percent": 37.66,
+          "datetime": "2026-03-14T08:25:21.024000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-03-12",
+        "scene_id": "S1A_IW_GRDH_1SDV_20260312T162041_20260312T162106_063596_07FE32_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 31.7
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-05-06",
+      "average_cloud_cover_percent": 61.06,
+      "max_tile_cloud_cover_percent": 68.15,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-05-06",
+          "tile": "35MRT",
+          "scene_id": "S2B_MSIL2A_20260506T080559_R078_T35MRT_20260506T121102",
+          "cloud_cover_percent": 68.15,
+          "datetime": "2026-05-06T08:05:59.024000Z"
+        },
+        "35MRU": {
+          "date": "2026-05-06",
+          "tile": "35MRU",
+          "scene_id": "S2B_MSIL2A_20260506T080559_R078_T35MRU_20260506T121102",
+          "cloud_cover_percent": 53.97,
+          "datetime": "2026-05-06T08:05:59.024000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-05-07",
+        "scene_id": "S1C_IW_GRDH_1SDV_20260507T034421_20260507T034446_007542_00F50B_rtc",
+        "orbit": "descending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 27.7
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    },
+    {
+      "date": "2026-04-03",
+      "average_cloud_cover_percent": 56.23,
+      "max_tile_cloud_cover_percent": 70.86,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-04-03",
+          "tile": "35MRT",
+          "scene_id": "S2A_MSIL2A_20260403T082521_R078_T35MRT_20260403T133710",
+          "cloud_cover_percent": 70.86,
+          "datetime": "2026-04-03T08:25:21.024000Z"
+        },
+        "35MRU": {
+          "date": "2026-04-03",
+          "tile": "35MRU",
+          "scene_id": "S2A_MSIL2A_20260403T082521_R078_T35MRU_20260403T133710",
+          "cloud_cover_percent": 41.6,
+          "datetime": "2026-04-03T08:25:21.024000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-04-05",
+        "scene_id": "S1A_IW_GRDH_1SDV_20260405T162041_20260405T162106_063946_080B39_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 64.3
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    }
+  ],
+  "best_individual_tile_items": [
+    {
+      "date": "2026-01-16",
+      "tile": "35MRU",
+      "scene_id": "S2B_MSIL2A_20260116T081159_R078_T35MRU_20260116T105506",
+      "cloud_cover_percent": 0.96,
+      "datetime": "2026-01-16T08:11:59.024000Z"
+    },
+    {
+      "date": "2026-01-26",
+      "tile": "35MRT",
+      "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRT_20260126T120623",
+      "cloud_cover_percent": 7.1,
+      "datetime": "2026-01-26T08:11:19.024000Z"
+    },
+    {
+      "date": "2026-01-03",
+      "tile": "35MRT",
+      "scene_id": "S2A_MSIL2A_20260103T082521_R078_T35MRT_20260103T105213",
+      "cloud_cover_percent": 12.2,
+      "datetime": "2026-01-03T08:25:21.024000Z"
+    },
+    {
+      "date": "2026-01-26",
+      "tile": "35MRT",
+      "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRT_20260126T121017",
+      "cloud_cover_percent": 12.74,
+      "datetime": "2026-01-26T08:11:19.024000Z"
+    },
+    {
+      "date": "2026-01-21",
+      "tile": "35MRU",
+      "scene_id": "S2C_MSIL2A_20260121T081241_R078_T35MRU_20260121T115811",
+      "cloud_cover_percent": 14.05,
+      "datetime": "2026-01-21T08:12:41.025000Z"
+    },
+    {
+      "date": "2026-02-20",
+      "tile": "35MRT",
+      "scene_id": "S2C_MSIL2A_20260220T080951_R078_T35MRT_20260220T113817",
+      "cloud_cover_percent": 17.81,
+      "datetime": "2026-02-20T08:09:51.025000Z"
+    },
+    {
+      "date": "2026-03-17",
+      "tile": "35MRU",
+      "scene_id": "S2B_MSIL2A_20260317T080559_R078_T35MRU_20260317T121335",
+      "cloud_cover_percent": 21.43,
+      "datetime": "2026-03-17T08:05:59.024000Z"
+    },
+    {
+      "date": "2026-01-26",
+      "tile": "35MRU",
+      "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRU_20260126T121017",
+      "cloud_cover_percent": 23.07,
+      "datetime": "2026-01-26T08:11:19.024000Z"
+    },
+    {
+      "date": "2026-01-16",
+      "tile": "35MRT",
+      "scene_id": "S2B_MSIL2A_20260116T081159_R078_T35MRT_20260116T105506",
+      "cloud_cover_percent": 29.75,
+      "datetime": "2026-01-16T08:11:59.024000Z"
+    },
+    {
+      "date": "2026-02-25",
+      "tile": "35MRU",
+      "scene_id": "S2B_MSIL2A_20260225T080809_R078_T35MRU_20260225T134332",
+      "cloud_cover_percent": 31.44,
+      "datetime": "2026-02-25T08:08:09.024000Z"
+    },
+    {
+      "date": "2026-01-06",
+      "tile": "35MRT",
+      "scene_id": "S2B_MSIL2A_20260106T081229_R078_T35MRT_20260106T105235",
+      "cloud_cover_percent": 31.72,
+      "datetime": "2026-01-06T08:12:29.024000Z"
+    },
+    {
+      "date": "2026-03-14",
+      "tile": "35MRU",
+      "scene_id": "S2A_MSIL2A_20260314T082521_R078_T35MRU_20260314T134509",
+      "cloud_cover_percent": 37.66,
+      "datetime": "2026-03-14T08:25:21.024000Z"
+    },
+    {
+      "date": "2026-01-21",
+      "tile": "35MRT",
+      "scene_id": "S2C_MSIL2A_20260121T081241_R078_T35MRT_20260121T115811",
+      "cloud_cover_percent": 40.74,
+      "datetime": "2026-01-21T08:12:41.025000Z"
+    },
+    {
+      "date": "2026-01-31",
+      "tile": "35MRT",
+      "scene_id": "S2C_MSIL2A_20260131T081151_R078_T35MRT_20260131T120813",
+      "cloud_cover_percent": 41.46,
+      "datetime": "2026-01-31T08:11:51.025000Z"
+    },
+    {
+      "date": "2026-02-20",
+      "tile": "35MRU",
+      "scene_id": "S2C_MSIL2A_20260220T080951_R078_T35MRU_20260220T113817",
+      "cloud_cover_percent": 41.52,
+      "datetime": "2026-02-20T08:09:51.025000Z"
+    },
+    {
+      "date": "2026-04-03",
+      "tile": "35MRU",
+      "scene_id": "S2A_MSIL2A_20260403T082521_R078_T35MRU_20260403T133710",
+      "cloud_cover_percent": 41.6,
+      "datetime": "2026-04-03T08:25:21.024000Z"
+    },
+    {
+      "date": "2026-01-31",
+      "tile": "35MRU",
+      "scene_id": "S2C_MSIL2A_20260131T081151_R078_T35MRU_20260131T120813",
+      "cloud_cover_percent": 52.21,
+      "datetime": "2026-01-31T08:11:51.025000Z"
+    },
+    {
+      "date": "2026-01-06",
+      "tile": "35MRU",
+      "scene_id": "S2B_MSIL2A_20260106T081229_R078_T35MRU_20260106T105235",
+      "cloud_cover_percent": 53.54,
+      "datetime": "2026-01-06T08:12:29.024000Z"
+    },
+    {
+      "date": "2026-05-06",
+      "tile": "35MRU",
+      "scene_id": "S2B_MSIL2A_20260506T080559_R078_T35MRU_20260506T121102",
+      "cloud_cover_percent": 53.97,
+      "datetime": "2026-05-06T08:05:59.024000Z"
+    },
+    {
+      "date": "2026-01-03",
+      "tile": "35MRU",
+      "scene_id": "S2A_MSIL2A_20260103T082521_R078_T35MRU_20260103T105213",
+      "cloud_cover_percent": 54.12,
+      "datetime": "2026-01-03T08:25:21.024000Z"
+    }
+  ],
+  "best_incomplete_dates": [],
+  "weak_sources_required_for_benchmark": {
+    "dynamic_world": "required for weak-label agreement if Earth Engine export exists for the selected date window",
+    "esa_worldcover": "usable as static external weak label; latest available map is not 2026-specific",
+    "osm_buildings_roads_landuse": "usable as current vector support, with timestamp caveat",
+    "sentinel2_indices": "required from the selected 2026 optical pair",
+    "sentinel1_vv_vh": "required from matched Sentinel-1 RTC pair",
+    "existing_high_confidence_change_polygons": "optional bootstrap support, not independent final-test truth"
+  },
+  "configured_weak_sources": {
+    "dynamic_world": {
+      "enabled": false,
+      "role": "external_agreement_source",
+      "status": "requires_earth_engine_export_or_local_raster",
+      "description": "Dynamic World class probabilities for future independent weak-label agreement zones.",
+      "earth_engine_asset": "GOOGLE/DYNAMICWORLD/V1",
+      "local_label_raster": "data/interim/external_sources/dynamic_world_label.tif"
+    },
+    "esa_worldcover": {
+      "enabled": true,
+      "role": "external_agreement_source",
+      "status": "active_external_ingestion",
+      "description": "ESA WorldCover classes for future independent weak-label agreement zones.",
+      "stac_collection": "esa-worldcover",
+      "preferred_year": 2021,
+      "preferred_version": "v200",
+      "asset_key": "map"
+    },
+    "osm_buildings_roads_landuse": {
+      "enabled": true,
+      "role": "external_vector_support",
+      "status": "active_external_ingestion",
+      "description": "OSM buildings, roads, and land-use features for future support evidence.",
+      "overpass_url": "https://overpass-api.de/api/interpreter",
+      "tags": [
+        "building",
+        "highway",
+        "landuse"
+      ]
+    },
+    "sentinel2_ndvi_ndwi_ndbi": {
+      "enabled": true,
+      "role": "active_local_spectral_evidence",
+      "status": "active",
+      "description": "Sentinel-2 NDVI, NDWI, and NDBI evidence from AOI-aligned processed rasters."
+    },
+    "sentinel1_vv_vh": {
+      "enabled": true,
+      "role": "active_local_radar_evidence",
+      "status": "active",
+      "description": "Sentinel-1 VV/VH ratio evidence from AOI-aligned processed rasters."
+    },
+    "existing_high_confidence_change_polygons": {
+      "enabled": true,
+      "role": "active_local_bootstrap_agreement",
+      "status": "active",
+      "description": "Existing confidence-scored change polygons used only as local bootstrap evidence."
+    }
+  },
+  "recommendation": "Use the lowest max-tile-cloud complete same-date group only if it meets the fallback cloud policy. If only relaxed candidates exist, keep 2026 as a benchmark candidate but do not claim final test accuracy until cloud masking and valid-pixel coverage prove the AOI is usable."
+}

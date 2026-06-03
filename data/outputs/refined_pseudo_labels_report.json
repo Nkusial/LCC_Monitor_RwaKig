@@ -1,0 +1,293 @@
+{
+  "phase": "phase_45_strict_refined_pseudo_labels",
+  "record_count": 12,
+  "thresholds": {
+    "minimum_unet_confidence": 0.8,
+    "maximum_entropy": 0.35,
+    "minimum_temporal_consensus": 0.7,
+    "minimum_weak_agreement_sources": 2,
+    "include_external_agreement_pixels": true
+  },
+  "selected_pixels": 14223252,
+  "valid_model_pixels": 46464537,
+  "selected_fraction_of_valid": 0.30611,
+  "class_counts": {
+    "1": 10577832,
+    "2": 3593268,
+    "3": 20904,
+    "4": 31248,
+    "5": 0
+  },
+  "records": [
+    {
+      "training_tag": "training_2023_20230721_20230723",
+      "year": 2023,
+      "split": "train",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 2485591,
+      "selected_fraction_of_valid": 0.476857,
+      "strict_model_compatible_pixels": 665893,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2023_20230721_20230723_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2023_20230721_20230723_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2023_20230721_20230723_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2023_20230726_20230726",
+      "year": 2023,
+      "split": "train",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 758989,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2023_20230726_20230726_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2023_20230726_20230726_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2023_20230726_20230726_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2023_20230716_20230714",
+      "year": 2023,
+      "split": "train",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 743911,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2023_20230716_20230714_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2023_20230716_20230714_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2023_20230716_20230714_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2023_20231004_20231006",
+      "year": 2023,
+      "split": "train",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 715281,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2023_20231004_20231006_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2023_20231004_20231006_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2023_20231004_20231006_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2024_20240804_20240801",
+      "year": 2024,
+      "split": "train",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 775940,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2024_20240804_20240801_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2024_20240804_20240801_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2024_20240804_20240801_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2024_20240725_20240722",
+      "year": 2024,
+      "split": "train",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 776248,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2024_20240725_20240722_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2024_20240725_20240722_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2024_20240725_20240722_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2024_20240630_20240626",
+      "year": 2024,
+      "split": "train",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 717744,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2024_20240630_20240626_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2024_20240630_20240626_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2024_20240630_20240626_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2024_20240625_20240626",
+      "year": 2024,
+      "split": "train",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 680636,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2024_20240625_20240626_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2024_20240625_20240626_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2024_20240625_20240626_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2025_20250730_20250727",
+      "year": 2025,
+      "split": "validation",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 757964,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2025_20250730_20250727_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2025_20250730_20250727_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2025_20250730_20250727_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2025_20250829_20250901",
+      "year": 2025,
+      "split": "validation",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 761356,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2025_20250829_20250901_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2025_20250829_20250901_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2025_20250829_20250901_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2025_20250220_20250221",
+      "year": 2025,
+      "split": "validation",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 712419,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2025_20250220_20250221_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2025_20250220_20250221_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2025_20250220_20250221_refined_label_confidence.tif"
+      }
+    },
+    {
+      "training_tag": "training_2025_20250806_20250808",
+      "year": 2025,
+      "split": "validation",
+      "selected_pixels": 1185271,
+      "valid_model_pixels": 3998086,
+      "selected_fraction_of_valid": 0.29646,
+      "strict_model_compatible_pixels": 779725,
+      "external_agreement_pixels": 1185271,
+      "class_counts": {
+        "1": 881486,
+        "2": 299439,
+        "3": 1742,
+        "4": 2604,
+        "5": 0
+      },
+      "outputs": {
+        "labels": "data/interim/refined_pseudo_labels/training_2025_20250806_20250808_refined_pseudo_labels.tif",
+        "training_mask": "data/interim/refined_pseudo_labels/training_2025_20250806_20250808_refined_training_mask.tif",
+        "label_confidence": "data/interim/refined_pseudo_labels/training_2025_20250806_20250808_refined_label_confidence.tif"
+      }
+    }
+  ],
+  "notes": [
+    "These pseudo-labels are intentionally conservative.",
+    "Strict model-compatible pixels require U-Net confidence, low entropy, temporal consensus, weak-source agreement, and no weak-source disagreement.",
+    "High-agreement external weak-source pixels are retained to reduce model self-training bias and class collapse.",
+    "The all-record mode creates date-specific pseudo-label rasters for weakly supervised multi-date retraining."
+  ]
+}

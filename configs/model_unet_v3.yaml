@@ -1,0 +1,81 @@
+version: 3
+description: Replicable weak-supervised U-Net retraining config using multi-date refined labels, source agreement, and terrain features.
+model:
+  architecture: lightweight_unet
+  input_channels: 15
+  output_classes: 6
+  base_channels: 32
+  class_names:
+    - background_or_unlabeled
+    - built_up
+    - managed_or_natural_vegetation
+    - bare_soil
+    - water_wetland
+    - uncertain_mixed
+training:
+  patch_manifest: data/interim/training_patches_v3/training_patch_manifest_v3_balanced.json
+  batch_size: 4
+  learning_rate: 0.0005
+  epochs: 12
+  early_stopping_patience: 4
+  min_delta: 0.0005
+  weight_decay: 0.0001
+  ignore_index: 0
+  minimum_training_pixels: 250000
+  num_workers: 0
+  device: auto
+  feature_stack:
+    - s2_ndvi
+    - s2_ndwi
+    - s2_ndbi
+    - s2_evi2
+    - s2_savi
+    - s2_mndwi
+    - s2_bsi
+    - s1_vv
+    - s1_vh
+    - s1_vv_vh_ratio
+    - s1_log_ratio
+    - dem
+    - slope
+    - ruggedness
+    - tpi
+  loss:
+    cross_entropy_weight: 1.0
+    dice_weight: 1.0
+    focal_weight: 0.5
+    focal_gamma: 2.0
+    tversky_weight: 0.5
+    tversky_alpha: 0.35
+    tversky_beta: 0.65
+    class_weight_method: effective_number
+    effective_number_beta: 0.99999
+    max_class_weight: 8.0
+    class_weight_overrides: {}
+  sampling:
+    class_aware: true
+    minority_boost: 3.0
+    minimum_minority_weight: 4.0
+    samples_per_epoch_multiplier: 1.75
+    balanced_manifest: true
+    minority_classes:
+      - 3
+      - 4
+      - 5
+outputs:
+  report_path: data/outputs/unet_v3_report.json
+  checkpoint_path: data/interim/models/unet_v3.pt
+  inference_dir: data/interim/unet_inference_v3
+  inference_manifest: data/interim/unet_inference_v3/unet_inference_manifest_v3.json
+  mosaic_dir: data/interim/unet_mosaics_v3
+  mosaic_manifest: data/interim/unet_mosaics_v3/unet_mosaic_manifest_v3.json
+  full_aoi_dir: data/interim/unet_full_aoi_v3
+  full_aoi_manifest: data/interim/unet_full_aoi_v3/unet_full_aoi_manifest_v3.json
+inference:
+  tile_size: 128
+  stride: 64
+  batch_size: 8
+notes:
+  - Version 3 is the first model-improvement track after Dynamic World authentication.
+  - It is weakly supervised and replicable where field labels are unavailable.
+  - It still reports weak-evidence compatibility, not field accuracy.

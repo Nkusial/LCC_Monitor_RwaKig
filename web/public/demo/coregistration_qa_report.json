@@ -1,0 +1,117 @@
+{
+  "phase": "coregistration_qa",
+  "status": "passed",
+  "method": "Grid metadata validation plus gradient-correlation integer shift diagnostics against Sentinel-2 NDVI. This is a no-GCP proxy check for prototype QA.",
+  "reference": "data/processed/s2_20250220_ndvi.tif",
+  "master_grid": {
+    "path": "configs/master_grid.yaml",
+    "crs": "EPSG:32735",
+    "resolution_m": 10.0
+  },
+  "checked_target_count": 8,
+  "grid_failure_count": 0,
+  "high_shift_warning_count": 0,
+  "max_diagnostic_shift_m": 40.0,
+  "records": [
+    {
+      "family": "sentinel2_index",
+      "label": "NDWI moisture index",
+      "path": "data/processed/s2_20250220_ndwi.tif",
+      "grid_aligned": true,
+      "diagnostic_shift_pixels": {
+        "dx": 0,
+        "dy": 0,
+        "max_abs": 0
+      },
+      "diagnostic_shift_m": 0.0,
+      "gradient_correlation": 0.9104640483856201,
+      "valid_samples": 249398,
+      "interpretation": "Strong image-content agreement"
+    },
+    {
+      "family": "sentinel2_index",
+      "label": "NDBI built-up index",
+      "path": "data/processed/s2_20250220_ndbi.tif",
+      "grid_aligned": true,
+      "diagnostic_shift_pixels": {
+        "dx": 0,
+        "dy": 0,
+        "max_abs": 0
+      },
+      "diagnostic_shift_m": 0.0,
+      "gradient_correlation": 0.7185950875282288,
+      "valid_samples": 249398,
+      "interpretation": "Strong image-content agreement"
+    },
+    {
+      "family": "sentinel1_radar",
+      "label": "Sentinel-1 VV backscatter",
+      "path": "data/processed/s1_20250221_vv.tif",
+      "grid_aligned": true,
+      "diagnostic_shift_pixels": {
+        "dx": -4,
+        "dy": 4,
+        "max_abs": 4
+      },
+      "diagnostic_shift_m": 40.0,
+      "gradient_correlation": 0.041789162904024124,
+      "valid_samples": 248399,
+      "interpretation": "Low cross-source radiometric similarity; use as drift warning, not proof"
+    },
+    {
+      "family": "sentinel1_radar",
+      "label": "Sentinel-1 VH backscatter",
+      "path": "data/processed/s1_20250221_vh.tif",
+      "grid_aligned": true,
+      "diagnostic_shift_pixels": {
+        "dx": -4,
+        "dy": 4,
+        "max_abs": 4
+      },
+      "diagnostic_shift_m": 40.0,
+      "gradient_correlation": 0.0578714944422245,
+      "valid_samples": 248399,
+      "interpretation": "Low cross-source radiometric similarity; use as drift warning, not proof"
+    },
+    {
+      "family": "weak_label",
+      "label": "ESA WorldCover harmonized label",
+      "path": "data/interim/external_sources/esa_worldcover_harmonized.tif",
+      "grid_aligned": true,
+      "diagnostic_shift_pixels": {
+        "dx": 0,
+        "dy": 0,
+        "max_abs": 0
+      },
+      "diagnostic_shift_m": 0.0,
+      "gradient_correlation": 0.2753649950027466,
+      "valid_samples": 249398,
+      "interpretation": "Low cross-source radiometric similarity; use as drift warning, not proof"
+    },
+    {
+      "family": "change_output",
+      "label": "Latest delta NDVI",
+      "path": "data/outputs/monitoring_20250220_20250221__to__monitoring_20250421_20250419_delta_ndvi.tif",
+      "grid_aligned": true,
+      "diagnostic_shift_pixels": {
+        "dx": 0,
+        "dy": 0,
+        "max_abs": 0
+      },
+      "diagnostic_shift_m": 0.0,
+      "gradient_correlation": 0.2610321044921875,
+      "valid_samples": 249398,
+      "interpretation": "Low cross-source radiometric similarity; use as drift warning, not proof"
+    }
+  ],
+  "limitations": [
+    "This does not replace field GCPs or orthorectification QA.",
+    "SAR and optical images can have low gradient correlation even when georeferenced correctly.",
+    "OSM is not used as ground-control because its local digitizing offset is unknown."
+  ],
+  "recommended_production_method": [
+    "Use independent GCPs or high-resolution reference imagery for tie-point registration.",
+    "Estimate sub-pixel shifts per date/source before change detection.",
+    "Publish WebGIS rasters as Web Mercator tiles, not single image overlays."
+  ]
+}

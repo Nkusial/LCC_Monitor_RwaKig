@@ -1,0 +1,288 @@
+{
+  "phase": "phase_49_heldout_2026_benchmark_package",
+  "status": "benchmark_package_prepared_with_blockers",
+  "benchmark_year": 2026,
+  "candidate_policy": {
+    "strict_test_pair_count": 0,
+    "relaxed_candidate_pair_count": 32,
+    "preferred_max_cloud_cover": 10,
+    "fallback_max_cloud_cover": 20,
+    "accuracy_claim_allowed": false,
+    "reason": "Weak-source agreement is proxy evidence, not field validation truth."
+  },
+  "selected_candidate": {
+    "date": "2026-01-26",
+    "average_cloud_cover_percent": 15.09,
+    "max_tile_cloud_cover_percent": 23.07,
+    "tiles": {
+      "35MRT": {
+        "date": "2026-01-26",
+        "tile": "35MRT",
+        "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRT_20260126T120623",
+        "cloud_cover_percent": 7.1,
+        "datetime": "2026-01-26T08:11:19.024000Z"
+      },
+      "35MRU": {
+        "date": "2026-01-26",
+        "tile": "35MRU",
+        "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRU_20260126T121017",
+        "cloud_cover_percent": 23.07,
+        "datetime": "2026-01-26T08:11:19.024000Z"
+      }
+    },
+    "sentinel1_match": {
+      "collection": "sentinel-1-rtc",
+      "date": "2026-01-23",
+      "scene_id": "S1A_IW_GRDH_1SDV_20260123T162041_20260123T162106_062896_07E3BA_rtc",
+      "orbit": "ascending",
+      "polarizations": [
+        "VV",
+        "VH"
+      ],
+      "time_gap_hours": 55.7
+    },
+    "has_sentinel1_match": true,
+    "meets_preferred_cloud_policy": false,
+    "meets_fallback_cloud_policy": false,
+    "usable_as_strict_test_pair": false,
+    "usable_as_relaxed_candidate": true
+  },
+  "expected_test_tag": "test_2026_20260126_20260123",
+  "processed_feature_stack": {
+    "status": "ready",
+    "tag": "test_2026_20260126_20260123",
+    "required_features": [
+      "s2_ndvi",
+      "s2_ndwi",
+      "s2_ndbi",
+      "s1_vv",
+      "s1_vh",
+      "s1_vv_vh_ratio"
+    ],
+    "available": [
+      "s2_ndvi",
+      "s2_ndwi",
+      "s2_ndbi",
+      "s1_vv",
+      "s1_vh",
+      "s1_vv_vh_ratio"
+    ],
+    "missing": [],
+    "expected_paths": {
+      "s2_ndvi": "<local-project-root>/data/processed/test_2026_20260126_20260123_s2_ndvi.tif",
+      "s2_ndwi": "<local-project-root>/data/processed/test_2026_20260126_20260123_s2_ndwi.tif",
+      "s2_ndbi": "<local-project-root>/data/processed/test_2026_20260126_20260123_s2_ndbi.tif",
+      "s1_vv": "<local-project-root>/data/processed/test_2026_20260126_20260123_s1_vv.tif",
+      "s1_vh": "<local-project-root>/data/processed/test_2026_20260126_20260123_s1_vh.tif",
+      "s1_vv_vh_ratio": "<local-project-root>/data/processed/test_2026_20260126_20260123_s1_vv_vh_ratio.tif"
+    }
+  },
+  "weak_sources": {
+    "status": "ready",
+    "agreement_sources": [
+      "dynamic_world",
+      "esa_worldcover",
+      "osm_buildings_roads_landuse"
+    ],
+    "agreement_outputs": {
+      "status": "created",
+      "sources_used": [
+        "dynamic_world",
+        "esa_worldcover",
+        "osm_buildings_roads_landuse"
+      ],
+      "agreement_labels": "data/interim/external_sources/weak_source_agreement_labels_test_2026.tif",
+      "source_count": "data/interim/external_sources/weak_source_agreement_count_test_2026.tif",
+      "disagreement_mask": "data/interim/external_sources/weak_source_disagreement_mask_test_2026.tif",
+      "agreement_pixels": 2956659,
+      "disagreement_pixels": 1710465
+    },
+    "georeference_and_aoi_compatibility": {
+      "status": "pass",
+      "reference_grid": {
+        "crs": "EPSG:32735",
+        "width": 2009,
+        "height": 1997,
+        "bounds": [
+          830650.0,
+          9774830.0,
+          850740.0,
+          9794800.0
+        ],
+        "transform": [
+          10.0,
+          0.0,
+          830650.0,
+          0.0,
+          -10.0,
+          9794800.0
+        ]
+      },
+      "rasters": [
+        {
+          "path": "data/interim/external_sources/dynamic_world_harmonized_test_2026.tif",
+          "crs": "EPSG:32735",
+          "width": 2009,
+          "height": 1997,
+          "bounds": [
+            830650.0,
+            9774830.0,
+            850740.0,
+            9794800.0
+          ],
+          "transform": [
+            10.0,
+            0.0,
+            830650.0,
+            0.0,
+            -10.0,
+            9794800.0
+          ],
+          "nodata": 0.0
+        },
+        {
+          "path": "data/interim/external_sources/esa_worldcover_harmonized_test_2026.tif",
+          "crs": "EPSG:32735",
+          "width": 2009,
+          "height": 1997,
+          "bounds": [
+            830650.0,
+            9774830.0,
+            850740.0,
+            9794800.0
+          ],
+          "transform": [
+            10.0,
+            0.0,
+            830650.0,
+            0.0,
+            -10.0,
+            9794800.0
+          ],
+          "nodata": 0.0
+        },
+        {
+          "path": "data/interim/external_sources/osm_buildings_roads_landuse_harmonized_test_2026.tif",
+          "crs": "EPSG:32735",
+          "width": 2009,
+          "height": 1997,
+          "bounds": [
+            830650.0,
+            9774830.0,
+            850740.0,
+            9794800.0
+          ],
+          "transform": [
+            10.0,
+            0.0,
+            830650.0,
+            0.0,
+            -10.0,
+            9794800.0
+          ],
+          "nodata": 0.0
+        },
+        {
+          "path": "data/interim/external_sources/weak_source_agreement_labels_test_2026.tif",
+          "crs": "EPSG:32735",
+          "width": 2009,
+          "height": 1997,
+          "bounds": [
+            830650.0,
+            9774830.0,
+            850740.0,
+            9794800.0
+          ],
+          "transform": [
+            10.0,
+            0.0,
+            830650.0,
+            0.0,
+            -10.0,
+            9794800.0
+          ],
+          "nodata": 0.0
+        },
+        {
+          "path": "data/interim/external_sources/weak_source_agreement_count_test_2026.tif",
+          "crs": "EPSG:32735",
+          "width": 2009,
+          "height": 1997,
+          "bounds": [
+            830650.0,
+            9774830.0,
+            850740.0,
+            9794800.0
+          ],
+          "transform": [
+            10.0,
+            0.0,
+            830650.0,
+            0.0,
+            -10.0,
+            9794800.0
+          ],
+          "nodata": 0.0
+        },
+        {
+          "path": "data/interim/external_sources/weak_source_disagreement_mask_test_2026.tif",
+          "crs": "EPSG:32735",
+          "width": 2009,
+          "height": 1997,
+          "bounds": [
+            830650.0,
+            9774830.0,
+            850740.0,
+            9794800.0
+          ],
+          "transform": [
+            10.0,
+            0.0,
+            830650.0,
+            0.0,
+            -10.0,
+            9794800.0
+          ],
+          "nodata": 0.0
+        }
+      ],
+      "mismatches": {},
+      "outside_aoi_nonzero_pixels": {
+        "dynamic_world_harmonized_test_2026.tif": 0,
+        "esa_worldcover_harmonized_test_2026.tif": 0,
+        "osm_buildings_roads_landuse_harmonized_test_2026.tif": 0,
+        "weak_source_agreement_labels_test_2026.tif": 0,
+        "weak_source_agreement_count_test_2026.tif": 0,
+        "weak_source_disagreement_mask_test_2026.tif": 0
+      },
+      "aoi_valid_pixels": 3994273
+    },
+    "local_bootstrap_included": false,
+    "leakage_policy": "Held-out benchmark sources must not be used for training, tuning, patch balancing, or pseudo-label refinement."
+  },
+  "no_leakage_audit": {
+    "status": "pass",
+    "violations": [],
+    "protocol": {
+      "train": "May use 2023/2024 patches only.",
+      "validation": "May use 2025 patches for early stopping and model selection only.",
+      "test": "May use 2026 held-out candidates only after the model is frozen.",
+      "weak_sources": "Dynamic World, ESA WorldCover, OSM, Sentinel index evidence, and Sentinel-1 evidence are proxy agreement sources. They must not be described as field truth.",
+      "bootstrap_polygons": "Existing high-confidence change polygons may guide review or pseudo-label generation, but must not be used as independent final-test truth."
+    }
+  },
+  "blockers": [
+    "No strict <10% cloud complete 2026 test pair is available yet; current pair is relaxed."
+  ],
+  "allowed_next_actions": [
+    "Preprocess the selected 2026 Sentinel-1/2 pair into the expected test tag only.",
+    "Run frozen-model inference on 2026 after preprocessing is complete.",
+    "Report proxy agreement, entropy, confidence calibration, and review zones separately from field accuracy."
+  ],
+  "forbidden_actions": [
+    "Do not add 2026 patches to train or validation manifests.",
+    "Do not tune thresholds or class weights using 2026 benchmark outcomes.",
+    "Do not describe Dynamic World, ESA WorldCover, OSM, or Sentinel evidence as field truth."
+  ]
+}
+

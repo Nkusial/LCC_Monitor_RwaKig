@@ -1,0 +1,96 @@
+phase: phase_56_improvement_track_controls
+purpose: >
+  Coordinate the next reliability improvements without changing the current
+  training, test, or publication boundaries.
+
+coregistration_qa:
+  report: data/outputs/coregistration_qa_report.json
+  web_summary: web/public/demo/coregistration_qa_report.json
+  required_statuses:
+    - passed
+    - warning
+  diagnostic_method: >
+    Master-grid metadata validation plus Sentinel-2-reference gradient shift
+    diagnostics. This is a prototype QA screen, not a replacement for field
+    GCPs or high-resolution orthorectification QA.
+  warning_action: >
+    Keep raster overlays visible for review, but avoid presenting affected
+    zones as high-confidence change alerts.
+
+temporal_consensus_gate:
+  report: data/outputs/unet_temporal_consensus_report.json
+  minimum_mean_consensus_fraction: 0.75
+  maximum_temporal_instability_fraction: 0.25
+  required_for_alert_publication: true
+  warning_action: >
+    Pixels or polygons with low temporal persistence remain review candidates
+    until supported by additional dates or expert samples.
+
+change_publish_gate:
+  minimum_mean_confidence: 0.70
+  minimum_weak_source_compatibility: 0.70
+  maximum_review_fraction: 0.50
+  require_coregistration_status:
+    - passed
+    - warning
+  recommendation_labels:
+    publish: publish_supported_candidates
+    review: publish_with_review_required
+    hold: hold_for_processing
+
+ml_comparison:
+  supervised_track: U-Net weak-supervised segmentation baseline
+  supervised_reports:
+    - data/outputs/unet_v3_report.json
+    - data/outputs/unet_v3_full_aoi_validation_report.json
+    - data/outputs/unet_2026_proxy_benchmark_report.json
+  unsupervised_track: self-supervised encoder plus deep clustering/anomaly detection
+  unsupervised_reports:
+    - data/outputs/unsupervised_validation_report.json
+  comparison_metrics:
+    - weak_source_compatibility
+    - review_fraction
+    - entropy_or_cluster_ambiguity
+    - temporal_stability
+    - class_balance
+    - geospatial_alignment_status
+  boundary: >
+    Compare reliability and review burden only. Do not claim field accuracy
+    until independent expert or field labels exist.
+
+public_demo_packaging:
+  lightweight_public_roots:
+    - web/public/demo
+    - docs/app/demo
+  private_roots:
+    - data/raw
+    - data/interim
+    - data/processed
+    - data/outputs
+    - data/interim/models
+  max_public_asset_mb: 5
+  allowed_public_file_types:
+    - .json
+    - .geojson
+    - .png
+    - .html
+    - .css
+    - .js
+    - .md
+  note: >
+    Public assets should be lightweight demo derivatives. Raw Sentinel scenes,
+    GeoTIFF stacks, checkpoints, and credentials stay private/local.
+
+hosted_backend:
+  current_mode: local_first_fastapi_postgis
+  local_compose_file: docker-compose.yml
+  backend_dockerfile: backend/Dockerfile
+  deploy_when_required: true
+  production_requirements:
+    - managed_or_self_hosted_postgis
+    - HTTPS
+    - CORS restriction
+    - secret management
+    - scheduled_pipeline_runner
+    - object_storage_for_raster_artifacts
+    - monitoring_and_backups

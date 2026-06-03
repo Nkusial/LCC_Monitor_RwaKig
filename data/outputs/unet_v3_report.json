@@ -1,0 +1,248 @@
+{
+  "phase": "phase_31_unet_segmentation_baseline",
+  "status": "trained",
+  "architecture": {
+    "name": "lightweight_unet",
+    "input_channels": 6,
+    "output_classes": 6,
+    "encoder": [
+      "double_conv(input, 32)",
+      "max_pool + double_conv(32, 64)",
+      "max_pool + double_conv(64, 128)",
+      "max_pool + double_conv(128, 256)"
+    ],
+    "decoder": [
+      "upsample + skip + double_conv(256+128, 128)",
+      "upsample + skip + double_conv(128+64, 64)",
+      "upsample + skip + double_conv(64+32, 32)"
+    ],
+    "output": "1x1 convolution to class logits"
+  },
+  "model_config": {
+    "architecture": "lightweight_unet",
+    "input_channels": 15,
+    "output_classes": 6,
+    "base_channels": 32,
+    "class_names": [
+      "background_or_unlabeled",
+      "built_up",
+      "managed_or_natural_vegetation",
+      "bare_soil",
+      "water_wetland",
+      "uncertain_mixed"
+    ]
+  },
+  "training_config": {
+    "patch_manifest": "data/interim/training_patches_v3/training_patch_manifest_v3_balanced.json",
+    "batch_size": 4,
+    "learning_rate": 0.0005,
+    "epochs": 12,
+    "early_stopping_patience": 4,
+    "min_delta": 0.0005,
+    "weight_decay": 0.0001,
+    "ignore_index": 0,
+    "minimum_training_pixels": 250000,
+    "num_workers": 0,
+    "device": "auto",
+    "feature_stack": [
+      "s2_ndvi",
+      "s2_ndwi",
+      "s2_ndbi",
+      "s2_evi2",
+      "s2_savi",
+      "s2_mndwi",
+      "s2_bsi",
+      "s1_vv",
+      "s1_vh",
+      "s1_vv_vh_ratio",
+      "s1_log_ratio",
+      "dem",
+      "slope",
+      "ruggedness",
+      "tpi"
+    ],
+    "loss": {
+      "cross_entropy_weight": 1.0,
+      "dice_weight": 1.0,
+      "focal_weight": 0.5,
+      "focal_gamma": 2.0,
+      "tversky_weight": 0.5,
+      "tversky_alpha": 0.35,
+      "tversky_beta": 0.65,
+      "class_weight_method": "effective_number",
+      "effective_number_beta": 0.99999,
+      "max_class_weight": 8.0,
+      "class_weight_overrides": {}
+    },
+    "sampling": {
+      "class_aware": true,
+      "minority_boost": 3.0,
+      "minimum_minority_weight": 4.0,
+      "samples_per_epoch_multiplier": 1.75,
+      "balanced_manifest": true,
+      "minority_classes": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "outputs": {
+    "report_path": "data/outputs/unet_v3_report.json",
+    "checkpoint_path": "data/interim/models/unet_v3.pt",
+    "inference_dir": "data/interim/unet_inference_v3",
+    "inference_manifest": "data/interim/unet_inference_v3/unet_inference_manifest_v3.json",
+    "mosaic_dir": "data/interim/unet_mosaics_v3",
+    "mosaic_manifest": "data/interim/unet_mosaics_v3/unet_mosaic_manifest_v3.json",
+    "full_aoi_dir": "data/interim/unet_full_aoi_v3",
+    "full_aoi_manifest": "data/interim/unet_full_aoi_v3/unet_full_aoi_manifest_v3.json"
+  },
+  "details": {
+    "patch_count": 841,
+    "split_counts": {
+      "train": 521,
+      "validation": 320,
+      "test": 0
+    },
+    "total_training_pixel_count": 3922815,
+    "feature_stack": [
+      "s2_ndvi",
+      "s2_ndwi",
+      "s2_ndbi",
+      "s2_evi2",
+      "s2_savi",
+      "s2_mndwi",
+      "s2_bsi",
+      "s1_vv",
+      "s1_vh",
+      "s1_vv_vh_ratio",
+      "s1_log_ratio",
+      "dem",
+      "slope",
+      "ruggedness",
+      "tpi"
+    ],
+    "expected_input_channels": 15,
+    "feature_channel_count": 15,
+    "has_required_channels": true,
+    "has_train_and_validation": true,
+    "has_enough_training_pixels": true,
+    "train_patch_count": 521,
+    "validation_patch_count": 320,
+    "train_class_pixel_counts": {
+      "1": 1727691,
+      "2": 882694,
+      "3": 4693,
+      "4": 9513
+    },
+    "class_weights": {
+      "1": 0.114837,
+      "2": 0.114853,
+      "3": 2.504832,
+      "4": 1.265477,
+      "5": 0.0
+    },
+    "imbalance_strategy": {
+      "class_weight_method": "effective_number",
+      "loss": "weighted_cross_entropy_plus_generalized_dice_plus_focal",
+      "tversky_loss": true,
+      "class_aware_sampling": true,
+      "samples_per_epoch_multiplier": 1.75,
+      "balanced_manifest": true,
+      "minority_classes": [
+        3,
+        4,
+        5
+      ]
+    },
+    "training_loss_by_epoch": [
+      2.059486,
+      1.592291,
+      1.474515,
+      1.34678,
+      1.255921,
+      1.281335,
+      1.200307,
+      1.130085,
+      1.05131,
+      0.918963,
+      0.835308,
+      0.730947
+    ],
+    "validation_loss_by_epoch": [
+      2.524567,
+      2.676825,
+      1.557976,
+      3.069217,
+      1.522513,
+      1.475485,
+      2.34754,
+      2.579184,
+      1.281383,
+      2.42445,
+      1.195785,
+      2.281149
+    ],
+    "best_validation_loss": 1.195785,
+    "best_epoch": 11,
+    "early_stopping": {
+      "patience": 4,
+      "min_delta": 0.0005,
+      "stopped_early": false
+    },
+    "validation_metrics_by_class": {
+      "1": {
+        "true_pixels": 778016,
+        "predicted_pixels": 954667,
+        "intersection": 774473,
+        "union": 958210,
+        "iou": 0.80825,
+        "dice": 0.893958,
+        "recall": 0.995446
+      },
+      "2": {
+        "true_pixels": 513736,
+        "predicted_pixels": 343761,
+        "intersection": 339999,
+        "union": 517498,
+        "iou": 0.657005,
+        "dice": 0.793003,
+        "recall": 0.661817
+      },
+      "3": {
+        "true_pixels": 2144,
+        "predicted_pixels": 784,
+        "intersection": 726,
+        "union": 2202,
+        "iou": 0.3297,
+        "dice": 0.495902,
+        "recall": 0.338619
+      },
+      "4": {
+        "true_pixels": 5436,
+        "predicted_pixels": 120,
+        "intersection": 120,
+        "union": 5436,
+        "iou": 0.022075,
+        "dice": 0.043197,
+        "recall": 0.022075
+      },
+      "5": {
+        "true_pixels": 0,
+        "predicted_pixels": 0,
+        "intersection": 0,
+        "union": 0,
+        "iou": null,
+        "dice": null,
+        "recall": null
+      }
+    },
+    "final_training_loss": 0.730947,
+    "final_validation_loss": 2.281149,
+    "device": "cuda",
+    "cuda_available": true,
+    "cuda_device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "checkpoint_path": "data/interim/models/unet_v3.pt"
+  },
+  "accuracy_claim": "none; weakly supervised preflight/baseline only"
+}

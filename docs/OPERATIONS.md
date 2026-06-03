@@ -1,0 +1,74 @@
+# Local Operations
+
+## Start Services
+
+```powershell
+cd path\to\Geospatial_MLops
+conda activate realtime_LCC_Rwkig
+docker compose up -d postgis
+uvicorn backend.app.main:app --reload
+```
+
+In a second terminal:
+
+```powershell
+cd path\to\Geospatial_MLops\web
+conda activate realtime_LCC_Rwkig
+npm run dev
+```
+
+## Useful URLs
+
+```text
+API landing:      http://127.0.0.1:8000/
+API docs:         http://127.0.0.1:8000/docs
+Health:           http://127.0.0.1:8000/health
+Change summary:   http://127.0.0.1:8000/changes/summary
+WebGIS:           http://127.0.0.1:5173
+```
+
+## Re-run Local Pipeline
+
+Use existing Phase 4 rasters:
+
+```powershell
+python pipelines/run_local_pipeline.py --from-stage detect --to-stage validate
+```
+
+Rebuild monitoring rasters too:
+
+```powershell
+python pipelines/run_local_pipeline.py --from-stage stack --to-stage validate
+```
+
+## Quality Gates
+
+```powershell
+pytest -q
+python pipelines/07_validate_outputs.py
+python pipelines/39_coregistration_qa.py
+python pipelines/40_improvement_track_report.py
+python pipelines/41_package_public_demo_manifest.py
+python pipelines/42_optimize_public_demo_rasters.py
+python pipelines/43_compare_model_tracks.py
+python pipelines/44_label_free_embedding_baseline.py
+cd web
+npm run build
+```
+
+Expected validation status:
+
+```text
+status: ok
+grid_mismatches: []
+improvement track: publish gate and public-demo packaging summarized
+```
+
+## CI/CD
+
+GitHub Actions provides:
+
+- CI on pushes and pull requests through `.github/workflows/ci.yml`.
+- Tag-based release packaging through `.github/workflows/release.yml`.
+
+The release workflow is intentionally delivery-focused, not cloud-deployment-focused: it validates the project, builds the WebGIS, and uploads docs plus frontend build artifacts for tagged milestones.

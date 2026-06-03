@@ -1,0 +1,56 @@
+{
+  "phase": "phase_51_frozen_2026_proxy_benchmark",
+  "purpose": "Compare weakly supervised full-AOI U-Net outputs with available weak-source agreement and uncertainty evidence.",
+  "input_manifest": "data/interim/unet_full_aoi/unet_full_aoi_manifest_test_2026.json",
+  "weak_source_summary": "data/interim/external_sources/external_weak_sources_summary_test_2026.json",
+  "thresholds": {
+    "high_entropy": 0.65,
+    "low_confidence": 0.6,
+    "minimum_agreement_sources": 2
+  },
+  "weak_sources_used": [
+    "dynamic_world",
+    "esa_worldcover",
+    "osm_buildings_roads_landuse"
+  ],
+  "limitations": [
+    "This is not field accuracy because no independent reference labels are available.",
+    "Dynamic World is integrated through the local Earth Engine export and contributes to weak-source agreement.",
+    "The current U-Net class space merges managed and natural vegetation, so vegetation agreement accepts either harmonized vegetation class."
+  ],
+  "summary": {
+    "record_count": 1,
+    "mean_compatible_fraction_in_agreement_zone": 0.765054,
+    "mean_candidate_review_fraction_of_valid": 0.875615,
+    "highest_review_priority": "test_2026_20260126_20260123"
+  },
+  "records": [
+    {
+      "training_tag": "test_2026_20260126_20260123",
+      "year": 2026,
+      "split": "test",
+      "valid_model_pixels": 1001775,
+      "weak_agreement_zone_pixels": 536409,
+      "weak_agreement_zone_fraction_of_valid": 0.535459,
+      "compatible_pixels_in_agreement_zone": 410382,
+      "compatible_fraction_in_agreement_zone": 0.765054,
+      "weak_disagreement_pixels": 463700,
+      "high_entropy_pixels": 796171,
+      "low_confidence_pixels": 774718,
+      "candidate_review_pixels": 877169,
+      "candidate_review_fraction_of_valid": 0.875615,
+      "mean_confidence": 0.537672,
+      "mean_entropy": 0.654945,
+      "coverage_fraction": 0.249696
+    }
+  ],
+  "benchmark_caveat": "This is a relaxed 2026 proxy benchmark because no complete same-date Sentinel-2 pair met the preferred <10% cloud policy.",
+  "non_cheating_protocol": {
+    "allowed": "Report proxy agreement, confidence, entropy, and review zones.",
+    "forbidden": [
+      "Do not retrain from this result.",
+      "Do not tune thresholds, architecture, class weights, or pseudo-label filters from this result.",
+      "Do not claim field accuracy from weak-source agreement."
+    ]
+  }
+}

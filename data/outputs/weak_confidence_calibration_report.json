@@ -1,0 +1,79 @@
+{
+  "phase": "phase_46_weak_confidence_calibration",
+  "training_tag": "training_2025_20250829_20250901",
+  "calibration_target": "weak-source support rate, not field accuracy",
+  "mean_absolute_confidence_support_gap": 0.381478,
+  "bins": [
+    {
+      "confidence_low": 0.0,
+      "confidence_high": 0.1,
+      "bin_midpoint": 0.05,
+      "pixel_count": 0,
+      "weak_support_rate": null
+    },
+    {
+      "confidence_low": 0.1,
+      "confidence_high": 0.2,
+      "bin_midpoint": 0.15,
+      "pixel_count": 0,
+      "weak_support_rate": null
+    },
+    {
+      "confidence_low": 0.2,
+      "confidence_high": 0.3,
+      "bin_midpoint": 0.25,
+      "pixel_count": 16497,
+      "weak_support_rate": 0.156998
+    },
+    {
+      "confidence_low": 0.3,
+      "confidence_high": 0.4,
+      "bin_midpoint": 0.35,
+      "pixel_count": 657941,
+      "weak_support_rate": 0.150392
+    },
+    {
+      "confidence_low": 0.4,
+      "confidence_high": 0.5,
+      "bin_midpoint": 0.45,
+      "pixel_count": 703906,
+      "weak_support_rate": 0.166332
+    },
+    {
+      "confidence_low": 0.5,
+      "confidence_high": 0.6,
+      "bin_midpoint": 0.55,
+      "pixel_count": 432580,
+      "weak_support_rate": 0.19353
+    },
+    {
+      "confidence_low": 0.6,
+      "confidence_high": 0.7,
+      "bin_midpoint": 0.65,
+      "pixel_count": 203322,
+      "weak_support_rate": 0.197106
+    },
+    {
+      "confidence_low": 0.7,
+      "confidence_high": 0.8,
+      "bin_midpoint": 0.75,
+      "pixel_count": 129681,
+      "weak_support_rate": 0.20754
+    },
+    {
+      "confidence_low": 0.8,
+      "confidence_high": 0.9,
+      "bin_midpoint": 0.85,
+      "pixel_count": 171300,
+      "weak_support_rate": 0.214005
+    },
+    {
+      "confidence_low": 0.9,
+      "confidence_high": 1.0,
+      "bin_midpoint": 0.95,
+      "pixel_count": 1682859,
+      "weak_support_rate": 0.462269
+    }
+  ],
+  "recommendation": "Use calibrated weak support only as model-risk guidance until independent reference labels exist."
+}

@@ -1,0 +1,120 @@
+{
+  "phase": "phase_26_weak_label_generation",
+  "label_type": "local_bootstrap_weak_labels",
+  "monitoring_tag": "monitoring_20250421_20250419",
+  "candidate_sources": {
+    "dynamic_world": {
+      "enabled": false,
+      "role": "external_agreement_source",
+      "status": "requires_earth_engine_export_or_local_raster",
+      "description": "Dynamic World class probabilities for future independent weak-label agreement zones.",
+      "earth_engine_asset": "GOOGLE/DYNAMICWORLD/V1",
+      "local_label_raster": "data/interim/external_sources/dynamic_world_label.tif"
+    },
+    "esa_worldcover": {
+      "enabled": true,
+      "role": "external_agreement_source",
+      "status": "active_external_ingestion",
+      "description": "ESA WorldCover classes for future independent weak-label agreement zones.",
+      "stac_collection": "esa-worldcover",
+      "preferred_year": 2021,
+      "preferred_version": "v200",
+      "asset_key": "map"
+    },
+    "osm_buildings_roads_landuse": {
+      "enabled": true,
+      "role": "external_vector_support",
+      "status": "active_external_ingestion",
+      "description": "OSM buildings, roads, and land-use features for future support evidence.",
+      "overpass_url": "https://overpass-api.de/api/interpreter",
+      "tags": [
+        "building",
+        "highway",
+        "landuse"
+      ]
+    },
+    "sentinel2_ndvi_ndwi_ndbi": {
+      "enabled": true,
+      "role": "active_local_spectral_evidence",
+      "status": "active",
+      "description": "Sentinel-2 NDVI, NDWI, and NDBI evidence from AOI-aligned processed rasters."
+    },
+    "sentinel1_vv_vh": {
+      "enabled": true,
+      "role": "active_local_radar_evidence",
+      "status": "active",
+      "description": "Sentinel-1 VV/VH ratio evidence from AOI-aligned processed rasters."
+    },
+    "existing_high_confidence_change_polygons": {
+      "enabled": true,
+      "role": "active_local_bootstrap_agreement",
+      "status": "active",
+      "description": "Existing confidence-scored change polygons used only as local bootstrap evidence."
+    }
+  },
+  "active_sources": [
+    "esa_worldcover",
+    "osm_buildings_roads_landuse",
+    "sentinel2_ndvi_ndwi_ndbi",
+    "sentinel1_vv_vh",
+    "existing_high_confidence_change_polygons"
+  ],
+  "registered_sources": [
+    "dynamic_world",
+    "esa_worldcover",
+    "osm_buildings_roads_landuse",
+    "sentinel2_ndvi_ndwi_ndbi",
+    "sentinel1_vv_vh",
+    "existing_high_confidence_change_polygons"
+  ],
+  "external_sources_ingested": {
+    "dynamic_world": false,
+    "esa_worldcover": false,
+    "osm_buildings_roads_landuse": false
+  },
+  "source_note": "Labels are generated from Sentinel index/radar evidence plus agreement with existing confidence-scored monitoring polygons. They are not field labels.",
+  "class_order": [
+    "built_up",
+    "managed_vegetation",
+    "natural_vegetation",
+    "bare_soil",
+    "water_wetland",
+    "uncertain_mixed"
+  ],
+  "class_ids": {
+    "nodata_or_unlabeled": 0,
+    "built_up": 1,
+    "managed_vegetation": 2,
+    "natural_vegetation": 3,
+    "bare_soil": 4,
+    "water_wetland": 5,
+    "uncertain_mixed": 6
+  },
+  "total_pixels": 4011973,
+  "weak_labeled_pixels": 198581,
+  "weak_labeled_area_km2": 19.858,
+  "class_pixel_counts": {
+    "built_up": 8,
+    "managed_vegetation": 0,
+    "natural_vegetation": 0,
+    "bare_soil": 198573,
+    "water_wetland": 0,
+    "uncertain_mixed": 0
+  },
+  "mean_label_confidence": 0.7712,
+  "mean_uncertainty": 0.2085,
+  "outputs": {
+    "hard_labels": "data/outputs/weak_labels_monitoring_20250421_20250419_hard_labels.tif",
+    "label_confidence": "data/outputs/weak_labels_monitoring_20250421_20250419_label_confidence.tif",
+    "uncertainty": "data/outputs/weak_labels_monitoring_20250421_20250419_uncertainty.tif",
+    "monitoring_agreement": "data/outputs/weak_labels_monitoring_20250421_20250419_monitoring_agreement.tif",
+    "probabilities": {
+      "built_up": "data/outputs/weak_labels_monitoring_20250421_20250419_prob_built_up.tif",
+      "managed_vegetation": "data/outputs/weak_labels_monitoring_20250421_20250419_prob_managed_vegetation.tif",
+      "natural_vegetation": "data/outputs/weak_labels_monitoring_20250421_20250419_prob_natural_vegetation.tif",
+      "bare_soil": "data/outputs/weak_labels_monitoring_20250421_20250419_prob_bare_soil.tif",
+      "water_wetland": "data/outputs/weak_labels_monitoring_20250421_20250419_prob_water_wetland.tif",
+      "uncertain_mixed": "data/outputs/weak_labels_monitoring_20250421_20250419_prob_uncertain_mixed.tif"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+name: lcc-backend
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - fastapi
+  - uvicorn
+  - sqlalchemy
+  - geoalchemy2
+  - psycopg
+  - pydantic-settings
+  - geopandas
+  - shapely
+  - pyyaml

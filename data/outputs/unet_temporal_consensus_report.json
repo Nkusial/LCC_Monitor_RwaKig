@@ -1,0 +1,34 @@
+{
+  "phase": "phase_40_temporal_unet_consensus",
+  "purpose": "Summarize temporally persistent U-Net predictions and unstable areas across available full-AOI date pairs.",
+  "split": "all",
+  "record_count": 12,
+  "splits_used": [
+    "train",
+    "validation"
+  ],
+  "years_used": [
+    2023,
+    2024,
+    2025
+  ],
+  "class_counts": {
+    "1": 2440501,
+    "2": 1372071,
+    "3": 102382,
+    "4": 83132,
+    "5": 0
+  },
+  "mean_consensus_fraction": 0.848494,
+  "unstable_pixel_count": 635837,
+  "valid_pixel_count": 3998086,
+  "outputs": {
+    "consensus_class": "data/interim/unet_full_aoi/unet_temporal_consensus_all_class.tif",
+    "consensus_fraction": "data/interim/unet_full_aoi/unet_temporal_consensus_all_fraction.tif",
+    "instability_mask": "data/interim/unet_full_aoi/unet_temporal_consensus_all_instability.tif"
+  },
+  "limitations": [
+    "This is model temporal stability, not field accuracy.",
+    "Dynamic World improves the weak-source agreement side once Earth Engine export is authenticated."
+  ]
+}

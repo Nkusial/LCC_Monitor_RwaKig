@@ -1,0 +1,244 @@
+{
+  "phase": "phase_30_multi_year_training_preprocessing",
+  "mode": "all",
+  "catalog": "data/catalog/training_scene_pairs_2023_2026.json",
+  "requested_split": null,
+  "requested_year": null,
+  "requested_limit": null,
+  "processed_pair_count": 12,
+  "pairs": [
+    {
+      "output_tag": "training_2023_20230721_20230723",
+      "year": 2023,
+      "split": "train",
+      "mode": "all",
+      "manifest": "data/processed/training_2023_20230721_20230723_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2023_20230721_20230723_s2_green.tif",
+        "data/processed/training_2023_20230721_20230723_s2_red.tif",
+        "data/processed/training_2023_20230721_20230723_s2_nir.tif",
+        "data/processed/training_2023_20230721_20230723_s2_swir1.tif",
+        "data/processed/training_2023_20230721_20230723_s2_ndvi.tif",
+        "data/processed/training_2023_20230721_20230723_s2_ndwi.tif",
+        "data/processed/training_2023_20230721_20230723_s2_ndbi.tif",
+        "data/processed/training_2023_20230721_20230723_s1_vv.tif",
+        "data/processed/training_2023_20230721_20230723_s1_vh.tif",
+        "data/processed/training_2023_20230721_20230723_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2023_20230726_20230726",
+      "year": 2023,
+      "split": "train",
+      "mode": "all",
+      "manifest": "data/processed/training_2023_20230726_20230726_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2023_20230726_20230726_s2_green.tif",
+        "data/processed/training_2023_20230726_20230726_s2_red.tif",
+        "data/processed/training_2023_20230726_20230726_s2_nir.tif",
+        "data/processed/training_2023_20230726_20230726_s2_swir1.tif",
+        "data/processed/training_2023_20230726_20230726_s2_ndvi.tif",
+        "data/processed/training_2023_20230726_20230726_s2_ndwi.tif",
+        "data/processed/training_2023_20230726_20230726_s2_ndbi.tif",
+        "data/processed/training_2023_20230726_20230726_s1_vv.tif",
+        "data/processed/training_2023_20230726_20230726_s1_vh.tif",
+        "data/processed/training_2023_20230726_20230726_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2023_20230716_20230714",
+      "year": 2023,
+      "split": "train",
+      "mode": "all",
+      "manifest": "data/processed/training_2023_20230716_20230714_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2023_20230716_20230714_s2_green.tif",
+        "data/processed/training_2023_20230716_20230714_s2_red.tif",
+        "data/processed/training_2023_20230716_20230714_s2_nir.tif",
+        "data/processed/training_2023_20230716_20230714_s2_swir1.tif",
+        "data/processed/training_2023_20230716_20230714_s2_ndvi.tif",
+        "data/processed/training_2023_20230716_20230714_s2_ndwi.tif",
+        "data/processed/training_2023_20230716_20230714_s2_ndbi.tif",
+        "data/processed/training_2023_20230716_20230714_s1_vv.tif",
+        "data/processed/training_2023_20230716_20230714_s1_vh.tif",
+        "data/processed/training_2023_20230716_20230714_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2023_20231004_20231006",
+      "year": 2023,
+      "split": "train",
+      "mode": "all",
+      "manifest": "data/processed/training_2023_20231004_20231006_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2023_20231004_20231006_s2_green.tif",
+        "data/processed/training_2023_20231004_20231006_s2_red.tif",
+        "data/processed/training_2023_20231004_20231006_s2_nir.tif",
+        "data/processed/training_2023_20231004_20231006_s2_swir1.tif",
+        "data/processed/training_2023_20231004_20231006_s2_ndvi.tif",
+        "data/processed/training_2023_20231004_20231006_s2_ndwi.tif",
+        "data/processed/training_2023_20231004_20231006_s2_ndbi.tif",
+        "data/processed/training_2023_20231004_20231006_s1_vv.tif",
+        "data/processed/training_2023_20231004_20231006_s1_vh.tif",
+        "data/processed/training_2023_20231004_20231006_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2024_20240804_20240801",
+      "year": 2024,
+      "split": "train",
+      "mode": "all",
+      "manifest": "data/processed/training_2024_20240804_20240801_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2024_20240804_20240801_s2_green.tif",
+        "data/processed/training_2024_20240804_20240801_s2_red.tif",
+        "data/processed/training_2024_20240804_20240801_s2_nir.tif",
+        "data/processed/training_2024_20240804_20240801_s2_swir1.tif",
+        "data/processed/training_2024_20240804_20240801_s2_ndvi.tif",
+        "data/processed/training_2024_20240804_20240801_s2_ndwi.tif",
+        "data/processed/training_2024_20240804_20240801_s2_ndbi.tif",
+        "data/processed/training_2024_20240804_20240801_s1_vv.tif",
+        "data/processed/training_2024_20240804_20240801_s1_vh.tif",
+        "data/processed/training_2024_20240804_20240801_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2024_20240725_20240722",
+      "year": 2024,
+      "split": "train",
+      "mode": "all",
+      "manifest": "data/processed/training_2024_20240725_20240722_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2024_20240725_20240722_s2_green.tif",
+        "data/processed/training_2024_20240725_20240722_s2_red.tif",
+        "data/processed/training_2024_20240725_20240722_s2_nir.tif",
+        "data/processed/training_2024_20240725_20240722_s2_swir1.tif",
+        "data/processed/training_2024_20240725_20240722_s2_ndvi.tif",
+        "data/processed/training_2024_20240725_20240722_s2_ndwi.tif",
+        "data/processed/training_2024_20240725_20240722_s2_ndbi.tif",
+        "data/processed/training_2024_20240725_20240722_s1_vv.tif",
+        "data/processed/training_2024_20240725_20240722_s1_vh.tif",
+        "data/processed/training_2024_20240725_20240722_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2024_20240630_20240626",
+      "year": 2024,
+      "split": "train",
+      "mode": "all",
+      "manifest": "data/processed/training_2024_20240630_20240626_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2024_20240630_20240626_s2_green.tif",
+        "data/processed/training_2024_20240630_20240626_s2_red.tif",
+        "data/processed/training_2024_20240630_20240626_s2_nir.tif",
+        "data/processed/training_2024_20240630_20240626_s2_swir1.tif",
+        "data/processed/training_2024_20240630_20240626_s2_ndvi.tif",
+        "data/processed/training_2024_20240630_20240626_s2_ndwi.tif",
+        "data/processed/training_2024_20240630_20240626_s2_ndbi.tif",
+        "data/processed/training_2024_20240630_20240626_s1_vv.tif",
+        "data/processed/training_2024_20240630_20240626_s1_vh.tif",
+        "data/processed/training_2024_20240630_20240626_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2024_20240625_20240626",
+      "year": 2024,
+      "split": "train",
+      "mode": "all",
+      "manifest": "data/processed/training_2024_20240625_20240626_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2024_20240625_20240626_s2_green.tif",
+        "data/processed/training_2024_20240625_20240626_s2_red.tif",
+        "data/processed/training_2024_20240625_20240626_s2_nir.tif",
+        "data/processed/training_2024_20240625_20240626_s2_swir1.tif",
+        "data/processed/training_2024_20240625_20240626_s2_ndvi.tif",
+        "data/processed/training_2024_20240625_20240626_s2_ndwi.tif",
+        "data/processed/training_2024_20240625_20240626_s2_ndbi.tif",
+        "data/processed/training_2024_20240625_20240626_s1_vv.tif",
+        "data/processed/training_2024_20240625_20240626_s1_vh.tif",
+        "data/processed/training_2024_20240625_20240626_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2025_20250730_20250727",
+      "year": 2025,
+      "split": "validation",
+      "mode": "all",
+      "manifest": "data/processed/training_2025_20250730_20250727_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2025_20250730_20250727_s2_green.tif",
+        "data/processed/training_2025_20250730_20250727_s2_red.tif",
+        "data/processed/training_2025_20250730_20250727_s2_nir.tif",
+        "data/processed/training_2025_20250730_20250727_s2_swir1.tif",
+        "data/processed/training_2025_20250730_20250727_s2_ndvi.tif",
+        "data/processed/training_2025_20250730_20250727_s2_ndwi.tif",
+        "data/processed/training_2025_20250730_20250727_s2_ndbi.tif",
+        "data/processed/training_2025_20250730_20250727_s1_vv.tif",
+        "data/processed/training_2025_20250730_20250727_s1_vh.tif",
+        "data/processed/training_2025_20250730_20250727_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2025_20250829_20250901",
+      "year": 2025,
+      "split": "validation",
+      "mode": "all",
+      "manifest": "data/processed/training_2025_20250829_20250901_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2025_20250829_20250901_s2_green.tif",
+        "data/processed/training_2025_20250829_20250901_s2_red.tif",
+        "data/processed/training_2025_20250829_20250901_s2_nir.tif",
+        "data/processed/training_2025_20250829_20250901_s2_swir1.tif",
+        "data/processed/training_2025_20250829_20250901_s2_ndvi.tif",
+        "data/processed/training_2025_20250829_20250901_s2_ndwi.tif",
+        "data/processed/training_2025_20250829_20250901_s2_ndbi.tif",
+        "data/processed/training_2025_20250829_20250901_s1_vv.tif",
+        "data/processed/training_2025_20250829_20250901_s1_vh.tif",
+        "data/processed/training_2025_20250829_20250901_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2025_20250220_20250221",
+      "year": 2025,
+      "split": "validation",
+      "mode": "all",
+      "manifest": "data/processed/training_2025_20250220_20250221_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2025_20250220_20250221_s2_green.tif",
+        "data/processed/training_2025_20250220_20250221_s2_red.tif",
+        "data/processed/training_2025_20250220_20250221_s2_nir.tif",
+        "data/processed/training_2025_20250220_20250221_s2_swir1.tif",
+        "data/processed/training_2025_20250220_20250221_s2_ndvi.tif",
+        "data/processed/training_2025_20250220_20250221_s2_ndwi.tif",
+        "data/processed/training_2025_20250220_20250221_s2_ndbi.tif",
+        "data/processed/training_2025_20250220_20250221_s1_vv.tif",
+        "data/processed/training_2025_20250220_20250221_s1_vh.tif",
+        "data/processed/training_2025_20250220_20250221_s1_vv_vh_ratio.tif"
+      ]
+    },
+    {
+      "output_tag": "training_2025_20250806_20250808",
+      "year": 2025,
+      "split": "validation",
+      "mode": "all",
+      "manifest": "data/processed/training_2025_20250806_20250808_manifest.json",
+      "expected_outputs": [
+        "data/processed/training_2025_20250806_20250808_s2_green.tif",
+        "data/processed/training_2025_20250806_20250808_s2_red.tif",
+        "data/processed/training_2025_20250806_20250808_s2_nir.tif",
+        "data/processed/training_2025_20250806_20250808_s2_swir1.tif",
+        "data/processed/training_2025_20250806_20250808_s2_ndvi.tif",
+        "data/processed/training_2025_20250806_20250808_s2_ndwi.tif",
+        "data/processed/training_2025_20250806_20250808_s2_ndbi.tif",
+        "data/processed/training_2025_20250806_20250808_s1_vv.tif",
+        "data/processed/training_2025_20250806_20250808_s1_vh.tif",
+        "data/processed/training_2025_20250806_20250808_s1_vv_vh_ratio.tif"
+      ]
+    }
+  ],
+  "notes": [
+    "Metadata mode validates pair wiring without reading remote rasters.",
+    "Use --mode optical, --mode radar, or --mode all with --limit before scaling to all pairs.",
+    "Heavy raster outputs remain local under data/processed and are not committed to Git."
+  ]
+}

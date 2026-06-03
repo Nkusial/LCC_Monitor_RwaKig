@@ -1,0 +1,53 @@
+{
+  "phase": "phase_42_test_set_readiness",
+  "status": "not_ready",
+  "scene_split_counts": {
+    "train": 8,
+    "validation": 4,
+    "test": 0,
+    "unused": 0
+  },
+  "yearly_status": {
+    "2023": {
+      "required": true,
+      "optional": false,
+      "cloud_threshold_used": 10.0,
+      "cloud_tier": "preferred",
+      "candidate_optical_groups": 6,
+      "matched_pairs": 4,
+      "status": "ok"
+    },
+    "2024": {
+      "required": true,
+      "optional": false,
+      "cloud_threshold_used": 10.0,
+      "cloud_tier": "preferred",
+      "candidate_optical_groups": 5,
+      "matched_pairs": 4,
+      "status": "ok"
+    },
+    "2025": {
+      "required": true,
+      "optional": false,
+      "cloud_threshold_used": 10.0,
+      "cloud_tier": "preferred",
+      "candidate_optical_groups": 6,
+      "matched_pairs": 4,
+      "status": "ok"
+    },
+    "2026": {
+      "required": false,
+      "optional": true,
+      "cloud_threshold_used": 20.0,
+      "cloud_tier": "fallback",
+      "candidate_optical_groups": 0,
+      "matched_pairs": 0,
+      "status": "optional_missing"
+    }
+  },
+  "test_scene_pair_count": 0,
+  "test_unet_record_count": 0,
+  "test_pairs": [],
+  "blocked_reason": "No clean held-out test split is available yet. The 2026 optional catalog currently has no matched usable pairs.",
+  "recommendation": "Keep 2023/2024 for training, 2025 for validation, and rerun scene discovery when 2026 AOI scenes below the cloud threshold become available."
+}

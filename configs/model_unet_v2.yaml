@@ -1,0 +1,68 @@
+version: 2
+description: Confidence-improved U-Net retraining config using expanded features and strict pseudo-labels.
+model:
+  architecture: lightweight_unet
+  input_channels: 15
+  output_classes: 6
+  base_channels: 32
+  class_names:
+    - background_or_unlabeled
+    - built_up
+    - managed_or_natural_vegetation
+    - bare_soil
+    - water_wetland
+    - uncertain_mixed
+training:
+  patch_manifest: data/interim/training_patches_v2/training_patch_manifest_v2.json
+  batch_size: 4
+  learning_rate: 0.0005
+  epochs: 25
+  early_stopping_patience: 5
+  min_delta: 0.0005
+  weight_decay: 0.0001
+  ignore_index: 0
+  minimum_training_pixels: 64
+  num_workers: 0
+  device: auto
+  feature_stack:
+    - s2_ndvi
+    - s2_ndwi
+    - s2_ndbi
+    - s2_evi2
+    - s2_savi
+    - s2_mndwi
+    - s2_bsi
+    - s1_vv
+    - s1_vh
+    - s1_vv_vh_ratio
+    - s1_log_ratio
+    - dem
+    - slope
+    - ruggedness
+    - tpi
+  loss:
+    cross_entropy_weight: 1.0
+    dice_weight: 1.0
+    class_weight_method: effective_number
+    effective_number_beta: 0.99999
+    max_class_weight: 8.0
+  sampling:
+    class_aware: true
+    minority_boost: 3.0
+outputs:
+  report_path: data/outputs/unet_v2_report.json
+  checkpoint_path: data/interim/models/unet_v2.pt
+  inference_dir: data/interim/unet_inference_v2
+  inference_manifest: data/interim/unet_inference_v2/unet_inference_manifest_v2.json
+  mosaic_dir: data/interim/unet_mosaics_v2
+  mosaic_manifest: data/interim/unet_mosaics_v2/unet_mosaic_manifest_v2.json
+  full_aoi_dir: data/interim/unet_full_aoi_v2
+  full_aoi_manifest: data/interim/unet_full_aoi_v2/unet_full_aoi_manifest_v2.json
+inference:
+  tile_size: 128
+  stride: 64
+  batch_size: 8
+notes:
+  - Version 2 is intentionally stricter than the baseline.
+  - It uses expanded Sentinel features plus refined pseudo-labels.
+  - It still does not claim field accuracy.

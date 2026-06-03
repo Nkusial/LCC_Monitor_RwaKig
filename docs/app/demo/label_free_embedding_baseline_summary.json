@@ -1,0 +1,223 @@
+{
+  "phase": "phase_59_label_free_embedding_baseline",
+  "purpose": "Create a label-free Sentinel-1/2 patch embedding baseline for comparison with weak-supervised U-Net and classical unsupervised clustering.",
+  "accuracy_claim": "No field accuracy claim; weak labels are used only after clustering for interpretation.",
+  "no_cheating_protocol": {
+    "excluded_years_from_fit": [
+      2026
+    ],
+    "fit_inputs": "Sentinel and terrain patch feature statistics only; no weak labels are used to fit scaler, PCA, or clusters.",
+    "weak_labels_role": "post-hoc cluster interpretation and review prioritization only"
+  },
+  "input_manifest": "data/interim/training_patches_v3/training_patch_manifest_v3_balanced.json",
+  "patch_count": 841,
+  "split_counts": {
+    "train": 521,
+    "validation": 320
+  },
+  "feature_names": [
+    "s2_ndvi",
+    "s2_ndwi",
+    "s2_ndbi",
+    "s2_evi2",
+    "s2_savi",
+    "s2_mndwi",
+    "s2_bsi",
+    "s1_vv",
+    "s1_vh",
+    "s1_vv_vh_ratio",
+    "s1_log_ratio",
+    "dem",
+    "slope",
+    "ruggedness",
+    "tpi"
+  ],
+  "embedding": {
+    "descriptor": "per-channel mean, standard deviation, p10, p50, and p90",
+    "pca_components": 12,
+    "pca_explained_variance": 0.958194
+  },
+  "clustering": {
+    "algorithm": "MiniBatchKMeans",
+    "cluster_count": 8,
+    "silhouette_score": 0.183173,
+    "coherent_cluster_count": 7,
+    "coherent_cluster_fraction": 0.875
+  },
+  "cluster_profiles": [
+    {
+      "cluster_id": 1,
+      "patch_count": 302,
+      "dominant_interpretation": "vegetation",
+      "dominant_interpretation_fraction": 0.966887,
+      "weak_label_mix": {
+        "vegetation": 292,
+        "built_up": 10
+      },
+      "year_mix": {
+        "2023": 104,
+        "2024": 67,
+        "2025": 131
+      },
+      "example_patches": [
+        "training_2023_20230716_20230714_r001_c006_00012",
+        "training_2023_20230716_20230714_r001_c009_00014",
+        "training_2023_20230716_20230714_r001_c010_00015",
+        "training_2023_20230716_20230714_r001_c011_00016",
+        "training_2023_20230716_20230714_r002_c007_00024"
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "patch_count": 108,
+      "dominant_interpretation": "built_up",
+      "dominant_interpretation_fraction": 1.0,
+      "weak_label_mix": {
+        "built_up": 108
+      },
+      "year_mix": {
+        "2023": 30,
+        "2024": 34,
+        "2025": 44
+      },
+      "example_patches": [
+        "training_2023_20230716_20230714_r000_c001_00001",
+        "training_2023_20230716_20230714_r001_c001_00010",
+        "training_2023_20230716_20230714_r001_c002_00011",
+        "training_2023_20230716_20230714_r002_c003_00020",
+        "training_2023_20230716_20230714_r002_c004_00021"
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "patch_count": 88,
+      "dominant_interpretation": "vegetation",
+      "dominant_interpretation_fraction": 1.0,
+      "weak_label_mix": {
+        "vegetation": 88
+      },
+      "year_mix": {
+        "2023": 37,
+        "2024": 29,
+        "2025": 22
+      },
+      "example_patches": [
+        "training_2023_20230716_20230714_r002_c010_00026",
+        "training_2023_20230716_20230714_r005_c007_00068",
+        "training_2023_20230716_20230714_r005_c008_00069",
+        "training_2023_20230716_20230714_r005_c009_00070",
+        "training_2023_20230716_20230714_r005_c013_00074"
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "patch_count": 24,
+      "dominant_interpretation": "vegetation",
+      "dominant_interpretation_fraction": 0.75,
+      "weak_label_mix": {
+        "built_up": 6,
+        "vegetation": 18
+      },
+      "year_mix": {
+        "2024": 23,
+        "2025": 1
+      },
+      "example_patches": [
+        "training_2024_20240625_20240626_r000_c003_00003",
+        "training_2024_20240625_20240626_r001_c006_00012",
+        "training_2024_20240625_20240626_r001_c008_00013",
+        "training_2024_20240625_20240626_r001_c009_00014",
+        "training_2024_20240625_20240626_r002_c004_00021"
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "patch_count": 61,
+      "dominant_interpretation": "built_up",
+      "dominant_interpretation_fraction": 0.836066,
+      "weak_label_mix": {
+        "built_up": 51,
+        "vegetation": 10
+      },
+      "year_mix": {
+        "2023": 14,
+        "2024": 27,
+        "2025": 20
+      },
+      "example_patches": [
+        "training_2023_20230716_20230714_r000_c014_00009",
+        "training_2023_20230716_20230714_r004_c001_00047",
+        "training_2023_20230716_20230714_r005_c002_00063",
+        "training_2023_20230716_20230714_r006_c002_00078",
+        "training_2023_20230721_20230723_r000_c014_00002"
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "patch_count": 95,
+      "dominant_interpretation": "built_up",
+      "dominant_interpretation_fraction": 0.789474,
+      "weak_label_mix": {
+        "vegetation": 20,
+        "built_up": 75
+      },
+      "year_mix": {
+        "2023": 27,
+        "2024": 23,
+        "2025": 45
+      },
+      "example_patches": [
+        "training_2023_20230716_20230714_r000_c000_00000",
+        "training_2023_20230716_20230714_r000_c003_00003",
+        "training_2023_20230716_20230714_r001_c008_00013",
+        "training_2023_20230716_20230714_r002_c001_00019",
+        "training_2023_20230716_20230714_r003_c001_00032"
+      ]
+    },
+    {
+      "cluster_id": 7,
+      "patch_count": 57,
+      "dominant_interpretation": "built_up",
+      "dominant_interpretation_fraction": 0.596491,
+      "weak_label_mix": {
+        "vegetation": 23,
+        "built_up": 34
+      },
+      "year_mix": {
+        "2023": 12,
+        "2024": 21,
+        "2025": 24
+      },
+      "example_patches": [
+        "training_2023_20230716_20230714_r004_c000_00046",
+        "training_2023_20230716_20230714_r005_c000_00061",
+        "training_2023_20230716_20230714_r005_c001_00062",
+        "training_2023_20230726_20230726_r004_c000_00046",
+        "training_2023_20230726_20230726_r005_c000_00061"
+      ]
+    },
+    {
+      "cluster_id": 8,
+      "patch_count": 106,
+      "dominant_interpretation": "vegetation",
+      "dominant_interpretation_fraction": 1.0,
+      "weak_label_mix": {
+        "vegetation": 106
+      },
+      "year_mix": {
+        "2023": 45,
+        "2024": 28,
+        "2025": 33
+      },
+      "example_patches": [
+        "training_2023_20230716_20230714_r003_c005_00036",
+        "training_2023_20230716_20230714_r003_c007_00038",
+        "training_2023_20230716_20230714_r003_c008_00039",
+        "training_2023_20230716_20230714_r004_c006_00052",
+        "training_2023_20230716_20230714_r005_c010_00071"
+      ]
+    }
+  ],
+  "interpretation": "This is a lightweight label-free embedding baseline. It is useful for comparing review burden and cluster separability, but it is not yet a trained self-supervised deep encoder.",
+  "next_step": "Replace the statistical descriptor with a convolutional self-supervised encoder while keeping the same no-2026-leakage and weak-label-post-hoc rules."
+}

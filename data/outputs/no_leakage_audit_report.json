@@ -1,0 +1,67 @@
+{
+  "phase": "phase_48_no_leakage_audit",
+  "status": "pass",
+  "violations": [],
+  "scene_split_counts": {
+    "train": 8,
+    "validation": 4,
+    "test": 0,
+    "unused": 0
+  },
+  "patch_split_counts": {
+    "train": 384,
+    "validation": 192,
+    "test": 0
+  },
+  "test_scene_pair_count": 0,
+  "test_patch_count": 0,
+  "benchmark_2026": {
+    "strict_test_pair_count": 0,
+    "relaxed_candidate_pair_count": 32,
+    "best_candidate": {
+      "date": "2026-01-26",
+      "average_cloud_cover_percent": 15.09,
+      "max_tile_cloud_cover_percent": 23.07,
+      "tiles": {
+        "35MRT": {
+          "date": "2026-01-26",
+          "tile": "35MRT",
+          "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRT_20260126T120623",
+          "cloud_cover_percent": 7.1,
+          "datetime": "2026-01-26T08:11:19.024000Z"
+        },
+        "35MRU": {
+          "date": "2026-01-26",
+          "tile": "35MRU",
+          "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRU_20260126T121017",
+          "cloud_cover_percent": 23.07,
+          "datetime": "2026-01-26T08:11:19.024000Z"
+        }
+      },
+      "sentinel1_match": {
+        "collection": "sentinel-1-rtc",
+        "date": "2026-01-23",
+        "scene_id": "S1A_IW_GRDH_1SDV_20260123T162041_20260123T162106_062896_07E3BA_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 55.7
+      },
+      "has_sentinel1_match": true,
+      "meets_preferred_cloud_policy": false,
+      "meets_fallback_cloud_policy": false,
+      "usable_as_strict_test_pair": false,
+      "usable_as_relaxed_candidate": true
+    }
+  },
+  "non_cheating_protocol": {
+    "train": "May use 2023/2024 patches only.",
+    "validation": "May use 2025 patches for early stopping and model selection only.",
+    "test": "May use 2026 held-out candidates only after the model is frozen.",
+    "weak_sources": "Dynamic World, ESA WorldCover, OSM, Sentinel index evidence, and Sentinel-1 evidence are proxy agreement sources. They must not be described as field truth.",
+    "bootstrap_polygons": "Existing high-confidence change polygons may guide review or pseudo-label generation, but must not be used as independent final-test truth."
+  },
+  "recommendation": "Run this audit before any model training, calibration, or reported benchmark evaluation. If status is fail, stop and fix split/catalog leakage first."
+}

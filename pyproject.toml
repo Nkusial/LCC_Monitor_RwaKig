@@ -1,0 +1,9 @@
+[project]
+name = "confidence-aware-landcover-monitor"
+version = "0.1.0"
+description = "Local-first near-real-time land-cover change monitoring for a 20 km x 20 km peri-urban AOI."
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

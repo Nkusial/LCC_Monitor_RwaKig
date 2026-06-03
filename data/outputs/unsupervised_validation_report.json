@@ -1,0 +1,1824 @@
+{
+  "phase": "phase_20b_unsupervised_validation_comparison",
+  "validation_type": "internal_unsupervised_cluster_audit",
+  "ground_truth_available": false,
+  "accuracy_claim": "No field accuracy is claimed. This report checks feature-space coherence only.",
+  "comparison_scope": {
+    "cluster_counts": [
+      4,
+      5,
+      6,
+      8,
+      10
+    ],
+    "feature_sets": [
+      "sentinel2",
+      "fusion"
+    ],
+    "reductions": [
+      "none",
+      "pca"
+    ],
+    "masks": [
+      "all",
+      "high_confidence_change"
+    ],
+    "tags": [
+      "monitoring_20250106_20250104",
+      "monitoring_20250421_20250419"
+    ],
+    "umap_status": "not_run_no_umap_dependency; PCA is used as the dependency-light reduction baseline"
+  },
+  "monitoring_tag": "monitoring_20250106_20250104",
+  "available_monitoring_tags": [
+    "monitoring_20250106_20250104",
+    "monitoring_20250220_20250221",
+    "monitoring_20250421_20250419"
+  ],
+  "feature_stack": [
+    "ndvi",
+    "ndwi",
+    "ndbi"
+  ],
+  "cluster_count": 4,
+  "valid_pixel_count": 863338,
+  "sample_size": 40000,
+  "evaluation_size": 5000,
+  "silhouette_score": 0.4459,
+  "best_experiment": {
+    "status": "ok",
+    "monitoring_tag": "monitoring_20250106_20250104",
+    "feature_set": "sentinel2",
+    "features": [
+      "ndvi",
+      "ndwi",
+      "ndbi"
+    ],
+    "reduction": "none",
+    "mask_mode": "high_confidence_change",
+    "mask_note": "pixels with change confidence >= 0.75",
+    "cluster_count": 4,
+    "valid_pixel_count": 863338,
+    "sample_size": 40000,
+    "evaluation_size": 5000,
+    "silhouette_score": 0.4459,
+    "pca_explained_variance": null
+  },
+  "experiments": [
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 4,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4459,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 5,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4319,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 4,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4212,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 4,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4203,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 6,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4162,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 4,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4116,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 5,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4061,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 4,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4055,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 5,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4036,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 6,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4029,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 5,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.4013,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 8,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3982,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 5,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3977,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 8,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3941,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 6,
+      "valid_pixel_count": 2457564,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3938,
+      "pca_explained_variance": 0.9047
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 6,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.393,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 5,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3923,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 6,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3915,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 8,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3911,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 6,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.391,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 4,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3803,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 4,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3789,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 6,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3782,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 6,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3782,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 5,
+      "valid_pixel_count": 2457564,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3759,
+      "pca_explained_variance": 0.8799
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 4,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3758,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 4,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3734,
+      "pca_explained_variance": 0.8769
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 4,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3699,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 5,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3697,
+      "pca_explained_variance": 0.8856
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 8,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3691,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 6,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3689,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 10,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3673,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 10,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.362,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 8,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.361,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 8,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3603,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 10,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3596,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 8,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3579,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 5,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3578,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 10,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3575,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 8,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3527,
+      "pca_explained_variance": 0.8994
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 10,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3487,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 8,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3451,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 4,
+      "valid_pixel_count": 2457564,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3423,
+      "pca_explained_variance": 0.8878
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 8,
+      "valid_pixel_count": 2457564,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3405,
+      "pca_explained_variance": 0.8909
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 10,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3365,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 5,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3334,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 10,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3331,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "sentinel2",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 10,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3313,
+      "pca_explained_variance": 1.0
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 5,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3293,
+      "pca_explained_variance": 0.8712
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 6,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3275,
+      "pca_explained_variance": 0.8634
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 8,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3246,
+      "pca_explained_variance": 0.8819
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 4,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3232,
+      "pca_explained_variance": 0.8726
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 4,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3204,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 4,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3085,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 4,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3036,
+      "pca_explained_variance": 0.898
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 6,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.3026,
+      "pca_explained_variance": 0.8949
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 5,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2991,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 6,
+      "valid_pixel_count": 2457564,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2982,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 6,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2895,
+      "pca_explained_variance": 0.8685
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 10,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.288,
+      "pca_explained_variance": 0.8484
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 8,
+      "valid_pixel_count": 2457564,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2795,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 5,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2723,
+      "pca_explained_variance": 0.9135
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 8,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2647,
+      "pca_explained_variance": 0.8646
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 6,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2628,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 10,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2549,
+      "pca_explained_variance": 0.9095
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 5,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2538,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 10,
+      "valid_pixel_count": 2457564,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2534,
+      "pca_explained_variance": 0.8818
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 10,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2505,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 8,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.241,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "pca",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 10,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2345,
+      "pca_explained_variance": 0.874
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 5,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.234,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 6,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2269,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 8,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2229,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 10,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2148,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 8,
+      "valid_pixel_count": 3998086,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.2086,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 5,
+      "valid_pixel_count": 2457564,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.1983,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250106_20250104",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 6,
+      "valid_pixel_count": 863338,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.1972,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "high_confidence_change",
+      "mask_note": "pixels with change confidence >= 0.75",
+      "cluster_count": 10,
+      "valid_pixel_count": 888915,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.1901,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 10,
+      "valid_pixel_count": 2457564,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.1861,
+      "pca_explained_variance": null
+    },
+    {
+      "status": "ok",
+      "monitoring_tag": "monitoring_20250421_20250419",
+      "feature_set": "fusion",
+      "features": [
+        "ndvi",
+        "ndwi",
+        "ndbi",
+        "vv",
+        "vh",
+        "vv_vh_ratio"
+      ],
+      "reduction": "none",
+      "mask_mode": "all",
+      "mask_note": "all valid AOI pixels",
+      "cluster_count": 4,
+      "valid_pixel_count": 2457564,
+      "sample_size": 40000,
+      "evaluation_size": 5000,
+      "silhouette_score": 0.1361,
+      "pca_explained_variance": null
+    }
+  ],
+  "cluster_profiles": [
+    {
+      "cluster_id": 1,
+      "pixel_count": 333285,
+      "area_m2": 33328500.0,
+      "area_km2": 33.328,
+      "inferred_land_cover": "vegetation",
+      "mean_features": {
+        "ndvi": 0.462,
+        "ndwi": -0.4272,
+        "ndbi": -0.1542
+      }
+    },
+    {
+      "cluster_id": 2,
+      "pixel_count": 222683,
+      "area_m2": 22268300.0,
+      "area_km2": 22.268,
+      "inferred_land_cover": "mixed",
+      "mean_features": {
+        "ndvi": 0.3194,
+        "ndwi": -0.3315,
+        "ndbi": -0.0237
+      }
+    },
+    {
+      "cluster_id": 3,
+      "pixel_count": 183111,
+      "area_m2": 18311100.0,
+      "area_km2": 18.311,
+      "inferred_land_cover": "bare_sparse",
+      "mean_features": {
+        "ndvi": 0.058,
+        "ndwi": -0.0555,
+        "ndbi": -0.0309
+      }
+    },
+    {
+      "cluster_id": 4,
+      "pixel_count": 124259,
+      "area_m2": 12425900.0,
+      "area_km2": 12.426,
+      "inferred_land_cover": "bare_sparse",
+      "mean_features": {
+        "ndvi": 0.1907,
+        "ndwi": -0.1776,
+        "ndbi": -0.1009
+      }
+    }
+  ],
+  "monitored_group_cluster_alignment": {
+    "status": "ok",
+    "method": "representative point sampled against unsupervised cluster raster",
+    "by_monitored_land_cover": {
+      "bare_sparse": {
+        "sampled_feature_count": 627,
+        "dominant_cluster": 3,
+        "dominant_cluster_share": 0.437,
+        "cluster_counts": {
+          "1": 60,
+          "2": 136,
+          "3": 274,
+          "4": 157
+        }
+      },
+      "built_up": {
+        "sampled_feature_count": 215,
+        "dominant_cluster": 1,
+        "dominant_cluster_share": 0.828,
+        "cluster_counts": {
+          "1": 178,
+          "2": 18,
+          "3": 10,
+          "4": 9
+        }
+      },
+      "mixed": {
+        "sampled_feature_count": 1318,
+        "dominant_cluster": 2,
+        "dominant_cluster_share": 0.397,
+        "cluster_counts": {
+          "1": 505,
+          "2": 523,
+          "3": 91,
+          "4": 199
+        }
+      },
+      "vegetation": {
+        "sampled_feature_count": 433,
+        "dominant_cluster": 1,
+        "dominant_cluster_share": 0.813,
+        "cluster_counts": {
+          "1": 352,
+          "2": 36,
+          "3": 21,
+          "4": 24
+        }
+      },
+      "water_moisture": {
+        "sampled_feature_count": 175,
+        "dominant_cluster": 3,
+        "dominant_cluster_share": 0.52,
+        "cluster_counts": {
+          "1": 29,
+          "2": 37,
+          "3": 91,
+          "4": 18
+        }
+      }
+    }
+  },
+  "interpretation": "Higher silhouette is better, but this remains an unsupervised feature-space coherence score. It is not a substitute for field or reference-label accuracy.",
+  "outputs": {
+    "cluster_raster": "data/outputs/monitoring_20250106_20250104_unsupervised_clusters.tif"
+  }
+}

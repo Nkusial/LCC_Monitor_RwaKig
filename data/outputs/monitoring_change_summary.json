@@ -1,0 +1,32 @@
+{
+  "comparisons": [
+    {
+      "comparison_tag": "monitoring_20250106_20250104__to__monitoring_20250220_20250221",
+      "before_date": "2025-01-06",
+      "after_date": "2025-02-20",
+      "change_pixel_count": 863338,
+      "polygon_count": 1879,
+      "mean_change_magnitude": 0.5319,
+      "class_counts": {
+        "vegetation_loss": 76178,
+        "built_up_gain": 72018,
+        "moisture_change": 90069,
+        "radar_change": 625073
+      }
+    },
+    {
+      "comparison_tag": "monitoring_20250220_20250221__to__monitoring_20250421_20250419",
+      "before_date": "2025-02-20",
+      "after_date": "2025-04-21",
+      "change_pixel_count": 888915,
+      "polygon_count": 2174,
+      "mean_change_magnitude": 1.1041,
+      "class_counts": {
+        "vegetation_loss": 144185,
+        "built_up_gain": 21497,
+        "moisture_change": 57616,
+        "radar_change": 665617
+      }
+    }
+  ]
+}

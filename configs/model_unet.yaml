@@ -1,0 +1,52 @@
+version: 1
+description: Weakly supervised U-Net baseline for land-cover segmentation.
+model:
+  architecture: lightweight_unet
+  input_channels: 6
+  output_classes: 6
+  base_channels: 32
+  class_names:
+    - background_or_unlabeled
+    - built_up
+    - managed_or_natural_vegetation
+    - bare_soil
+    - water_wetland
+    - uncertain_mixed
+training:
+  patch_manifest: data/interim/training_patches/training_patch_manifest.json
+  batch_size: 4
+  learning_rate: 0.001
+  epochs: 5
+  early_stopping_patience: 3
+  min_delta: 0.0005
+  weight_decay: 0.0001
+  ignore_index: 0
+  minimum_training_pixels: 16
+  num_workers: 0
+  device: auto
+  loss:
+    cross_entropy_weight: 1.0
+    dice_weight: 1.0
+    class_weight_method: effective_number
+    effective_number_beta: 0.99999
+    max_class_weight: 8.0
+  sampling:
+    class_aware: true
+    minority_boost: 3.0
+outputs:
+  report_path: data/outputs/unet_baseline_report.json
+  checkpoint_path: data/interim/models/unet_baseline.pt
+  inference_dir: data/interim/unet_inference
+  inference_manifest: data/interim/unet_inference/unet_inference_manifest.json
+  mosaic_dir: data/interim/unet_mosaics
+  mosaic_manifest: data/interim/unet_mosaics/unet_mosaic_manifest.json
+  full_aoi_dir: data/interim/unet_full_aoi
+  full_aoi_manifest: data/interim/unet_full_aoi/unet_full_aoi_manifest.json
+inference:
+  tile_size: 128
+  stride: 64
+  batch_size: 8
+notes:
+  - Uses weak labels and training masks from the multi-year training patch manifest.
+  - Does not claim field accuracy.
+  - Validation loss is weak-label validation only, not field accuracy.

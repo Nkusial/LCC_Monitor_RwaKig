@@ -1,0 +1,175 @@
+{
+  "phase": "Phase 20B",
+  "validation_type": "internal_unsupervised_cluster_audit",
+  "ground_truth_available": false,
+  "accuracy_claim": "No field accuracy is claimed. This report checks feature-space coherence only.",
+  "score_label": "Best unsupervised silhouette",
+  "score_scope_note": "This is an internal cluster-coherence score from the unsupervised validation comparison. It is not a U-Net confidence score and it changes only when pipelines/09_unsupervised_validation.py is rerun.",
+  "source_report": "data/outputs/unsupervised_validation_report.json",
+  "silhouette_score": 0.4459,
+  "best_experiment": {
+    "status": "ok",
+    "monitoring_tag": "monitoring_20250106_20250104",
+    "feature_set": "sentinel2",
+    "features": [
+      "ndvi",
+      "ndwi",
+      "ndbi"
+    ],
+    "reduction": "none",
+    "mask_mode": "high_confidence_change",
+    "mask_note": "pixels with change confidence >= 0.75",
+    "cluster_count": 4,
+    "valid_pixel_count": 863338,
+    "sample_size": 40000,
+    "evaluation_size": 5000,
+    "silhouette_score": 0.4459,
+    "pca_explained_variance": null
+  },
+  "cluster_profiles": [
+    {
+      "cluster_id": 1,
+      "pixel_count": 333285,
+      "area_m2": 33328500.0,
+      "area_km2": 33.328,
+      "inferred_land_cover": "vegetation",
+      "mean_features": {
+        "ndvi": 0.462,
+        "ndwi": -0.4272,
+        "ndbi": -0.1542
+      }
+    },
+    {
+      "cluster_id": 2,
+      "pixel_count": 222683,
+      "area_m2": 22268300.0,
+      "area_km2": 22.268,
+      "inferred_land_cover": "mixed",
+      "mean_features": {
+        "ndvi": 0.3194,
+        "ndwi": -0.3315,
+        "ndbi": -0.0237
+      }
+    },
+    {
+      "cluster_id": 3,
+      "pixel_count": 183111,
+      "area_m2": 18311100.0,
+      "area_km2": 18.311,
+      "inferred_land_cover": "bare_sparse",
+      "mean_features": {
+        "ndvi": 0.058,
+        "ndwi": -0.0555,
+        "ndbi": -0.0309
+      }
+    },
+    {
+      "cluster_id": 4,
+      "pixel_count": 124259,
+      "area_m2": 12425900.0,
+      "area_km2": 12.426,
+      "inferred_land_cover": "bare_sparse",
+      "mean_features": {
+        "ndvi": 0.1907,
+        "ndwi": -0.1776,
+        "ndbi": -0.1009
+      }
+    }
+  ],
+  "monitored_group_cluster_alignment": {
+    "status": "ok",
+    "method": "representative point sampled against unsupervised cluster raster",
+    "by_monitored_land_cover": {
+      "bare_sparse": {
+        "sampled_feature_count": 627,
+        "dominant_cluster": 3,
+        "dominant_cluster_share": 0.437,
+        "cluster_counts": {
+          "1": 60,
+          "2": 136,
+          "3": 274,
+          "4": 157
+        }
+      },
+      "built_up": {
+        "sampled_feature_count": 215,
+        "dominant_cluster": 1,
+        "dominant_cluster_share": 0.828,
+        "cluster_counts": {
+          "1": 178,
+          "2": 18,
+          "3": 10,
+          "4": 9
+        }
+      },
+      "mixed": {
+        "sampled_feature_count": 1318,
+        "dominant_cluster": 2,
+        "dominant_cluster_share": 0.397,
+        "cluster_counts": {
+          "1": 505,
+          "2": 523,
+          "3": 91,
+          "4": 199
+        }
+      },
+      "vegetation": {
+        "sampled_feature_count": 433,
+        "dominant_cluster": 1,
+        "dominant_cluster_share": 0.813,
+        "cluster_counts": {
+          "1": 352,
+          "2": 36,
+          "3": 21,
+          "4": 24
+        }
+      },
+      "water_moisture": {
+        "sampled_feature_count": 175,
+        "dominant_cluster": 3,
+        "dominant_cluster_share": 0.52,
+        "cluster_counts": {
+          "1": 29,
+          "2": 37,
+          "3": 91,
+          "4": 18
+        }
+      }
+    }
+  },
+  "comparison_scope": {
+    "cluster_counts": [
+      4,
+      5,
+      6,
+      8,
+      10
+    ],
+    "feature_sets": [
+      "sentinel2",
+      "fusion"
+    ],
+    "reductions": [
+      "none",
+      "pca"
+    ],
+    "masks": [
+      "all",
+      "high_confidence_change"
+    ],
+    "tags": [
+      "monitoring_20250106_20250104",
+      "monitoring_20250421_20250419"
+    ],
+    "umap_status": "not_run_no_umap_dependency; PCA is used as the dependency-light reduction baseline"
+  },
+  "reference_label_workflow": {
+    "status": "planned",
+    "planned_steps": [
+      "Create stratified validation points inside the AOI.",
+      "Label points from field survey or high-resolution image interpretation.",
+      "Compare labels with baseline, after, and change outputs.",
+      "Report confusion matrix, user accuracy, producer accuracy, and F1 score."
+    ]
+  }
+}

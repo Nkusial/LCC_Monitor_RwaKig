@@ -1,0 +1,40 @@
+version: 3
+description: Multi-date refined weak-supervision patch settings for replicable no-field-label retraining.
+patch_size: 128
+stride: 128
+multi_year_output_dir: data/interim/training_patches_v3
+multi_year_manifest: data/interim/training_patches_v3/training_patch_manifest_v3.json
+max_patches_per_training_pair: 80
+minimum_agreement_fraction: 0.05
+minimum_valid_feature_fraction: 0.9
+minimum_training_pixels: 96
+feature_stack:
+  - s2_ndvi
+  - s2_ndwi
+  - s2_ndbi
+  - s2_evi2
+  - s2_savi
+  - s2_mndwi
+  - s2_bsi
+  - s1_vv
+  - s1_vh
+  - s1_vv_vh_ratio
+  - s1_log_ratio
+  - dem
+  - slope
+  - ruggedness
+  - tpi
+label_sources:
+  refined_labels: data/interim/refined_pseudo_labels/{tag}_refined_pseudo_labels.tif
+  refined_training_mask: data/interim/refined_pseudo_labels/{tag}_refined_training_mask.tif
+  refined_label_confidence: data/interim/refined_pseudo_labels/{tag}_refined_label_confidence.tif
+filters:
+  minimum_refined_label_confidence: 0.5
+  exclude_review_zones: true
+  require_temporal_consensus: true
+  require_weak_source_agreement: true
+  allow_high_agreement_external_pixels: true
+notes:
+  - V3 uses date-specific refined pseudo-labels for every processed training pair.
+  - Labels combine strict model-compatible pixels with high-agreement external weak-source pixels.
+  - The feature stack includes Sentinel-1, Sentinel-2 indices, and Kigali terrain variables.

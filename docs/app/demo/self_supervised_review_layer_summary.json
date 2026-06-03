@@ -1,0 +1,38 @@
+{
+  "phase": "phase_63_self_supervised_review_webgis_layer",
+  "purpose": "Expose label-free self-supervised embedding support, anomaly, and review-priority patches in the WebGIS.",
+  "accuracy_claim": "No field accuracy claim; this layer shows review priority from self-supervised embeddings and weak-source compatibility.",
+  "source_report": "data/outputs/self_supervised_embedding_track_report.json",
+  "feature_count": 841,
+  "priority_counts": {
+    "weak_support_review": 105,
+    "embedding_supported": 671,
+    "high_anomaly": 65
+  },
+  "priority_area_m2": {
+    "weak_support_review": 172032000.0,
+    "embedding_supported": 1099366400.0,
+    "high_anomaly": 106496000.0
+  },
+  "legend": {
+    "embedding_supported": "Embedding-supported patch",
+    "weak_support_review": "Needs review: weak-source support is mixed",
+    "high_anomaly": "High review priority: embedding anomaly"
+  },
+  "comparison_metrics": {
+    "silhouette_score": 0.225296,
+    "weak_source_compatibility": 0.879583,
+    "review_burden_fraction": 0.20214,
+    "high_anomaly_fraction": 0.077289,
+    "mean_cluster_ambiguity": 0.352757,
+    "coherent_cluster_fraction": 1.0
+  },
+  "no_cheating_protocol": {
+    "excluded_years_from_fit": [
+      2026
+    ],
+    "fit_inputs": "Sentinel-1/2, index, radar, and terrain patch descriptors only; weak-label classes are not used to fit the scaler, autoencoder, or clusters.",
+    "weak_labels_role": "post-hoc interpretation from Dynamic World, ESA WorldCover, OSM, Sentinel indices/radar evidence, and existing high-confidence changes",
+    "frozen_test_boundary": "2026 benchmark stays evaluation-only and is not used in encoder fitting or cluster selection."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "total": 4053,
+  "publish_ready": 2076,
+  "confidence_threshold": 0.75,
+  "by_reliability": {
+    "high": 957,
+    "low": 318,
+    "medium": 2778
+  },
+  "by_monitored_land_cover": {
+    "bare_sparse": 961,
+    "built_up": 292,
+    "mixed": 1955,
+    "vegetation": 646,
+    "water_moisture": 199
+  }
+}

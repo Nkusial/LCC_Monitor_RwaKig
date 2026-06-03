@@ -1,0 +1,118 @@
+{
+  "pairs": [
+    {
+      "output_tag": "monitoring_20250220_20250221",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2025-02-20",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2B_MSIL2A_20250220T080859_R078_T35MRT_20250220T102720",
+          "S2B_MSIL2A_20250220T080859_R078_T35MRU_20250220T102720"
+        ],
+        "cloud_cover_percent": 3.01,
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        }
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2025-02-21",
+        "scene_id": "S1A_IW_GRDH_1SDV_20250221T162051_20250221T162116_057996_072897_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 40.4,
+        "assets": {
+          "vh": "https://sentinel1euwestrtc.blob.core.windows.net/sentinel1-grd-rtc/GRD/2025/2/21/IW/DV/S1A_IW_GRDH_1SDV_20250221T162051_20250221T162116_057996_072897_DC4E/measurement/iw-vh.rtc.tiff?st=2026-05-03T22%3A03%3A52Z&se=2026-05-04T22%3A48%3A52Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-05-04T21%3A54%3A31Z&ske=2026-05-11T21%3A54%3A31Z&sks=b&skv=2025-07-05&sig=eD697ealMI8DUmvSVjbQw1P6xCmGYroTYREmYxPgyk0%3D",
+          "vv": "https://sentinel1euwestrtc.blob.core.windows.net/sentinel1-grd-rtc/GRD/2025/2/21/IW/DV/S1A_IW_GRDH_1SDV_20250221T162051_20250221T162116_057996_072897_DC4E/measurement/iw-vv.rtc.tiff?st=2026-05-03T22%3A03%3A52Z&se=2026-05-04T22%3A48%3A52Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-05-04T21%3A54%3A31Z&ske=2026-05-11T21%3A54%3A31Z&sks=b&skv=2025-07-05&sig=eD697ealMI8DUmvSVjbQw1P6xCmGYroTYREmYxPgyk0%3D"
+        }
+      }
+    },
+    {
+      "output_tag": "monitoring_20250106_20250104",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2025-01-06",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2A_MSIL2A_20250106T081321_R078_T35MRT_20250106T111649",
+          "S2A_MSIL2A_20250106T081321_R078_T35MRU_20250106T111649"
+        ],
+        "cloud_cover_percent": 17.01,
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        }
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2025-01-04",
+        "scene_id": "S1A_IW_GRDH_1SDV_20250104T162054_20250104T162119_057296_070CAC_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 31.6,
+        "assets": {
+          "vh": "https://sentinel1euwestrtc.blob.core.windows.net/sentinel1-grd-rtc/GRD/2025/1/4/IW/DV/S1A_IW_GRDH_1SDV_20250104T162054_20250104T162119_057296_070CAC_90EB/measurement/iw-vh.rtc.tiff?st=2026-05-03T22%3A03%3A52Z&se=2026-05-04T22%3A48%3A52Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-05-04T21%3A54%3A31Z&ske=2026-05-11T21%3A54%3A31Z&sks=b&skv=2025-07-05&sig=eD697ealMI8DUmvSVjbQw1P6xCmGYroTYREmYxPgyk0%3D",
+          "vv": "https://sentinel1euwestrtc.blob.core.windows.net/sentinel1-grd-rtc/GRD/2025/1/4/IW/DV/S1A_IW_GRDH_1SDV_20250104T162054_20250104T162119_057296_070CAC_90EB/measurement/iw-vv.rtc.tiff?st=2026-05-03T22%3A03%3A52Z&se=2026-05-04T22%3A48%3A52Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-05-04T21%3A54%3A31Z&ske=2026-05-11T21%3A54%3A31Z&sks=b&skv=2025-07-05&sig=eD697ealMI8DUmvSVjbQw1P6xCmGYroTYREmYxPgyk0%3D"
+        }
+      }
+    },
+    {
+      "output_tag": "monitoring_20250421_20250419",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2025-04-21",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2B_MSIL2A_20250421T080609_R078_T35MRT_20250421T110048",
+          "S2B_MSIL2A_20250421T080609_R078_T35MRU_20250421T110048"
+        ],
+        "cloud_cover_percent": 17.83,
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        }
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2025-04-19",
+        "scene_id": "S1A_IW_GRDH_1SDV_20250419T033715_20250419T033740_058820_rtc",
+        "orbit": "descending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 44.4,
+        "assets": {
+          "vh": "https://sentinel1euwestrtc.blob.core.windows.net/sentinel1-grd-rtc/GRD/2025/4/19/IW/DV/S1A_IW_GRDH_1SDV_20250419T033715_20250419T033740_058820_0749E7_5A6F/measurement/iw-vh.rtc.tiff?st=2026-05-03T22%3A03%3A52Z&se=2026-05-04T22%3A48%3A52Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-05-04T21%3A54%3A31Z&ske=2026-05-11T21%3A54%3A31Z&sks=b&skv=2025-07-05&sig=eD697ealMI8DUmvSVjbQw1P6xCmGYroTYREmYxPgyk0%3D",
+          "vv": "https://sentinel1euwestrtc.blob.core.windows.net/sentinel1-grd-rtc/GRD/2025/4/19/IW/DV/S1A_IW_GRDH_1SDV_20250419T033715_20250419T033740_058820_0749E7_5A6F/measurement/iw-vv.rtc.tiff?st=2026-05-03T22%3A03%3A52Z&se=2026-05-04T22%3A48%3A52Z&sp=rl&sv=2025-07-05&sr=c&skoid=9c8ff44a-6a2c-4dfb-b298-1c9212f64d9a&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2026-05-04T21%3A54%3A31Z&ske=2026-05-11T21%3A54%3A31Z&sks=b&skv=2025-07-05&sig=eD697ealMI8DUmvSVjbQw1P6xCmGYroTYREmYxPgyk0%3D"
+        }
+      }
+    }
+  ]
+}

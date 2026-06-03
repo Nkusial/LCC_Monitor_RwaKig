@@ -1,0 +1,289 @@
+{
+  "phase": "phase_62_self_supervised_embedding_track",
+  "purpose": "Learn Sentinel-1/2 multi-date patch embeddings without class labels, then use deep clustering and anomaly scoring for review-focused comparison with U-Net.",
+  "accuracy_claim": "No field accuracy claim; this is self-supervised representation, cluster interpretation, anomaly screening, and weak-evidence comparison.",
+  "no_cheating_protocol": {
+    "excluded_years_from_fit": [
+      2026
+    ],
+    "fit_inputs": "Sentinel-1/2, index, radar, and terrain patch descriptors only; weak-label classes are not used to fit the scaler, autoencoder, or clusters.",
+    "weak_labels_role": "post-hoc interpretation from Dynamic World, ESA WorldCover, OSM, Sentinel indices/radar evidence, and existing high-confidence changes",
+    "frozen_test_boundary": "2026 benchmark stays evaluation-only and is not used in encoder fitting or cluster selection."
+  },
+  "input_manifest": "data/interim/training_patches_v3/training_patch_manifest_v3_balanced.json",
+  "patch_count": 841,
+  "split_counts": {
+    "train": 521,
+    "validation": 320
+  },
+  "feature_names": [
+    "s2_ndvi",
+    "s2_ndwi",
+    "s2_ndbi",
+    "s2_evi2",
+    "s2_savi",
+    "s2_mndwi",
+    "s2_bsi",
+    "s1_vv",
+    "s1_vh",
+    "s1_vv_vh_ratio",
+    "s1_log_ratio",
+    "dem",
+    "slope",
+    "ruggedness",
+    "tpi"
+  ],
+  "encoder": {
+    "type": "self_supervised_mlp_autoencoder",
+    "embedding_level": "patch",
+    "input_descriptor": "per-channel mean, standard deviation, p05, p25, p50, and p75 from Sentinel/topography patch tensors",
+    "embedding_dimension": 16,
+    "training_target": "reconstruct normalized Sentinel/topography descriptors",
+    "iterations_completed": 120,
+    "final_reconstruction_loss": 0.082079
+  },
+  "deep_clustering": {
+    "algorithm": "MiniBatchKMeans on autoencoder bottleneck embeddings",
+    "cluster_count": 8,
+    "silhouette_score": 0.225296,
+    "coherent_cluster_count": 8,
+    "coherent_cluster_fraction": 1.0
+  },
+  "anomaly_detection": {
+    "score_definition": "Normalized blend of autoencoder reconstruction error and embedding distance to assigned cluster center.",
+    "high_anomaly_threshold": 0.9,
+    "high_anomaly_fraction": 0.077289
+  },
+  "cluster_interpretation": {
+    "sources": [
+      "Dynamic World",
+      "ESA WorldCover",
+      "OSM buildings/roads/landuse",
+      "Sentinel-2 NDVI/NDWI/NDBI and expanded index evidence",
+      "Sentinel-1 VV/VH/log-ratio radar evidence",
+      "existing high-confidence change polygons"
+    ],
+    "profiles": [
+      {
+        "cluster_id": 1,
+        "patch_count": 210,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 0.933333,
+        "mean_dominant_weak_label_fraction": 0.911413,
+        "mean_anomaly_score": 0.28762,
+        "weak_label_mix": {
+          "vegetation": 196,
+          "built_up": 14
+        },
+        "weak_label_mix_entropy": 0.353359,
+        "year_mix": {
+          "2023": 70,
+          "2024": 48,
+          "2025": 92
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r001_c006_00012",
+          "training_2023_20230716_20230714_r001_c009_00014",
+          "training_2023_20230716_20230714_r001_c010_00015",
+          "training_2023_20230716_20230714_r001_c011_00016",
+          "training_2023_20230716_20230714_r002_c001_00019"
+        ]
+      },
+      {
+        "cluster_id": 2,
+        "patch_count": 113,
+        "dominant_interpretation": "built_up",
+        "dominant_interpretation_fraction": 0.743363,
+        "mean_dominant_weak_label_fraction": 0.675396,
+        "mean_anomaly_score": 0.579834,
+        "weak_label_mix": {
+          "vegetation": 29,
+          "built_up": 84
+        },
+        "weak_label_mix_entropy": 0.821629,
+        "year_mix": {
+          "2023": 28,
+          "2024": 40,
+          "2025": 45
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r000_c000_00000",
+          "training_2023_20230716_20230714_r000_c014_00009",
+          "training_2023_20230716_20230714_r001_c008_00013",
+          "training_2023_20230716_20230714_r003_c001_00032",
+          "training_2023_20230716_20230714_r004_c001_00047"
+        ]
+      },
+      {
+        "cluster_id": 3,
+        "patch_count": 79,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 0.911392,
+        "mean_dominant_weak_label_fraction": 0.736874,
+        "mean_anomaly_score": 0.580021,
+        "weak_label_mix": {
+          "vegetation": 72,
+          "built_up": 7
+        },
+        "weak_label_mix_entropy": 0.431805,
+        "year_mix": {
+          "2023": 28,
+          "2024": 22,
+          "2025": 29
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r003_c008_00039",
+          "training_2023_20230716_20230714_r003_c009_00040",
+          "training_2023_20230716_20230714_r004_c000_00046",
+          "training_2023_20230716_20230714_r004_c007_00053",
+          "training_2023_20230716_20230714_r004_c008_00054"
+        ]
+      },
+      {
+        "cluster_id": 4,
+        "patch_count": 41,
+        "dominant_interpretation": "built_up",
+        "dominant_interpretation_fraction": 0.95122,
+        "mean_dominant_weak_label_fraction": 0.822154,
+        "mean_anomaly_score": 0.496435,
+        "weak_label_mix": {
+          "built_up": 39,
+          "vegetation": 2
+        },
+        "weak_label_mix_entropy": 0.281194,
+        "year_mix": {
+          "2023": 7,
+          "2024": 20,
+          "2025": 14
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r005_c002_00063",
+          "training_2023_20230716_20230714_r006_c002_00078",
+          "training_2023_20230726_20230726_r005_c002_00063",
+          "training_2023_20230726_20230726_r006_c002_00078",
+          "training_2023_20231004_20231006_r000_c014_00009"
+        ]
+      },
+      {
+        "cluster_id": 5,
+        "patch_count": 154,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 1.0,
+        "mean_dominant_weak_label_fraction": 0.977941,
+        "mean_anomaly_score": 0.237807,
+        "weak_label_mix": {
+          "vegetation": 154
+        },
+        "weak_label_mix_entropy": -0.0,
+        "year_mix": {
+          "2023": 59,
+          "2024": 33,
+          "2025": 62
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r002_c010_00026",
+          "training_2023_20230716_20230714_r003_c007_00038",
+          "training_2023_20230716_20230714_r003_c012_00043",
+          "training_2023_20230716_20230714_r004_c009_00055",
+          "training_2023_20230716_20230714_r004_c011_00057"
+        ]
+      },
+      {
+        "cluster_id": 6,
+        "patch_count": 20,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 0.65,
+        "mean_dominant_weak_label_fraction": 0.883929,
+        "mean_anomaly_score": 0.857352,
+        "weak_label_mix": {
+          "built_up": 7,
+          "vegetation": 13
+        },
+        "weak_label_mix_entropy": 0.934068,
+        "year_mix": {
+          "2024": 19,
+          "2025": 1
+        },
+        "example_patches": [
+          "training_2024_20240625_20240626_r000_c003_00003",
+          "training_2024_20240625_20240626_r001_c006_00012",
+          "training_2024_20240625_20240626_r001_c008_00013",
+          "training_2024_20240625_20240626_r002_c003_00020",
+          "training_2024_20240625_20240626_r002_c004_00021"
+        ]
+      },
+      {
+        "cluster_id": 7,
+        "patch_count": 91,
+        "dominant_interpretation": "vegetation",
+        "dominant_interpretation_fraction": 1.0,
+        "mean_dominant_weak_label_fraction": 0.967843,
+        "mean_anomaly_score": 0.334299,
+        "weak_label_mix": {
+          "vegetation": 91
+        },
+        "weak_label_mix_entropy": -0.0,
+        "year_mix": {
+          "2023": 38,
+          "2024": 33,
+          "2025": 20
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r004_c006_00052",
+          "training_2023_20230716_20230714_r005_c007_00068",
+          "training_2023_20230716_20230714_r005_c008_00069",
+          "training_2023_20230716_20230714_r005_c009_00070",
+          "training_2023_20230721_20230723_r002_c007_00009"
+        ]
+      },
+      {
+        "cluster_id": 8,
+        "patch_count": 133,
+        "dominant_interpretation": "built_up",
+        "dominant_interpretation_fraction": 1.0,
+        "mean_dominant_weak_label_fraction": 0.930349,
+        "mean_anomaly_score": 0.307874,
+        "weak_label_mix": {
+          "built_up": 133
+        },
+        "weak_label_mix_entropy": -0.0,
+        "year_mix": {
+          "2023": 39,
+          "2024": 37,
+          "2025": 57
+        },
+        "example_patches": [
+          "training_2023_20230716_20230714_r000_c001_00001",
+          "training_2023_20230716_20230714_r000_c003_00003",
+          "training_2023_20230716_20230714_r001_c001_00010",
+          "training_2023_20230716_20230714_r001_c002_00011",
+          "training_2023_20230716_20230714_r002_c003_00020"
+        ]
+      }
+    ]
+  },
+  "comparison_metrics": {
+    "silhouette_score": 0.225296,
+    "weak_source_compatibility": 0.879583,
+    "review_burden_fraction": 0.20214,
+    "high_anomaly_fraction": 0.077289,
+    "mean_cluster_ambiguity": 0.352757,
+    "coherent_cluster_fraction": 1.0
+  },
+  "comparison_against_unet": {
+    "u_net_track": {
+      "train_validation_review_fraction": 0.31364,
+      "train_validation_weak_source_compatibility": 0.866766,
+      "frozen_2026_review_fraction": 0.875615,
+      "frozen_2026_weak_source_compatibility": 0.765054
+    },
+    "self_supervised_track": {
+      "review_burden_fraction": 0.20214,
+      "weak_source_compatibility": 0.879583,
+      "cluster_ambiguity": 0.352757,
+      "high_anomaly_fraction": 0.077289
+    },
+    "interpretation": "The self-supervised track is compared as a review and discovery layer, not as a replacement for class accuracy. Lower review burden and higher weak-source compatibility are useful only if no-cheating and geospatial-alignment checks remain satisfied."
+  },
+  "interpretation": "This track can help discover anomalous or ambiguous patches without labels. It should be used as an independent reliability layer beside U-Net until expert labels are available."
+}

@@ -1,0 +1,67 @@
+{
+  "phase": "phase_50_heldout_2026_test_preprocessing",
+  "status": "processed",
+  "mode": "all",
+  "output_tag": "test_2026_20260126_20260123",
+  "split": "test",
+  "scene_catalog": "data/catalog/test_scenes_2026.geojson",
+  "manifest": "data/processed/test_2026_20260126_20260123_manifest.json",
+  "selected_candidate": {
+    "date": "2026-01-26",
+    "average_cloud_cover_percent": 15.09,
+    "max_tile_cloud_cover_percent": 23.07,
+    "tiles": {
+      "35MRT": {
+        "date": "2026-01-26",
+        "tile": "35MRT",
+        "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRT_20260126T120623",
+        "cloud_cover_percent": 7.1,
+        "datetime": "2026-01-26T08:11:19.024000Z"
+      },
+      "35MRU": {
+        "date": "2026-01-26",
+        "tile": "35MRU",
+        "scene_id": "S2B_MSIL2A_20260126T081119_R078_T35MRU_20260126T121017",
+        "cloud_cover_percent": 23.07,
+        "datetime": "2026-01-26T08:11:19.024000Z"
+      }
+    },
+    "sentinel1_match": {
+      "collection": "sentinel-1-rtc",
+      "date": "2026-01-23",
+      "scene_id": "S1A_IW_GRDH_1SDV_20260123T162041_20260123T162106_062896_07E3BA_rtc",
+      "orbit": "ascending",
+      "polarizations": [
+        "VV",
+        "VH"
+      ],
+      "time_gap_hours": 55.7
+    },
+    "has_sentinel1_match": true,
+    "meets_preferred_cloud_policy": false,
+    "meets_fallback_cloud_policy": false,
+    "usable_as_strict_test_pair": false,
+    "usable_as_relaxed_candidate": true
+  },
+  "expected_outputs": [
+    "data/processed/test_2026_20260126_20260123_s2_green.tif",
+    "data/processed/test_2026_20260126_20260123_s2_red.tif",
+    "data/processed/test_2026_20260126_20260123_s2_nir.tif",
+    "data/processed/test_2026_20260126_20260123_s2_swir1.tif",
+    "data/processed/test_2026_20260126_20260123_s2_ndvi.tif",
+    "data/processed/test_2026_20260126_20260123_s2_ndwi.tif",
+    "data/processed/test_2026_20260126_20260123_s2_ndbi.tif",
+    "data/processed/test_2026_20260126_20260123_s1_vv.tif",
+    "data/processed/test_2026_20260126_20260123_s1_vh.tif",
+    "data/processed/test_2026_20260126_20260123_s1_vv_vh_ratio.tif"
+  ],
+  "missing_outputs": [],
+  "non_cheating_protocol": {
+    "allowed": "Use these rasters only for frozen-model 2026 proxy evaluation.",
+    "forbidden": [
+      "Do not add this tag to train or validation patch manifests.",
+      "Do not tune model architecture, class weights, thresholds, or pseudo-label filters with 2026 results.",
+      "Do not claim field accuracy from weak-source agreement."
+    ]
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "phase": "phase_64_self_supervised_review_sampling",
+  "purpose": "Use label-free embedding anomaly and weak-source support to propose balanced review samples before future U-Net retraining.",
+  "accuracy_claim": "No field accuracy claim; these are candidate samples for human or independent review.",
+  "source_layer": "data/outputs/self_supervised_review_patches.geojson",
+  "sample_geojson": "data/outputs/self_supervised_review_samples.geojson",
+  "sample_count": 40,
+  "selection_strategy": {
+    "score": "0.50 * anomaly_score + 0.35 * weak_source_gap + 0.15 * review_priority_weight",
+    "balanced_by": [
+      "review_priority",
+      "dominant_interpretation",
+      "year"
+    ],
+    "max_samples": 40,
+    "max_per_stratum": 8,
+    "excluded_counts": {
+      "frozen_2026_or_later": 0,
+      "missing_geometry": 0
+    }
+  },
+  "sample_counts": {
+    "by_review_priority": {
+      "high_anomaly": 34,
+      "weak_support_review": 6
+    },
+    "by_dominant_interpretation": {
+      "vegetation": 17,
+      "built_up": 23
+    }
+  },
+  "review_label_schema": {
+    "future_output": "data/interim/retraining/self_supervised_corrected_review_labels.geojson",
+    "required_fields": [
+      "sample_rank",
+      "reviewer_label",
+      "reviewer_confidence",
+      "review_decision",
+      "evidence_notes"
+    ],
+    "allowed_review_decisions": [
+      "accept_interpretation",
+      "correct_class",
+      "mixed_or_uncertain",
+      "sensor_or_alignment_issue",
+      "exclude_from_training"
+    ]
+  },
+  "spatial_encoder_upgrade_path": [
+    "Keep current MLP descriptor autoencoder as the CPU baseline.",
+    "When compute allows, train a convolutional patch autoencoder on 128 x 128 Sentinel-1/2 feature tensors.",
+    "For multi-date modeling, add a temporal transformer or ConvLSTM encoder with date tokens and no weak labels during fitting.",
+    "Use weak sources only after fitting to interpret clusters and propose review samples."
+  ],
+  "comparison_after_frozen_runs": {
+    "metrics": [
+      "review_burden_fraction",
+      "weak_source_compatibility",
+      "temporal_consensus_fraction",
+      "temporal_instability_fraction",
+      "geospatial_alignment_status",
+      "raster_mismatch_count",
+      "vector_mismatch_count"
+    ],
+    "current_self_supervised_metrics": {
+      "silhouette_score": 0.225296,
+      "weak_source_compatibility": 0.879583,
+      "review_burden_fraction": 0.20214,
+      "high_anomaly_fraction": 0.077289,
+      "mean_cluster_ambiguity": 0.352757,
+      "coherent_cluster_fraction": 1.0
+    },
+    "current_u_net_reference": {
+      "track": "weak_supervised_u_net",
+      "purpose": "Class-probability, entropy, and review-zone maps from weak labels.",
+      "train_validation": {
+        "record_count": 12,
+        "mean_weak_source_compatibility": 0.866766,
+        "mean_review_fraction": 0.31364
+      },
+      "frozen_2026_proxy": {
+        "record_count": 1,
+        "mean_weak_source_compatibility": 0.765054,
+        "mean_review_fraction": 0.875615,
+        "caveat": "This is a relaxed 2026 proxy benchmark because no complete same-date Sentinel-2 pair met the preferred <10% cloud policy."
+      },
+      "temporal_consensus": {
+        "record_count": 12,
+        "mean_consensus_fraction": 0.848494,
+        "temporal_instability_fraction": 0.159035
+      },
+      "strengths": [
+        "Produces interpretable class probability, confidence, and entropy surfaces.",
+        "Supports wall-to-wall AOI inference after training.",
+        "Can use temporal consensus to reduce one-date false alerts."
+      ],
+      "limits": [
+        "Requires weak labels or expert labels.",
+        "May inherit Dynamic World, ESA, OSM, and index-label bias.",
+        "The 2026 benchmark shows domain shift and high review burden."
+      ]
+    },
+    "temporal_status": {
+      "record_count": 12,
+      "mean_consensus_fraction": 0.848494,
+      "valid_pixel_count": 3998086,
+      "unstable_pixel_count": 635837
+    },
+    "geospatial_qa": {
+      "status": "passed",
+      "raster_mismatch_count": 0,
+      "vector_mismatch_count": 0,
+      "checked_raster_count": 414
+    }
+  },
+  "no_cheating_protocol": {
+    "frozen_2026_policy": "Do not use 2026 benchmark patches for review-sample selection, encoder fitting, hyperparameter choice, or U-Net retraining.",
+    "allowed": [
+      "Use 2023-2025 training/validation patches for review sampling.",
+      "Use review samples to collect independent labels before retraining.",
+      "Run frozen 2026 only after a model version is locked."
+    ],
+    "forbidden": [
+      "Selecting samples from 2026 to improve training.",
+      "Changing thresholds after inspecting 2026 results.",
+      "Treating weak-source compatibility as field accuracy."
+    ]
+  },
+  "next_steps": [
+    "Review the selected polygons in the WebGIS alongside Sentinel overlays.",
+    "Create corrected labels only for reviewed samples.",
+    "Regenerate training patches with corrected labels and confidence masks.",
+    "Retrain U-Net with the same no-2026 boundary.",
+    "Compare U-Net, unsupervised clustering, and self-supervised embedding metrics after the frozen run."
+  ]
+}

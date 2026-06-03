@@ -1,0 +1,31 @@
+version: 1
+description: Small independent expert-sample design for no-field-label validation.
+sample_size: 150
+strata:
+  reliable_prediction:
+    fraction: 0.35
+    definition: high confidence, low entropy, weak-source agreement
+  review_zone:
+    fraction: 0.35
+    definition: low confidence, high entropy, or weak-source disagreement
+  minority_classes:
+    fraction: 0.30
+    definition: bare_soil, water_wetland, uncertain_mixed, and transition edges
+label_choices:
+  - built_up
+  - managed_or_natural_vegetation
+  - bare_soil
+  - water_wetland
+  - uncertain_mixed
+  - unclear
+review_sources:
+  - Sentinel-2 false color
+  - Sentinel-2 NDVI/NDWI/NDBI
+  - Sentinel-1 VV/VH
+  - Dynamic World
+  - ESA WorldCover
+  - OSM buildings/roads/landuse
+  - high-resolution visual interpretation where available
+notes:
+  - This is an independent expert sample, not full field validation.
+  - Use it to estimate model risk, confusion modes, and whether pseudo-labels need correction.

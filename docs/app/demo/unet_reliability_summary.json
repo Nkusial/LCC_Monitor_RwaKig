@@ -1,0 +1,101 @@
+{
+  "phase": "Phase 37",
+  "purpose": "Compare weakly supervised full-AOI U-Net outputs with available weak-source agreement and uncertainty evidence.",
+  "accuracy_claim": "Weak-evidence compatibility only; not field accuracy.",
+  "weak_sources_used": [
+    "local_bootstrap_weak_labels",
+    "dynamic_world",
+    "esa_worldcover",
+    "osm_buildings_roads_landuse"
+  ],
+  "thresholds": {
+    "high_entropy": 0.65,
+    "low_confidence": 0.6,
+    "minimum_agreement_sources": 2
+  },
+  "summary": {
+    "record_count": 12,
+    "mean_compatible_fraction_in_agreement_zone": 0.866766,
+    "mean_candidate_review_fraction_of_valid": 0.31364,
+    "highest_review_priority": "training_2024_20240630_20240626"
+  },
+  "limitations": [
+    "This is not field accuracy because no independent reference labels are available.",
+    "Dynamic World is integrated through the local Earth Engine export and contributes to weak-source agreement.",
+    "The current U-Net class space merges managed and natural vegetation, so vegetation agreement accepts either harmonized vegetation class."
+  ],
+  "top_review_records": [
+    {
+      "training_tag": "training_2024_20240630_20240626",
+      "year": 2024,
+      "split": "train",
+      "valid_model_pixels": 3998086,
+      "weak_agreement_zone_pixels": 1183921,
+      "weak_agreement_zone_fraction_of_valid": 0.296122,
+      "compatible_pixels_in_agreement_zone": 1052270,
+      "compatible_fraction_in_agreement_zone": 0.888801,
+      "weak_disagreement_pixels": 1074680,
+      "high_entropy_pixels": 2355,
+      "low_confidence_pixels": 321946,
+      "candidate_review_pixels": 1296440,
+      "candidate_review_fraction_of_valid": 0.324265,
+      "mean_confidence": 0.871169,
+      "mean_entropy": 0.192851,
+      "coverage_fraction": 0.996539
+    },
+    {
+      "training_tag": "training_2025_20250220_20250221",
+      "year": 2025,
+      "split": "validation",
+      "valid_model_pixels": 3998086,
+      "weak_agreement_zone_pixels": 1183921,
+      "weak_agreement_zone_fraction_of_valid": 0.296122,
+      "compatible_pixels_in_agreement_zone": 1050969,
+      "compatible_fraction_in_agreement_zone": 0.887702,
+      "weak_disagreement_pixels": 1074680,
+      "high_entropy_pixels": 2393,
+      "low_confidence_pixels": 310995,
+      "candidate_review_pixels": 1293002,
+      "candidate_review_fraction_of_valid": 0.323405,
+      "mean_confidence": 0.8754,
+      "mean_entropy": 0.187419,
+      "coverage_fraction": 0.996539
+    },
+    {
+      "training_tag": "training_2023_20231004_20231006",
+      "year": 2023,
+      "split": "train",
+      "valid_model_pixels": 3998086,
+      "weak_agreement_zone_pixels": 1183921,
+      "weak_agreement_zone_fraction_of_valid": 0.296122,
+      "compatible_pixels_in_agreement_zone": 1054665,
+      "compatible_fraction_in_agreement_zone": 0.890824,
+      "weak_disagreement_pixels": 1074680,
+      "high_entropy_pixels": 2662,
+      "low_confidence_pixels": 309413,
+      "candidate_review_pixels": 1288232,
+      "candidate_review_fraction_of_valid": 0.322212,
+      "mean_confidence": 0.875632,
+      "mean_entropy": 0.186451,
+      "coverage_fraction": 0.996539
+    },
+    {
+      "training_tag": "training_2023_20230716_20230714",
+      "year": 2023,
+      "split": "train",
+      "valid_model_pixels": 3998086,
+      "weak_agreement_zone_pixels": 1183921,
+      "weak_agreement_zone_fraction_of_valid": 0.296122,
+      "compatible_pixels_in_agreement_zone": 1017613,
+      "compatible_fraction_in_agreement_zone": 0.859528,
+      "weak_disagreement_pixels": 1074680,
+      "high_entropy_pixels": 1176,
+      "low_confidence_pixels": 297353,
+      "candidate_review_pixels": 1282648,
+      "candidate_review_fraction_of_valid": 0.320816,
+      "mean_confidence": 0.880974,
+      "mean_entropy": 0.181317,
+      "coverage_fraction": 0.996539
+    }
+  ]
+}

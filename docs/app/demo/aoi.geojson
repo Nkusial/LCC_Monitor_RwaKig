@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "name": "kigali_demo_aoi_master_grid",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kigali 20 km demo AOI",
+        "description": "Master-grid-aligned 10 m WebGIS AOI footprint used for Sentinel-1/2 overlays, model outputs, and change polygons.",
+        "source": "configs/master_grid.yaml"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              29.971674588098654,
+              -1.8539907197602912
+            ],
+            [
+              30.15205257721712,
+              -1.8536766484566063
+            ],
+            [
+              30.152387520306693,
+              -2.034074211175956
+            ],
+            [
+              29.9719904347848,
+              -2.0344188710956463
+            ],
+            [
+              29.971674588098654,
+              -1.8539907197602912
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

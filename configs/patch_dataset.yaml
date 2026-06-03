@@ -1,0 +1,41 @@
+version: 1
+description: Patch dataset settings for future supervised segmentation experiments.
+patch_size: 128
+stride: 128
+max_patches: 96
+minimum_agreement_fraction: 0.05
+minimum_valid_feature_fraction: 0.85
+minimum_training_pixels: 16
+output_dir: data/interim/patches
+multi_year_output_dir: data/interim/training_patches
+multi_year_manifest: data/interim/training_patches/training_patch_manifest.json
+max_patches_per_training_pair: 48
+feature_stack:
+  - s2_ndvi
+  - s2_ndwi
+  - s2_ndbi
+  - s1_vv
+  - s1_vh
+  - s1_vv_vh_ratio
+label_sources:
+  hard_labels: data/outputs/weak_labels_{tag}_hard_labels.tif
+  label_confidence: data/outputs/weak_labels_{tag}_label_confidence.tif
+  uncertainty: data/outputs/weak_labels_{tag}_uncertainty.tif
+  agreement_labels: data/interim/external_sources/weak_source_agreement_labels.tif
+  agreement_count: data/interim/external_sources/weak_source_agreement_count.tif
+  disagreement_mask: data/interim/external_sources/weak_source_disagreement_mask.tif
+split_policy:
+  method: spatial_block_modulo
+  train_modulo_values:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  validation_modulo_values:
+    - 6
+    - 7
+  test_modulo_values:
+    - 8
+    - 9

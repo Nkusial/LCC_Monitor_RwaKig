@@ -1,0 +1,30 @@
+{
+  "phase": "phase_47_topography_ingestion",
+  "source": "Copernicus DEM via Microsoft Planetary Computer",
+  "collection": "cop-dem-glo-30",
+  "license_note": "Copernicus DEM is open data; verify attribution in final publication materials.",
+  "item_ids": [
+    "Copernicus_DSM_COG_10_S03_00_E030_00_DEM",
+    "Copernicus_DSM_COG_10_S03_00_E029_00_DEM",
+    "Copernicus_DSM_COG_10_S02_00_E030_00_DEM",
+    "Copernicus_DSM_COG_10_S02_00_E029_00_DEM"
+  ],
+  "outputs": {
+    "dem": "data/interim/topography/kigali_dem.tif",
+    "slope": "data/interim/topography/kigali_slope.tif",
+    "ruggedness": "data/interim/topography/kigali_ruggedness.tif",
+    "tpi": "data/interim/topography/kigali_tpi.tif"
+  },
+  "summary": {
+    "valid_pixel_count": 4011973,
+    "elevation_min_m": 1337.52,
+    "elevation_max_m": 2072.86,
+    "elevation_mean_m": 1513.71,
+    "slope_mean_degrees": 11.62,
+    "slope_p95_degrees": 28.98
+  },
+  "why_it_matters": [
+    "Kigali has mountainous terrain, so slope/elevation can explain radar backscatter, shadow, drainage, settlement patterns, and false change signals.",
+    "Topography should be used as ancillary model features and as a review cue, not as a land-cover label by itself."
+  ]
+}

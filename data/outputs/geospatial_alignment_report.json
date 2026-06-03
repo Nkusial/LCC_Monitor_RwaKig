@@ -1,0 +1,100 @@
+{
+  "phase": "geospatial_alignment_validation",
+  "master_grid": {
+    "path": "configs/master_grid.yaml",
+    "crs": "EPSG:32735",
+    "width": 2009,
+    "height": 1997,
+    "bounds": [
+      830650.0,
+      9774830.0,
+      850740.0,
+      9794800.0
+    ],
+    "transform": [
+      10.0,
+      0.0,
+      830650.0,
+      0.0,
+      -10.0,
+      9794800.0
+    ],
+    "tolerance": 0.001
+  },
+  "checked_raster_count": 414,
+  "checked_vector_count": 4,
+  "skipped_raw_source_rasters": [
+    "dynamic_world_label.tif",
+    "dynamic_world_label_20260126.tif"
+  ],
+  "raster_mismatch_count": 0,
+  "vector_mismatch_count": 0,
+  "raster_family_counts": {
+    "processed_sentinel_features": 235,
+    "change_detection_outputs": 24,
+    "external_weak_sources": 12,
+    "unet_full_aoi": 55,
+    "unet_full_aoi_v3": 48,
+    "refined_pseudo_labels": 36,
+    "topography_features": 4
+  },
+  "status": "passed",
+  "vectors": [
+    {
+      "name": "config_aoi",
+      "path": "configs/aoi.geojson",
+      "aligned": true,
+      "rule": "must match master-grid footprint",
+      "feature_count": 1,
+      "bounds": [
+        830650.0,
+        9774830.0,
+        850740.0,
+        9794800.0
+      ]
+    },
+    {
+      "name": "webgis_aoi",
+      "path": "web/public/demo/aoi.geojson",
+      "aligned": true,
+      "rule": "must match master-grid footprint",
+      "feature_count": 1,
+      "bounds": [
+        830650.0,
+        9774830.0,
+        850740.0,
+        9794800.0
+      ]
+    },
+    {
+      "name": "change_polygons",
+      "path": "data/outputs/monitoring_change_scored.geojson",
+      "aligned": true,
+      "rule": "must stay inside master-grid footprint",
+      "feature_count": 4053,
+      "bounds": [
+        830650.0,
+        9774830.0,
+        850740.0,
+        9794800.0
+      ]
+    },
+    {
+      "name": "webgis_change_polygons",
+      "path": "web/public/demo/changes.geojson",
+      "aligned": true,
+      "rule": "must stay inside master-grid footprint",
+      "feature_count": 600,
+      "bounds": [
+        830650.0,
+        9774860.0,
+        850730.0,
+        9794790.0
+      ]
+    }
+  ],
+  "mismatches": {
+    "rasters": [],
+    "vectors": []
+  }
+}

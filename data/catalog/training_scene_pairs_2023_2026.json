@@ -1,0 +1,582 @@
+{
+  "phase": "multi_year_training_scene_discovery",
+  "purpose": "Sentinel-1/2 scene candidates for future weakly supervised training, validation, and testing.",
+  "aoi_path": "configs/aoi.geojson",
+  "date_range": {
+    "start": "2023-01-01",
+    "end": "2026-05-07"
+  },
+  "preferred_max_cloud_cover": 10,
+  "fallback_max_cloud_cover": 20,
+  "required_years": [
+    2023,
+    2024,
+    2025
+  ],
+  "optional_years": [
+    2026
+  ],
+  "status": "ok",
+  "yearly_status": {
+    "2023": {
+      "required": true,
+      "optional": false,
+      "cloud_threshold_used": 10.0,
+      "cloud_tier": "preferred",
+      "candidate_optical_groups": 6,
+      "matched_pairs": 4,
+      "status": "ok"
+    },
+    "2024": {
+      "required": true,
+      "optional": false,
+      "cloud_threshold_used": 10.0,
+      "cloud_tier": "preferred",
+      "candidate_optical_groups": 5,
+      "matched_pairs": 4,
+      "status": "ok"
+    },
+    "2025": {
+      "required": true,
+      "optional": false,
+      "cloud_threshold_used": 10.0,
+      "cloud_tier": "preferred",
+      "candidate_optical_groups": 6,
+      "matched_pairs": 4,
+      "status": "ok"
+    },
+    "2026": {
+      "required": false,
+      "optional": true,
+      "cloud_threshold_used": 20.0,
+      "cloud_tier": "fallback",
+      "candidate_optical_groups": 0,
+      "matched_pairs": 0,
+      "status": "optional_missing"
+    }
+  },
+  "split_counts": {
+    "train": 8,
+    "validation": 4,
+    "test": 0,
+    "unused": 0
+  },
+  "pairs": [
+    {
+      "year": 2023,
+      "split": "train",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2023_20230721_20230723",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2023-07-21",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2B_MSIL2A_20230721T080609_R078_T35MRT_20241014T020524",
+          "S2B_MSIL2A_20230721T080609_R078_T35MRU_20241014T020524"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 0.01,
+          "35MRU": 0.02
+        },
+        "cloud_cover_percent": 0.01,
+        "max_tile_cloud_cover_percent": 0.02
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2023-07-23",
+        "scene_id": "S1A_IW_GRDH_1SDV_20230723T033722_20230723T033747_049545_05F526_rtc",
+        "orbit": "descending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 51.6
+      }
+    },
+    {
+      "year": 2023,
+      "split": "train",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2023_20230726_20230726",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2023-07-26",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2A_MSIL2A_20230726T080611_R078_T35MRT_20241014T060215",
+          "S2A_MSIL2A_20230726T080611_R078_T35MRU_20241014T060215"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 0.13,
+          "35MRU": 0.19
+        },
+        "cloud_cover_percent": 0.16,
+        "max_tile_cloud_cover_percent": 0.19
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2023-07-26",
+        "scene_id": "S1A_IW_GRDH_1SDV_20230726T162100_20230726T162125_049596_05F6BE_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 16.4
+      }
+    },
+    {
+      "year": 2023,
+      "split": "train",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2023_20230716_20230714",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2023-07-16",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2A_MSIL2A_20230716T080611_R078_T35MRT_20241014T140626",
+          "S2A_MSIL2A_20230716T080611_R078_T35MRU_20241014T140626"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 0.09,
+          "35MRU": 1.53
+        },
+        "cloud_cover_percent": 0.81,
+        "max_tile_cloud_cover_percent": 1.53
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2023-07-14",
+        "scene_id": "S1A_IW_GRDH_1SDV_20230714T162059_20230714T162124_049421_05F164_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 31.6
+      }
+    },
+    {
+      "year": 2023,
+      "split": "train",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2023_20231004_20231006",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2023-10-04",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2A_MSIL2A_20231004T080801_R078_T35MRT_20241018T193529",
+          "S2A_MSIL2A_20231004T080801_R078_T35MRU_20231004T132428"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 1.23,
+          "35MRU": 2.05
+        },
+        "cloud_cover_percent": 1.64,
+        "max_tile_cloud_cover_percent": 2.05
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2023-10-06",
+        "scene_id": "S1A_IW_GRDH_1SDV_20231006T162102_20231006T162127_050646_061A0D_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 64.4
+      }
+    },
+    {
+      "year": 2024,
+      "split": "train",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2024_20240804_20240801",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2024-08-04",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2B_MSIL2A_20240804T080609_R078_T35MRT_20240804T111459",
+          "S2B_MSIL2A_20240804T080609_R078_T35MRU_20240804T111459"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 0.06,
+          "35MRU": 0.08
+        },
+        "cloud_cover_percent": 0.07,
+        "max_tile_cloud_cover_percent": 0.08
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2024-08-01",
+        "scene_id": "S1A_IW_GRDH_1SDV_20240801T162057_20240801T162122_055021_06B407_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 55.6
+      }
+    },
+    {
+      "year": 2024,
+      "split": "train",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2024_20240725_20240722",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2024-07-25",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2B_MSIL2A_20240725T080609_R078_T35MRT_20240725T102837",
+          "S2B_MSIL2A_20240725T080609_R078_T35MRU_20240725T102837"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 0.0,
+          "35MRU": 1.02
+        },
+        "cloud_cover_percent": 0.51,
+        "max_tile_cloud_cover_percent": 1.02
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2024-07-22",
+        "scene_id": "S1A_IW_GRDH_1SDV_20240722T034541_20240722T034606_054868_06AEAC_rtc",
+        "orbit": "descending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 68.2
+      }
+    },
+    {
+      "year": 2024,
+      "split": "train",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2024_20240630_20240626",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2024-06-30",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2A_MSIL2A_20240630T080611_R078_T35MRT_20240701T190907",
+          "S2A_MSIL2A_20240630T080611_R078_T35MRU_20240701T190926"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 0.81,
+          "35MRU": 6.56
+        },
+        "cloud_cover_percent": 3.69,
+        "max_tile_cloud_cover_percent": 6.56
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2024-06-26",
+        "scene_id": "S1A_IW_GRDH_1SDV_20240626T162058_20240626T162123_054496_06A1C8_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 79.6
+      }
+    },
+    {
+      "year": 2024,
+      "split": "train",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2024_20240625_20240626",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2024-06-25",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2B_MSIL2A_20240625T080609_R078_T35MRT_20240625T124134",
+          "S2B_MSIL2A_20240625T080609_R078_T35MRU_20240625T124121"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 5.3,
+          "35MRU": 4.02
+        },
+        "cloud_cover_percent": 4.66,
+        "max_tile_cloud_cover_percent": 5.3
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2024-06-26",
+        "scene_id": "S1A_IW_GRDH_1SDV_20240626T162058_20240626T162123_054496_06A1C8_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 40.4
+      }
+    },
+    {
+      "year": 2025,
+      "split": "validation",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2025_20250730_20250727",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2025-07-30",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2B_MSIL2A_20250730T080609_R078_T35MRT_20250730T103041",
+          "S2B_MSIL2A_20250730T080609_R078_T35MRU_20250730T103041"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 0.0,
+          "35MRU": 0.0
+        },
+        "cloud_cover_percent": 0.0,
+        "max_tile_cloud_cover_percent": 0.0
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2025-07-27",
+        "scene_id": "S1A_IW_GRDH_1SDV_20250727T162049_20250727T162114_060271_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 55.6
+      }
+    },
+    {
+      "year": 2025,
+      "split": "validation",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2025_20250829_20250901",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2025-08-29",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2B_MSIL2A_20250829T080609_R078_T35MRT_20250829T104056",
+          "S2B_MSIL2A_20250829T080609_R078_T35MRU_20250829T104056"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 2.01,
+          "35MRU": 1.17
+        },
+        "cloud_cover_percent": 1.59,
+        "max_tile_cloud_cover_percent": 2.01
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2025-09-01",
+        "scene_id": "S1A_IW_GRDH_1SDV_20250901T162049_20250901T162114_060796_07917D_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 88.4
+      }
+    },
+    {
+      "year": 2025,
+      "split": "validation",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2025_20250220_20250221",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2025-02-20",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2B_MSIL2A_20250220T080859_R078_T35MRT_20250220T102720",
+          "S2B_MSIL2A_20250220T080859_R078_T35MRU_20250220T102720"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 2.97,
+          "35MRU": 3.05
+        },
+        "cloud_cover_percent": 3.01,
+        "max_tile_cloud_cover_percent": 3.05
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2025-02-21",
+        "scene_id": "S1A_IW_GRDH_1SDV_20250221T162051_20250221T162116_057996_072897_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 40.4
+      }
+    },
+    {
+      "year": 2025,
+      "split": "validation",
+      "cloud_tier": "preferred",
+      "selection_cloud_threshold": 10.0,
+      "output_tag": "training_2025_20250806_20250808",
+      "optical": {
+        "collection": "sentinel-2-l2a",
+        "date": "2025-08-06",
+        "tiles": [
+          "35MRT",
+          "35MRU"
+        ],
+        "scene_ids": [
+          "S2A_MSIL2A_20250806T082511_R078_T35MRT_20250806T102913",
+          "S2A_MSIL2A_20250806T082511_R078_T35MRU_20250806T102913"
+        ],
+        "bands": {
+          "blue": "B02",
+          "green": "B03",
+          "red": "B04",
+          "nir": "B08",
+          "swir1": "B11"
+        },
+        "tile_cloud_cover_percent": {
+          "35MRT": 2.85,
+          "35MRU": 3.31
+        },
+        "cloud_cover_percent": 3.08,
+        "max_tile_cloud_cover_percent": 3.31
+      },
+      "radar": {
+        "collection": "sentinel-1-rtc",
+        "date": "2025-08-08",
+        "scene_id": "S1A_IW_GRDH_1SDV_20250808T162048_20250808T162113_060446_rtc",
+        "orbit": "ascending",
+        "polarizations": [
+          "VV",
+          "VH"
+        ],
+        "time_gap_hours": 64.4
+      }
+    }
+  ]
+}

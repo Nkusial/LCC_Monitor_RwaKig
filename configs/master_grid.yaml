@@ -1,0 +1,27 @@
+name: kigali_aoi_10m_master_grid
+description: Fixed 10 m AOI grid used for Sentinel-1/2 feature stacking, change detection, weak labels, and future ML patches.
+crs: EPSG:32735
+resolution_m: 10
+width: 2009
+height: 1997
+bounds:
+  left: 830650.0
+  bottom: 9774830.0
+  right: 850740.0
+  top: 9794800.0
+transform:
+  a: 10.0
+  b: 0.0
+  c: 830650.0
+  d: 0.0
+  e: -10.0
+  f: 9794800.0
+nodata: nan
+dtype: float32
+alignment_policy:
+  fail_on_crs_mismatch: true
+  fail_on_transform_mismatch: true
+  fail_on_shape_mismatch: true
+  fail_on_bounds_mismatch: true
+  fail_on_dtype_mismatch: false
+  tolerance: 0.001

@@ -1,0 +1,69 @@
+{
+  "status": "ok",
+  "missing_outputs": [],
+  "analysis_raster_count": 18,
+  "training_analysis_raster_count": 72,
+  "reference_grid": {
+    "crs": "EPSG:32735",
+    "transform": [
+      10.0,
+      0.0,
+      830650.0,
+      0.0,
+      -10.0,
+      9794800.0
+    ],
+    "width": 2009,
+    "height": 1997,
+    "bounds": [
+      830650.0,
+      9774830.0,
+      850740.0,
+      9794800.0
+    ],
+    "nodata": "nan",
+    "dtype": "float32"
+  },
+  "master_grid": {
+    "crs": "EPSG:32735",
+    "transform": [
+      10.0,
+      0.0,
+      830650.0,
+      0.0,
+      -10.0,
+      9794800.0
+    ],
+    "width": 2009,
+    "height": 1997,
+    "bounds": [
+      830650.0,
+      9774830.0,
+      850740.0,
+      9794800.0
+    ],
+    "nodata": "nan",
+    "dtype": "float32"
+  },
+  "grid_mismatches": [],
+  "master_grid_mismatches": {},
+  "training_master_grid_mismatches": {},
+  "scored_change_count": 4053,
+  "publish_ready_count": 2076,
+  "monitored_land_cover_counts": {
+    "bare_sparse": 961,
+    "built_up": 292,
+    "mixed": 1955,
+    "vegetation": 646,
+    "water_moisture": 199
+  },
+  "unsupervised_validation_available": true,
+  "weak_labels_available": true,
+  "external_weak_sources_available": true,
+  "patch_dataset_available": true,
+  "training_scene_catalog_available": true,
+  "training_stack_manifest_available": true,
+  "unet_baseline_report_available": true,
+  "training_preprocessing_summary_available": true,
+  "multi_year_training_patch_manifest_available": true
+}

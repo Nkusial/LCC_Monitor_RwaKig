@@ -1,0 +1,41 @@
+{
+  "phase": "phase_56_public_demo_packaging",
+  "purpose": "Track only lightweight public WebGIS/demo derivatives and keep raw data plus model artifacts private.",
+  "status": "passed",
+  "max_public_asset_mb": 5.0,
+  "roots": [
+    {
+      "root": "web/public/demo",
+      "file_count": 2103,
+      "total_mb": 151.38,
+      "suffix_counts": {
+        ".geojson": 2,
+        ".json": 13,
+        ".png": 2088
+      },
+      "oversized_assets": [],
+      "disallowed_file_types": []
+    },
+    {
+      "root": "docs/app/demo",
+      "file_count": 2103,
+      "total_mb": 151.38,
+      "suffix_counts": {
+        ".geojson": 2,
+        ".json": 13,
+        ".png": 2088
+      },
+      "oversized_assets": [],
+      "disallowed_file_types": []
+    }
+  ],
+  "private_roots": [
+    "data/raw",
+    "data/interim",
+    "data/processed",
+    "data/outputs",
+    "data/interim/models"
+  ],
+  "policy": "Public assets should be lightweight demo derivatives. Raw Sentinel scenes, GeoTIFF stacks, checkpoints, and credentials stay private/local.\n",
+  "warning_count": 0
+}

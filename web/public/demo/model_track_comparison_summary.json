@@ -1,0 +1,247 @@
+{
+  "phase": "phase_58_model_track_comparison",
+  "purpose": "Compare weak-supervised U-Net outputs with unsupervised clustering and self-supervised embedding evidence.",
+  "accuracy_claim": "No field accuracy claim; this is reliability, review-burden, and weak-evidence comparison.",
+  "tracks": {
+    "supervised": {
+      "track": "weak_supervised_u_net",
+      "purpose": "Class-probability, entropy, and review-zone maps from weak labels.",
+      "train_validation": {
+        "record_count": 12,
+        "mean_weak_source_compatibility": 0.866766,
+        "mean_review_fraction": 0.31364
+      },
+      "frozen_2026_proxy": {
+        "record_count": 1,
+        "mean_weak_source_compatibility": 0.765054,
+        "mean_review_fraction": 0.875615,
+        "caveat": "This is a relaxed 2026 proxy benchmark because no complete same-date Sentinel-2 pair met the preferred <10% cloud policy."
+      },
+      "temporal_consensus": {
+        "record_count": 12,
+        "mean_consensus_fraction": 0.848494,
+        "temporal_instability_fraction": 0.159035
+      },
+      "strengths": [
+        "Produces interpretable class probability, confidence, and entropy surfaces.",
+        "Supports wall-to-wall AOI inference after training.",
+        "Can use temporal consensus to reduce one-date false alerts."
+      ],
+      "limits": [
+        "Requires weak labels or expert labels.",
+        "May inherit Dynamic World, ESA, OSM, and index-label bias.",
+        "The 2026 benchmark shows domain shift and high review burden."
+      ]
+    },
+    "unsupervised": {
+      "track": "unsupervised_clustering",
+      "purpose": "Feature-space grouping and anomaly/review discovery without training labels.",
+      "best_experiment": {
+        "monitoring_tag": "monitoring_20250106_20250104",
+        "feature_set": "sentinel2",
+        "features": [
+          "ndvi",
+          "ndwi",
+          "ndbi"
+        ],
+        "reduction": "none",
+        "mask_mode": "high_confidence_change",
+        "cluster_count": 4,
+        "silhouette_score": 0.4459
+      },
+      "ground_truth_available": false,
+      "accuracy_claim": "No field accuracy is claimed. This report checks feature-space coherence only.",
+      "strengths": [
+        "Works when no labels exist.",
+        "Useful for discovering separable spectral/radar regimes and review strata.",
+        "Can expose where supervised labels may be too coarse or biased."
+      ],
+      "limits": [
+        "Clusters are not land-cover classes until interpreted with weak sources or expert review.",
+        "Silhouette is feature-space coherence, not map accuracy.",
+        "Cluster IDs may change across dates or feature choices."
+      ]
+    },
+    "self_supervised": {
+      "track": "self_supervised_embedding_deep_clustering",
+      "status": "implemented_patch_level",
+      "purpose": "Learn Sentinel-1/2 multi-date patch embeddings without class labels, then use deep clustering and anomaly scoring for review-focused comparison with U-Net.",
+      "encoder": {
+        "type": "self_supervised_mlp_autoencoder",
+        "embedding_level": "patch",
+        "input_descriptor": "per-channel mean, standard deviation, p05, p25, p50, and p75 from Sentinel/topography patch tensors",
+        "embedding_dimension": 16,
+        "training_target": "reconstruct normalized Sentinel/topography descriptors",
+        "iterations_completed": 120,
+        "final_reconstruction_loss": 0.082079
+      },
+      "deep_clustering": {
+        "algorithm": "MiniBatchKMeans on autoencoder bottleneck embeddings",
+        "cluster_count": 8,
+        "silhouette_score": 0.225296,
+        "coherent_cluster_count": 8,
+        "coherent_cluster_fraction": 1.0
+      },
+      "anomaly_detection": {
+        "score_definition": "Normalized blend of autoencoder reconstruction error and embedding distance to assigned cluster center.",
+        "high_anomaly_threshold": 0.9,
+        "high_anomaly_fraction": 0.077289
+      },
+      "review_comparison": {
+        "review_burden_fraction": 0.20214,
+        "weak_source_compatibility": 0.879583,
+        "mean_cluster_ambiguity": 0.352757,
+        "high_anomaly_fraction": 0.077289
+      },
+      "guardrails": [
+        "2026 benchmark is excluded from encoder fitting.",
+        "Weak sources interpret clusters after fitting; they do not train the encoder.",
+        "Outputs are review-support evidence, not field accuracy."
+      ],
+      "review_sample_proposal": {
+        "status": "ready_for_review_before_retraining",
+        "sample_count": 40,
+        "sample_geojson": "data/outputs/self_supervised_review_samples.geojson",
+        "sample_counts": {
+          "by_review_priority": {
+            "high_anomaly": 34,
+            "weak_support_review": 6
+          },
+          "by_dominant_interpretation": {
+            "vegetation": 17,
+            "built_up": 23
+          }
+        },
+        "no_cheating_protocol": {
+          "frozen_2026_policy": "Do not use 2026 benchmark patches for review-sample selection, encoder fitting, hyperparameter choice, or U-Net retraining.",
+          "allowed": [
+            "Use 2023-2025 training/validation patches for review sampling.",
+            "Use review samples to collect independent labels before retraining.",
+            "Run frozen 2026 only after a model version is locked."
+          ],
+          "forbidden": [
+            "Selecting samples from 2026 to improve training.",
+            "Changing thresholds after inspecting 2026 results.",
+            "Treating weak-source compatibility as field accuracy."
+          ]
+        }
+      },
+      "spatial_encoder_upgrade": {
+        "status": "implemented",
+        "encoder": {
+          "type": "spatial_grid_autoencoder_fallback",
+          "implementation": "sklearn MLPRegressor over 8 x 8 grid-cell mean/std descriptors",
+          "torch_import_error": "Torch spatial encoder is disabled by default for stable local runs. Set LCC_ENABLE_TORCH_SPATIAL_ENCODER=1 on a PyTorch-ready CPU/GPU environment.",
+          "grid_size": 8,
+          "embedding_channels": 32,
+          "iterations_completed": 13,
+          "loss_history": [
+            0.442366
+          ],
+          "training_target": "reconstruct normalized spatial grid descriptors from Sentinel/radar/terrain tensors",
+          "embedding_level": "spatial_patch_grid",
+          "input_tensor_shape": [
+            15,
+            128,
+            128
+          ],
+          "epochs": 3,
+          "batch_size": 8
+        },
+        "temporal_encoder_status": {
+          "candidate_spatial_window_count": 89,
+          "multi_year_window_count": 53,
+          "status": "ready_for_temporal_transformer",
+          "interpretation": "The current patch manifest has exact repeated row/col windows across years."
+        },
+        "review_comparison": {
+          "silhouette_score": 0.032023,
+          "weak_source_compatibility": 0.873106,
+          "review_burden_fraction": 0.208333,
+          "high_anomaly_fraction": 0.058333,
+          "mean_cluster_ambiguity": 0.62637,
+          "final_reconstruction_loss": 0.442366
+        },
+        "quality_gates": {
+          "geospatial_alignment_status": "passed",
+          "raster_mismatch_count": 0,
+          "vector_mismatch_count": 0,
+          "temporal_consensus_mean_fraction": 0.848494
+        },
+        "no_cheating_protocol": {
+          "excluded_years_from_fit": [
+            2026
+          ],
+          "fit_inputs": "Normalized Sentinel-1/2, index, radar, and terrain tensors only; weak labels are not used in the loss, normalization, or clustering.",
+          "weak_labels_role": "post-hoc cluster interpretation and review-priority reporting only",
+          "frozen_test_boundary": "The 2026 benchmark remains evaluation-only and is not used for encoder fitting, threshold choice, sample selection, or U-Net retraining."
+        }
+      }
+    }
+  },
+  "recommendation": {
+    "current_best_use": "Use U-Net for candidate land-cover probability and uncertainty layers, then use unsupervised and self-supervised embedding tracks as independent review and discovery layers.",
+    "do_not_do": [
+      "Do not compare U-Net confidence directly with silhouette as if they were the same metric.",
+      "Do not treat weak-source compatibility as field accuracy.",
+      "Do not tune the model using the frozen 2026 benchmark."
+    ],
+    "why": {
+      "u_net_review_fraction_train_validation": 0.31364,
+      "u_net_review_fraction_frozen_2026": 0.875615,
+      "best_unsupervised_silhouette": 0.4459,
+      "self_supervised_review_burden_fraction": 0.20214,
+      "self_supervised_weak_source_compatibility": 0.879583,
+      "self_supervised_review_sample_count": 40,
+      "spatial_encoder_review_burden_fraction": 0.208333,
+      "spatial_encoder_weak_source_compatibility": 0.873106,
+      "spatial_encoder_type": "spatial_grid_autoencoder_fallback",
+      "geospatial_alignment_status": "passed",
+      "raster_mismatch_count": 0,
+      "vector_mismatch_count": 0,
+      "interpretation": "U-Net currently gives usable train/validation screening layers, but 2026 remains a high-review stress case. Unsupervised clustering gives moderate feature coherence. The self-supervised embedding track is a label-free anomaly/review layer; it should guide review sampling rather than replace class labels."
+    },
+    "next_self_supervised_track": [
+      "Upgrade from patch descriptor embeddings to spatial convolutional or transformer encoders when compute allows.",
+      "Use the embedding anomaly score to propose review samples before retraining U-Net.",
+      "Compare review burden, weak-source compatibility, temporal stability, and geospatial QA against U-Net after each frozen run.",
+      "Keep the frozen 2026 benchmark untouched for final comparison runs only."
+    ]
+  },
+  "comparison_metrics": {
+    "review_fraction": {
+      "u_net_train_validation": 0.31364,
+      "u_net_frozen_2026": 0.875615,
+      "self_supervised_embedding": 0.20214,
+      "spatial_self_supervised_encoder": 0.208333
+    },
+    "weak_source_compatibility": {
+      "u_net_train_validation": 0.866766,
+      "u_net_frozen_2026": 0.765054,
+      "self_supervised_embedding": 0.879583,
+      "spatial_self_supervised_encoder": 0.873106
+    }
+  },
+  "quality_gates": {
+    "temporal_consensus": {
+      "record_count": 12,
+      "mean_consensus_fraction": 0.848494,
+      "temporal_instability_fraction": 0.159035
+    },
+    "geospatial_alignment": {
+      "status": "passed",
+      "checked_raster_count": 414,
+      "raster_mismatch_count": 0,
+      "vector_mismatch_count": 0
+    },
+    "frozen_2026_boundary": "Use 2026 only for locked-model comparison runs, not selection or retraining."
+  },
+  "comparison_dimensions": [
+    "review_fraction",
+    "weak_source_compatibility",
+    "temporal_consensus",
+    "entropy_or_cluster_ambiguity",
+    "geospatial_alignment_status",
+    "frozen_2026_no_cheating_boundary"
+  ]
+}

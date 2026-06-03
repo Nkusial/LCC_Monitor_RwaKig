@@ -1,0 +1,31 @@
+name: realtime_LCC_Rwkig
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - fastapi
+  - uvicorn
+  - sqlalchemy
+  - geoalchemy2
+  - psycopg
+  - geopandas
+  - shapely
+  - rasterio
+  - rioxarray
+  - xarray
+  - numpy
+  - pandas
+  - scikit-learn
+  - pyyaml
+  - pystac-client
+  - planetary-computer
+  - stackstac
+  - jupyterlab
+  - ipykernel
+  - pygis
+  - pytest
+  - pip
+  - pip:
+      - --index-url https://download.pytorch.org/whl/cpu
+      - torch==2.5.1+cpu

@@ -1,0 +1,623 @@
+{
+  "generated_from": "AOI-clipped Sentinel-1/2 and change rasters",
+  "grid_alignment": {
+    "status": "validated",
+    "reference": "configs/master_grid.yaml",
+    "checks": [
+      "crs",
+      "transform",
+      "width",
+      "height",
+      "bounds",
+      "hosted_aoi"
+    ],
+    "display_aoi": "web/public/demo/aoi.geojson"
+  },
+  "display_alignment": {
+    "status": "tiled",
+    "display_crs": "EPSG:3857",
+    "analysis_crs": "EPSG:32735",
+    "tile_scheme": "XYZ",
+    "tile_size": 256,
+    "minzoom": 12,
+    "maxzoom": 14,
+    "reason": "MapLibre raster overlays are served as EPSG:3857 XYZ tiles so they line up with the Web Mercator basemap instead of stretching one UTM image."
+  },
+  "note": "Raster overlays are Web Mercator XYZ display tiles with an AOI-polygon alpha mask; source GeoTIFFs remain in data/processed and data/outputs. All exported layers are first validated against the EPSG:32735 project master grid, then reprojected to EPSG:3857 tiles for browser display.",
+  "layers": [
+    {
+      "id": "s2_false_color_20250220",
+      "title": "Sentinel-2 false color",
+      "group": "Sentinel-2",
+      "kind": "raster_overlay",
+      "opacity": 0.86,
+      "description": "AOI-clipped NIR/red/green composite from the clean 2025-02-20 Sentinel-2 scene.",
+      "source": "data/processed/s2_20250220_nir.tif, red.tif, green.tif",
+      "satelliteDerived": true,
+      "path": "rasters/s2_false_color_20250220.png",
+      "tile_template": "raster_tiles/s2_false_color_20250220/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "s2_ndvi_20250220",
+      "title": "NDVI vegetation index",
+      "group": "Sentinel-2 indices",
+      "kind": "raster_overlay",
+      "opacity": 0.72,
+      "description": "Vegetation greenness index derived from Sentinel-2 red and NIR bands.",
+      "source": "data/processed/s2_20250220_ndvi.tif",
+      "satelliteDerived": true,
+      "path": "rasters/s2_ndvi_20250220.png",
+      "tile_template": "raster_tiles/s2_ndvi_20250220/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "s2_ndwi_20250220",
+      "title": "NDWI moisture index",
+      "group": "Sentinel-2 indices",
+      "kind": "raster_overlay",
+      "opacity": 0.72,
+      "description": "Water and surface moisture index derived from Sentinel-2 green and NIR bands.",
+      "source": "data/processed/s2_20250220_ndwi.tif",
+      "satelliteDerived": true,
+      "path": "rasters/s2_ndwi_20250220.png",
+      "tile_template": "raster_tiles/s2_ndwi_20250220/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "s2_ndbi_20250220",
+      "title": "NDBI built-up index",
+      "group": "Sentinel-2 indices",
+      "kind": "raster_overlay",
+      "opacity": 0.72,
+      "description": "Built-up signal index derived from Sentinel-2 SWIR and NIR bands.",
+      "source": "data/processed/s2_20250220_ndbi.tif",
+      "satelliteDerived": true,
+      "path": "rasters/s2_ndbi_20250220.png",
+      "tile_template": "raster_tiles/s2_ndbi_20250220/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "s1_vv_20250221",
+      "title": "Sentinel-1 VV backscatter",
+      "group": "Sentinel-1 radar",
+      "kind": "raster_overlay",
+      "opacity": 0.68,
+      "description": "AOI-clipped Sentinel-1 RTC VV backscatter from 2025-02-21.",
+      "source": "data/processed/s1_20250221_vv.tif",
+      "satelliteDerived": true,
+      "path": "rasters/s1_vv_20250221.png",
+      "tile_template": "raster_tiles/s1_vv_20250221/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "s1_vh_20250221",
+      "title": "Sentinel-1 VH backscatter",
+      "group": "Sentinel-1 radar",
+      "kind": "raster_overlay",
+      "opacity": 0.68,
+      "description": "AOI-clipped Sentinel-1 RTC VH backscatter from 2025-02-21.",
+      "source": "data/processed/s1_20250221_vh.tif",
+      "satelliteDerived": true,
+      "path": "rasters/s1_vh_20250221.png",
+      "tile_template": "raster_tiles/s1_vh_20250221/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "s1_ratio_20250221",
+      "title": "Sentinel-1 VV/VH ratio",
+      "group": "Sentinel-1 radar",
+      "kind": "raster_overlay",
+      "opacity": 0.72,
+      "description": "Radar structure feature used by the change detector.",
+      "source": "data/processed/s1_20250221_vv_vh_ratio.tif",
+      "satelliteDerived": true,
+      "path": "rasters/s1_ratio_20250221.png",
+      "tile_template": "raster_tiles/s1_ratio_20250221/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "delta_ndvi_latest",
+      "title": "Delta NDVI",
+      "group": "Change rasters",
+      "kind": "raster_overlay",
+      "opacity": 0.72,
+      "description": "Vegetation index change between the February and April monitoring stacks.",
+      "source": "data/outputs/monitoring_20250220_20250221__to__monitoring_20250421_20250419_delta_ndvi.tif",
+      "satelliteDerived": true,
+      "path": "rasters/delta_ndvi_latest.png",
+      "tile_template": "raster_tiles/delta_ndvi_latest/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "change_confidence_latest",
+      "title": "Change confidence",
+      "group": "Change rasters",
+      "kind": "raster_overlay",
+      "opacity": 0.72,
+      "description": "Pixel-level confidence surface for the latest monitored change comparison.",
+      "source": "data/outputs/monitoring_20250220_20250221__to__monitoring_20250421_20250419_confidence.tif",
+      "satelliteDerived": true,
+      "path": "rasters/change_confidence_latest.png",
+      "tile_template": "raster_tiles/change_confidence_latest/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "unsupervised_clusters_best",
+      "title": "Unsupervised clusters",
+      "group": "Validation",
+      "kind": "raster_overlay",
+      "opacity": 0.7,
+      "description": "Best Phase 20B internal validation cluster overlay. This is not field accuracy.",
+      "source": "data/outputs/monitoring_20250106_20250104_unsupervised_clusters.tif",
+      "satelliteDerived": true,
+      "path": "rasters/unsupervised_clusters_best.png",
+      "tile_template": "raster_tiles/unsupervised_clusters_best/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "unet_full_aoi_dominant_class",
+      "title": "U-Net dominant class",
+      "group": "U-Net model outputs",
+      "kind": "raster_overlay",
+      "opacity": 0.62,
+      "description": "Weakly supervised full-AOI U-Net dominant land-cover prediction for 2025 / 20250829 / 20250901. This is a model output, not field-validated accuracy.",
+      "source": "data/interim/unet_full_aoi_v3/training_2025_20250829_20250901_unet_full_aoi_dominant_class.tif",
+      "satelliteDerived": true,
+      "path": "rasters/unet_full_aoi_dominant_class.png",
+      "tile_template": "raster_tiles/unet_full_aoi_dominant_class/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "unet_full_aoi_confidence",
+      "title": "U-Net confidence",
+      "group": "U-Net model outputs",
+      "kind": "raster_overlay",
+      "opacity": 0.66,
+      "description": "Maximum class probability from full-AOI U-Net inference for 2025 / 20250829 / 20250901. Use with entropy before interpreting model predictions.",
+      "source": "data/interim/unet_full_aoi_v3/training_2025_20250829_20250901_unet_full_aoi_confidence.tif",
+      "satelliteDerived": true,
+      "path": "rasters/unet_full_aoi_confidence.png",
+      "tile_template": "raster_tiles/unet_full_aoi_confidence/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "unet_full_aoi_entropy",
+      "title": "U-Net entropy",
+      "group": "U-Net model outputs",
+      "kind": "raster_overlay",
+      "opacity": 0.66,
+      "description": "Normalized uncertainty from full-AOI U-Net inference for 2025 / 20250829 / 20250901; higher entropy means less confident class separation.",
+      "source": "data/interim/unet_full_aoi_v3/training_2025_20250829_20250901_unet_full_aoi_entropy.tif",
+      "satelliteDerived": true,
+      "path": "rasters/unet_full_aoi_entropy.png",
+      "tile_template": "raster_tiles/unet_full_aoi_entropy/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "unet_review_zones",
+      "title": "U-Net review zones",
+      "group": "Reliability review",
+      "kind": "raster_overlay",
+      "opacity": 0.72,
+      "description": "Candidate review zones for 2025 / 20250829 / 20250901: orange is low model confidence, red is high entropy, and purple is weak-source disagreement. This is a review aid, not accuracy.",
+      "source": "data/interim/unet_full_aoi_v3 confidence/entropy plus data/interim/external_sources/weak_source_disagreement_mask.tif",
+      "satelliteDerived": true,
+      "path": "rasters/unet_review_zones.png",
+      "tile_template": "raster_tiles/unet_review_zones/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "test_2026_unet_dominant_class",
+      "title": "Frozen U-Net dominant class",
+      "group": "2026 frozen benchmark",
+      "kind": "raster_overlay",
+      "opacity": 0.62,
+      "description": "Held-out frozen U-Net prediction for 2026 / 20260126 / 20260123. This 2026 relaxed benchmark was not used for model training or tuning.",
+      "source": "data/interim/unet_full_aoi/test_2026_20260126_20260123_unet_full_aoi_dominant_class.tif",
+      "satelliteDerived": true,
+      "path": "rasters/test_2026_unet_dominant_class.png",
+      "tile_template": "raster_tiles/test_2026_unet_dominant_class/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "test_2026_unet_confidence",
+      "title": "Frozen U-Net confidence",
+      "group": "2026 frozen benchmark",
+      "kind": "raster_overlay",
+      "opacity": 0.66,
+      "description": "Maximum class probability for held-out 2026 / 20260126 / 20260123. Low values should be reviewed before using the prediction.",
+      "source": "data/interim/unet_full_aoi/test_2026_20260126_20260123_unet_full_aoi_confidence.tif",
+      "satelliteDerived": true,
+      "path": "rasters/test_2026_unet_confidence.png",
+      "tile_template": "raster_tiles/test_2026_unet_confidence/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "test_2026_unet_entropy",
+      "title": "Frozen U-Net entropy",
+      "group": "2026 frozen benchmark",
+      "kind": "raster_overlay",
+      "opacity": 0.66,
+      "description": "Prediction uncertainty for held-out 2026 / 20260126 / 20260123. Higher entropy means the model is less certain.",
+      "source": "data/interim/unet_full_aoi/test_2026_20260126_20260123_unet_full_aoi_entropy.tif",
+      "satelliteDerived": true,
+      "path": "rasters/test_2026_unet_entropy.png",
+      "tile_template": "raster_tiles/test_2026_unet_entropy/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    },
+    {
+      "id": "test_2026_unet_review_zones",
+      "title": "Frozen U-Net review zones",
+      "group": "2026 frozen benchmark",
+      "kind": "raster_overlay",
+      "opacity": 0.72,
+      "description": "Held-out 2026 review zones for 2026 / 20260126 / 20260123: orange is low model confidence, red is high entropy, and purple is weak-source disagreement. This layer supports error review, not accuracy claims.",
+      "source": "data/interim/unet_full_aoi test_2026 confidence/entropy plus data/interim/external_sources/weak_source_disagreement_mask_test_2026.tif",
+      "satelliteDerived": true,
+      "path": "rasters/test_2026_unet_review_zones.png",
+      "tile_template": "raster_tiles/test_2026_unet_review_zones/{z}/{x}/{y}.png",
+      "minzoom": 12,
+      "maxzoom": 14,
+      "tileSize": 256,
+      "coordinates": [
+        [
+          29.971674588098654,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -1.8536766484566212
+        ],
+        [
+          30.152394341933892,
+          -2.0343823503556675
+        ],
+        [
+          29.971674588098654,
+          -2.0343823503556675
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+version: 1
+description: Weak-label generation settings for the local bootstrap phase before external reference sources are ingested.
+class_ids:
+  nodata_or_unlabeled: 0
+  built_up: 1
+  managed_vegetation: 2
+  natural_vegetation: 3
+  bare_soil: 4
+  water_wetland: 5
+  uncertain_mixed: 6
+candidate_sources:
+  dynamic_world:
+    enabled: false
+    role: external_agreement_source
+    status: requires_earth_engine_export_or_local_raster
+    description: Dynamic World class probabilities for future independent weak-label agreement zones.
+    earth_engine_asset: GOOGLE/DYNAMICWORLD/V1
+    local_label_raster: data/interim/external_sources/dynamic_world_label.tif
+  esa_worldcover:
+    enabled: true
+    role: external_agreement_source
+    status: active_external_ingestion
+    description: ESA WorldCover classes for future independent weak-label agreement zones.
+    stac_collection: esa-worldcover
+    preferred_year: 2021
+    preferred_version: v200
+    asset_key: map
+  osm_buildings_roads_landuse:
+    enabled: true
+    role: external_vector_support
+    status: active_external_ingestion
+    description: OSM buildings, roads, and land-use features for future support evidence.
+    overpass_url: https://overpass-api.de/api/interpreter
+    tags:
+      - building
+      - highway
+      - landuse
+  sentinel2_ndvi_ndwi_ndbi:
+    enabled: true
+    role: active_local_spectral_evidence
+    status: active
+    description: Sentinel-2 NDVI, NDWI, and NDBI evidence from AOI-aligned processed rasters.
+  sentinel1_vv_vh:
+    enabled: true
+    role: active_local_radar_evidence
+    status: active
+    description: Sentinel-1 VV/VH ratio evidence from AOI-aligned processed rasters.
+  existing_high_confidence_change_polygons:
+    enabled: true
+    role: active_local_bootstrap_agreement
+    status: active
+    description: Existing confidence-scored change polygons used only as local bootstrap evidence.
+thresholds:
+  minimum_dominant_probability: 0.55
+  minimum_label_confidence: 0.65
+  high_confidence_change_threshold: 0.75
+  mixed_probability_gap: 0.15
+outputs:
+  prefix: weak_labels
+  write_probability_rasters: true

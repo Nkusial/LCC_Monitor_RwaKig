@@ -1,0 +1,23 @@
+{
+  "phase": "phase_44_feature_expansion",
+  "feature_purpose": {
+    "s2_evi2": "vegetation vigor without requiring a blue band",
+    "s2_savi": "vegetation with soil-background damping",
+    "s2_mndwi": "water and wet-surface separation",
+    "s2_bsi": "bare soil versus built/sparse surfaces",
+    "s1_log_ratio": "radar structure/moisture contrast"
+  },
+  "record_count": 1,
+  "records": [
+    {
+      "tag": "test_2026_20260126_20260123",
+      "outputs": {
+        "s2_evi2": "data/processed/test_2026_20260126_20260123_s2_evi2.tif",
+        "s2_savi": "data/processed/test_2026_20260126_20260123_s2_savi.tif",
+        "s2_mndwi": "data/processed/test_2026_20260126_20260123_s2_mndwi.tif",
+        "s2_bsi": "data/processed/test_2026_20260126_20260123_s2_bsi.tif",
+        "s1_log_ratio": "data/processed/test_2026_20260126_20260123_s1_log_ratio.tif"
+      }
+    }
+  ]
+}

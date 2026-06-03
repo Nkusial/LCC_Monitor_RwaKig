@@ -1,0 +1,138 @@
+{
+  "phase": "phase_57_public_demo_raster_optimization",
+  "purpose": "Reduce oversized fallback/demo PNG assets while keeping raw rasters and model artifacts private.",
+  "optimized_file_count": 18,
+  "before_total_mb": 131.754,
+  "after_total_mb": 27.102,
+  "saved_total_mb": 104.652,
+  "method": "RGBA to optimized 256-color PNG palette for oversized public demo raster PNGs.",
+  "geospatial_safety_note": "Only fallback/demo PNG files are optimized. WebGIS map alignment remains based on EPSG:3857 XYZ raster tiles referenced by raster_layers.json.",
+  "records": [
+    {
+      "path": "docs/app/demo/rasters/delta_ndvi_latest.png",
+      "before_mb": 7.699,
+      "after_mb": 1.527,
+      "saved_mb": 6.173,
+      "reduction_fraction": 0.801726
+    },
+    {
+      "path": "docs/app/demo/rasters/s1_ratio_20250221.png",
+      "before_mb": 10.201,
+      "after_mb": 1.971,
+      "saved_mb": 8.23,
+      "reduction_fraction": 0.806814
+    },
+    {
+      "path": "docs/app/demo/rasters/s1_vh_20250221.png",
+      "before_mb": 7.731,
+      "after_mb": 1.517,
+      "saved_mb": 6.214,
+      "reduction_fraction": 0.803792
+    },
+    {
+      "path": "docs/app/demo/rasters/s1_vv_20250221.png",
+      "before_mb": 6.66,
+      "after_mb": 1.237,
+      "saved_mb": 5.424,
+      "reduction_fraction": 0.814326
+    },
+    {
+      "path": "docs/app/demo/rasters/s2_false_color_20250220.png",
+      "before_mb": 9.34,
+      "after_mb": 2.661,
+      "saved_mb": 6.679,
+      "reduction_fraction": 0.715058
+    },
+    {
+      "path": "docs/app/demo/rasters/s2_ndbi_20250220.png",
+      "before_mb": 5.496,
+      "after_mb": 1.321,
+      "saved_mb": 4.175,
+      "reduction_fraction": 0.759619
+    },
+    {
+      "path": "docs/app/demo/rasters/s2_ndvi_20250220.png",
+      "before_mb": 7.68,
+      "after_mb": 1.459,
+      "saved_mb": 6.221,
+      "reduction_fraction": 0.809988
+    },
+    {
+      "path": "docs/app/demo/rasters/s2_ndwi_20250220.png",
+      "before_mb": 5.804,
+      "after_mb": 0.964,
+      "saved_mb": 4.841,
+      "reduction_fraction": 0.83398
+    },
+    {
+      "path": "docs/app/demo/rasters/unet_full_aoi_entropy.png",
+      "before_mb": 5.266,
+      "after_mb": 0.894,
+      "saved_mb": 4.373,
+      "reduction_fraction": 0.830306
+    },
+    {
+      "path": "web/public/demo/rasters/delta_ndvi_latest.png",
+      "before_mb": 7.699,
+      "after_mb": 1.527,
+      "saved_mb": 6.173,
+      "reduction_fraction": 0.801726
+    },
+    {
+      "path": "web/public/demo/rasters/s1_ratio_20250221.png",
+      "before_mb": 10.201,
+      "after_mb": 1.971,
+      "saved_mb": 8.23,
+      "reduction_fraction": 0.806814
+    },
+    {
+      "path": "web/public/demo/rasters/s1_vh_20250221.png",
+      "before_mb": 7.731,
+      "after_mb": 1.517,
+      "saved_mb": 6.214,
+      "reduction_fraction": 0.803792
+    },
+    {
+      "path": "web/public/demo/rasters/s1_vv_20250221.png",
+      "before_mb": 6.66,
+      "after_mb": 1.237,
+      "saved_mb": 5.424,
+      "reduction_fraction": 0.814326
+    },
+    {
+      "path": "web/public/demo/rasters/s2_false_color_20250220.png",
+      "before_mb": 9.34,
+      "after_mb": 2.661,
+      "saved_mb": 6.679,
+      "reduction_fraction": 0.715058
+    },
+    {
+      "path": "web/public/demo/rasters/s2_ndbi_20250220.png",
+      "before_mb": 5.496,
+      "after_mb": 1.321,
+      "saved_mb": 4.175,
+      "reduction_fraction": 0.759619
+    },
+    {
+      "path": "web/public/demo/rasters/s2_ndvi_20250220.png",
+      "before_mb": 7.68,
+      "after_mb": 1.459,
+      "saved_mb": 6.221,
+      "reduction_fraction": 0.809988
+    },
+    {
+      "path": "web/public/demo/rasters/s2_ndwi_20250220.png",
+      "before_mb": 5.804,
+      "after_mb": 0.964,
+      "saved_mb": 4.841,
+      "reduction_fraction": 0.83398
+    },
+    {
+      "path": "web/public/demo/rasters/unet_full_aoi_entropy.png",
+      "before_mb": 5.266,
+      "after_mb": 0.894,
+      "saved_mb": 4.373,
+      "reduction_fraction": 0.830306
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  package-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up micromamba
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: environment.yml
+          environment-name: realtime_LCC_Rwkig
+          cache-environment: true
+          cache-downloads: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Validate backend and pipeline
+        shell: bash -l {0}
+        run: pytest -q
+
+      - name: Build WebGIS
+        shell: bash -l {0}
+        working-directory: web
+        run: |
+          npm ci
+          npm run build
+
+      - name: Package release artifacts
+        shell: bash
+        run: |
+          mkdir -p release
+          cp -r docs release/docs
+          cp -r web/dist release/web-dist
+          cp README.md CHANGELOG.md environment.yml pyproject.toml release/
+
+      - name: Upload release package
+        uses: actions/upload-artifact@v4
+        with:
+          name: geoai-change-monitor-release
+          path: release

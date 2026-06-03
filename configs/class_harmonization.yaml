@@ -1,0 +1,121 @@
+version: 1
+description: Compact land-cover taxonomy used to harmonize current monitored groups with future weak-label sources.
+target_classes:
+  built_up:
+    description: Buildings, roads, paved lots, compact settlement surfaces, and impervious peri-urban expansion.
+    current_groups:
+      - built_up
+    weak_label_sources:
+      dynamic_world:
+        - built
+      esa_worldcover:
+        - built_up
+      osm:
+        - building
+        - highway
+        - residential
+        - commercial
+        - industrial
+  managed_vegetation:
+    description: Cropland, planted vegetation, gardens, and actively managed green areas.
+    current_groups:
+      - vegetation
+    weak_label_sources:
+      dynamic_world:
+        - crops
+      esa_worldcover:
+        - cropland
+      osm:
+        - farmland
+        - orchard
+        - allotments
+  natural_vegetation:
+    description: Trees, shrubs, grassland, and non-crop vegetation.
+    current_groups:
+      - vegetation
+    weak_label_sources:
+      dynamic_world:
+        - trees
+        - grass
+        - shrub_and_scrub
+      esa_worldcover:
+        - tree_cover
+        - grassland
+        - shrubland
+      osm:
+        - forest
+        - grass
+        - scrub
+  bare_soil:
+    description: Exposed soil, sparsely vegetated ground, construction soil, and dry bare surfaces.
+    current_groups:
+      - bare_sparse
+    weak_label_sources:
+      dynamic_world:
+        - bare
+      esa_worldcover:
+        - bare_sparse_vegetation
+      osm:
+        - construction
+        - quarry
+  water_wetland:
+    description: Open water, wet soil, saturated channels, and wetland-like moisture signals.
+    current_groups:
+      - water_moisture
+    weak_label_sources:
+      dynamic_world:
+        - water
+        - flooded_vegetation
+      esa_worldcover:
+        - permanent_water_bodies
+        - herbaceous_wetland
+      osm:
+        - water
+        - wetland
+  uncertain_mixed:
+    description: Mixed pixels, disagreement zones, shadows/cloud effects, and unresolved current groups.
+    current_groups:
+      - mixed
+      - unknown
+    weak_label_sources:
+      dynamic_world:
+        - unknown
+      esa_worldcover:
+        - unknown
+      osm:
+        - unknown
+rules:
+  agreement_zone_policy:
+    minimum_independent_sources: 2
+    minimum_dynamic_world_probability: 0.65
+    require_sentinel_index_support: true
+  mixed_pixel_policy:
+    preserve_soft_probabilities: true
+    do_not_train_hard_label_when_top_two_classes_close: true
+    top_two_probability_gap_threshold: 0.15
+  current_group_mapping:
+    vegetation:
+      harmonized:
+        - managed_vegetation
+        - natural_vegetation
+      requires_additional_evidence: true
+    built_up:
+      harmonized:
+        - built_up
+      requires_additional_evidence: false
+    water_moisture:
+      harmonized:
+        - water_wetland
+      requires_additional_evidence: false
+    bare_sparse:
+      harmonized:
+        - bare_soil
+      requires_additional_evidence: false
+    mixed:
+      harmonized:
+        - uncertain_mixed
+      requires_additional_evidence: true
+    unknown:
+      harmonized:
+        - uncertain_mixed
+      requires_additional_evidence: true

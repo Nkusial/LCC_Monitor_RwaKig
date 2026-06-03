@@ -1,0 +1,34 @@
+{
+  "total": 2076,
+  "mean_confidence": 0.8772230250481696,
+  "aoi_area_m2": 400000000.0,
+  "total_area_m2": 60506400.0,
+  "changed_area_m2": 60506400.0,
+  "no_change_area_m2": 339493600.0,
+  "changed_percent": 15.126600000000002,
+  "no_change_percent": 84.8734,
+  "by_monitored_land_cover": {
+    "vegetation": 607,
+    "water_moisture": 199,
+    "bare_sparse": 698,
+    "mixed": 281,
+    "built_up": 291
+  },
+  "by_monitored_land_cover_area_m2": {
+    "vegetation": 18630100.0,
+    "water_moisture": 10223400.0,
+    "bare_sparse": 20145400.0,
+    "mixed": 7675200.0,
+    "built_up": 3832300.0
+  },
+  "by_reliability": {
+    "medium": 1119,
+    "high": 957
+  },
+  "by_reliability_area_m2": {
+    "medium": 29009600.0,
+    "high": 31496800.0
+  },
+  "top_likely_change_type": "bare_sparse_to_mixed",
+  "top_likely_change_area_m2": 22036000.0
+}

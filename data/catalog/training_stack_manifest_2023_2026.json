@@ -1,0 +1,166 @@
+{
+  "phase": "phase_29_training_stack_manifest",
+  "purpose": "Preflight selected multi-year Sentinel-1/2 pairs before AOI-windowed raster reads.",
+  "source_pairs": "data/catalog/training_scene_pairs_2023_2026.json",
+  "source_scenes": "data/catalog/training_scenes_2023_2026.geojson",
+  "required_optical_assets": [
+    "B03",
+    "B04",
+    "B08",
+    "B11"
+  ],
+  "pair_count": 12,
+  "ready_pair_count": 12,
+  "split_counts": {
+    "train": 8,
+    "validation": 4
+  },
+  "status": "ok",
+  "pairs": [
+    {
+      "output_tag": "training_2023_20230721_20230723",
+      "year": 2023,
+      "split": "train",
+      "optical_date": "2023-07-21",
+      "radar_date": "2023-07-23",
+      "max_tile_cloud_cover_percent": 0.02,
+      "radar_time_gap_hours": 51.6,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2023_20230726_20230726",
+      "year": 2023,
+      "split": "train",
+      "optical_date": "2023-07-26",
+      "radar_date": "2023-07-26",
+      "max_tile_cloud_cover_percent": 0.19,
+      "radar_time_gap_hours": 16.4,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2023_20230716_20230714",
+      "year": 2023,
+      "split": "train",
+      "optical_date": "2023-07-16",
+      "radar_date": "2023-07-14",
+      "max_tile_cloud_cover_percent": 1.53,
+      "radar_time_gap_hours": 31.6,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2023_20231004_20231006",
+      "year": 2023,
+      "split": "train",
+      "optical_date": "2023-10-04",
+      "radar_date": "2023-10-06",
+      "max_tile_cloud_cover_percent": 2.05,
+      "radar_time_gap_hours": 64.4,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2024_20240804_20240801",
+      "year": 2024,
+      "split": "train",
+      "optical_date": "2024-08-04",
+      "radar_date": "2024-08-01",
+      "max_tile_cloud_cover_percent": 0.08,
+      "radar_time_gap_hours": 55.6,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2024_20240725_20240722",
+      "year": 2024,
+      "split": "train",
+      "optical_date": "2024-07-25",
+      "radar_date": "2024-07-22",
+      "max_tile_cloud_cover_percent": 1.02,
+      "radar_time_gap_hours": 68.2,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2024_20240630_20240626",
+      "year": 2024,
+      "split": "train",
+      "optical_date": "2024-06-30",
+      "radar_date": "2024-06-26",
+      "max_tile_cloud_cover_percent": 6.56,
+      "radar_time_gap_hours": 79.6,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2024_20240625_20240626",
+      "year": 2024,
+      "split": "train",
+      "optical_date": "2024-06-25",
+      "radar_date": "2024-06-26",
+      "max_tile_cloud_cover_percent": 5.3,
+      "radar_time_gap_hours": 40.4,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2025_20250730_20250727",
+      "year": 2025,
+      "split": "validation",
+      "optical_date": "2025-07-30",
+      "radar_date": "2025-07-27",
+      "max_tile_cloud_cover_percent": 0.0,
+      "radar_time_gap_hours": 55.6,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2025_20250829_20250901",
+      "year": 2025,
+      "split": "validation",
+      "optical_date": "2025-08-29",
+      "radar_date": "2025-09-01",
+      "max_tile_cloud_cover_percent": 2.01,
+      "radar_time_gap_hours": 88.4,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2025_20250220_20250221",
+      "year": 2025,
+      "split": "validation",
+      "optical_date": "2025-02-20",
+      "radar_date": "2025-02-21",
+      "max_tile_cloud_cover_percent": 3.05,
+      "radar_time_gap_hours": 40.4,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    },
+    {
+      "output_tag": "training_2025_20250806_20250808",
+      "year": 2025,
+      "split": "validation",
+      "optical_date": "2025-08-06",
+      "radar_date": "2025-08-08",
+      "max_tile_cloud_cover_percent": 3.31,
+      "radar_time_gap_hours": 64.4,
+      "missing_scenes": [],
+      "missing_assets": {},
+      "ready_for_preprocessing": true
+    }
+  ],
+  "next_step": "Run AOI-windowed preprocessing for ready pairs, then generate multi-year feature/weak-label patches using the same master-grid contract."
+}
