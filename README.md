@@ -276,20 +276,9 @@ docs/app/
 ## Future Improvements
 
 - Add small expert reference samples for independent accuracy assessment.
-- Use the [Improvement Track](docs/IMPROVEMENT_TRACK.md) publish gate to combine
-  co-registration QA, temporal consensus, weak-source compatibility, and review
-  burden before publishing change alerts.
-- Use the [Model Track Comparison](docs/MODEL_TRACK_COMPARISON.md) to compare
-  supervised U-Net outputs with unsupervised clustering and future
-  self-supervised/deep-clustering approaches as a reliability and review-burden
-  study, not an accuracy claim.
-- Use the [Label-Free Embedding Baseline](docs/LABEL_FREE_EMBEDDING_BASELINE.md)
-  to test whether Sentinel-1/2 patch features form meaningful groups before
-  weak labels are applied.
-- Keep public demo assets lightweight while raw data, processed rasters, and
-  model artifacts remain private/local.
-- Deploy the full FastAPI/PostGIS stack only when a hosted dynamic backend is
-  required.
+- Upgrade the self-supervised track toward stronger temporal or transformer-based encoders.
+- Use embedding-based review samples to guide future expert labeling and U-Net retraining.
+- Deploy the full FastAPI/PostGIS stack when hosted dynamic backend access is required.
 
 Raw Sentinel imagery and heavy local processing artifacts should remain local
 unless deliberately exported as small demo assets.
