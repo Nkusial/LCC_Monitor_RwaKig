@@ -71,6 +71,27 @@ function boundsFromFeatureCollection(
   ]
 }
 
+function fitMapToAoi(map: Map, bounds: [[number, number], [number, number]]) {
+  // MapLibre can compute a poor first camera if the canvas is still settling
+  // after the sidebar/layout has rendered. Resizing first and capping zoom keeps
+  // the complete 20 x 20 km AOI visible when the hosted link opens.
+  map.resize()
+  map.fitBounds(bounds, {
+    padding: { top: 72, bottom: 72, left: 72, right: 72 },
+    maxZoom: 11.6,
+    duration: 0,
+  })
+}
+
+function scheduleInitialAoiFit(
+  map: Map,
+  bounds: [[number, number], [number, number]],
+) {
+  fitMapToAoi(map, bounds)
+  window.requestAnimationFrame(() => fitMapToAoi(map, bounds))
+  window.setTimeout(() => fitMapToAoi(map, bounds), 350)
+}
+
 function changePointsFromPolygons(
   changes: FeatureCollection<Geometry>,
 ): FeatureCollection<Point> {
@@ -372,11 +393,7 @@ export function MapView({
 
       const aoiBounds = boundsFromFeatureCollection(aoi)
       if (aoiBounds) {
-        map.fitBounds(aoiBounds, {
-          padding: { top: 56, bottom: 56, left: 56, right: 56 },
-          maxZoom: 13,
-          duration: 0,
-        })
+        scheduleInitialAoiFit(map, aoiBounds)
       }
 
       const rasterLayer = latestRasterRef.current
