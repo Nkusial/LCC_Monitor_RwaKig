@@ -76,11 +76,11 @@ const unetClassLegend: RasterLegend = {
   kind: 'categorical',
   title: 'Predicted land-cover class',
   items: [
-    { label: 'Built-up / impervious', color: '#d64617' },
-    { label: 'Vegetation', color: '#2f8956' },
-    { label: 'Bare or sparse ground', color: '#b5771b' },
-    { label: 'Water / wetness signal', color: '#2b8bd6' },
-    { label: 'Mixed / uncertain', color: '#704cdb' },
+    { label: 'Built-up / impervious', color: landCoverColors.built_up },
+    { label: 'Vegetation', color: landCoverColors.vegetation },
+    { label: 'Bare or sparse ground', color: landCoverColors.bare_sparse },
+    { label: 'Water / wetness signal', color: landCoverColors.water_moisture },
+    { label: 'Mixed / uncertain', color: landCoverColors.mixed },
   ],
 }
 
