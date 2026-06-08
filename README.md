@@ -102,6 +102,16 @@ This project does **not** claim field-validated land-cover accuracy. The current
 prototype is a confidence-aware screening system: it highlights likely changes,
 shows reliability evidence, and marks areas that need review.
 
+The monitored-group change model is intentionally conservative. Because the
+U-Net baseline was trained from weak labels rather than field reference samples,
+and because the available 2023-2026 training/test stack is still limited for a
+mountainous, mixed peri-urban landscape, model confidence is not yet strong
+enough to treat the outputs as final land-cover truth. The WebGIS should be read
+as a review and prioritization tool: it is useful for finding likely change and
+uncertainty hot spots, but it still needs more temporal coverage, stronger weak
+label cleaning, and independent expert samples before stronger accuracy claims
+are made.
+
 Use the outputs as:
 
 - likely change candidates
@@ -275,7 +285,10 @@ docs/app/
 
 ## Future Improvements
 
+- Add time-window change detection for 2023-2024, 2024-2025, and 2025-2026 monitoring periods, with a WebGIS filter for each interval.
 - Add small expert reference samples for independent accuracy assessment.
+- Increase clean multi-date Sentinel-1/2 training coverage before expecting a major confidence gain.
+- Test stronger segmentation backbones carefully, such as ResNet-encoder U-Net or DeepLab-style models, but treat architecture upgrades as secondary to better labels, temporal sampling, and validation design.
 - Upgrade the self-supervised track toward stronger temporal or transformer-based encoders.
 - Use embedding-based review samples to guide future expert labeling and U-Net retraining.
 - Deploy the full FastAPI/PostGIS stack when hosted dynamic backend access is required.
