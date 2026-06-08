@@ -214,7 +214,7 @@ See [Operations](docs/OPERATIONS.md) for the full command reference.
 - [Project phases](docs/PHASES.md): completed work phase by phase.
 - [Portfolio review guide](docs/PORTFOLIO_REVIEW.md): reviewer-facing explanation and demo talking points.
 - [Changelog](CHANGELOG.md): chronological release progress.
-- [CI/CD](docs/CI_CD.md): automated checks and release packaging.
+- [CI/CD](docs/CI_CD.md): automated checks, static WebGIS delivery, and release packaging.
 - [Hosted docs](docs/HOSTED_DOCS.md): GitHub Pages publishing structure.
 - [Publishing guide](docs/PUBLISHING.md): hosted documentation and WebGIS publishing.
 - [Release checklist](docs/RELEASE_CHECKLIST.md): pre-release checks.

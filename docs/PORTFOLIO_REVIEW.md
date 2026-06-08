@@ -40,7 +40,7 @@ This project is a local-first near-real-time land-cover change monitoring system
 - Change records preserve baseline and after-change context.
 - Confidence scoring separates detected candidates from publish-ready records.
 - PostGIS stores final geospatial outputs for API and WebGIS use.
-- The project has repeatable validation, CI checks, and tag-based CD release packaging.
+- The project has repeatable validation, CI checks, GitHub Pages delivery for the static WebGIS/docs, and tag-based release packaging.
 - The hosted WebGIS exposes validation evidence instead of hiding it in local logs.
 
 ## Validation Story
@@ -80,7 +80,7 @@ How to present it:
 | What makes it near-real-time? | The pipeline is designed around repeatable scene discovery, AOI-windowed preprocessing, and publishable change records. |
 | Why Sentinel-1 and Sentinel-2? | Optical indices help interpret land cover; radar helps when clouds or surface moisture complicate optical signals. |
 | What is local-first? | The system runs locally with open-source tools and stores outputs in local folders/PostGIS. |
-| Does this project have CI/CD? | Yes. CI runs tests and the frontend build on GitHub pushes and pull requests. CD runs on version tags and packages docs plus the WebGIS build as a release artifact. |
+| Does this project have CI/CD? | Yes. CI runs tests and the frontend build on pushes and pull requests. CD is implemented for static delivery: GitHub Pages serves the WebGIS/docs from `docs/`, and version tags package docs plus the WebGIS build as release artifacts. The FastAPI/PostGIS backend is still local-first, not cloud-deployed. |
 | Is the `0.4459` silhouette score field accuracy? | No. It is an unsupervised feature-space coherence score used because no field labels exist yet. |
 | Why did Sentinel-2-only clustering score better than Sentinel-1/2 fusion? | For this AOI and mask, NDVI/NDWI/NDBI separated the strongest changed pixels more cleanly; radar remains useful for detection and cloud-resilience but can add noise to unsupervised clustering. |
 | What is the next ML step? | Harden the data foundation first: master grid, class harmonization, weak labels, soft labels, patch splits, then supervised segmentation. |
@@ -94,4 +94,5 @@ How to present it:
 - `python pipelines/07_validate_outputs.py` reports `status: ok`.
 - `python pipelines/09_unsupervised_validation.py` reports the best Phase 20B configuration.
 - `pytest -q` passes.
+
 

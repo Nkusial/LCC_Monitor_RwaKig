@@ -71,4 +71,5 @@ GitHub Actions provides:
 - CI on pushes and pull requests through `.github/workflows/ci.yml`.
 - Tag-based release packaging through `.github/workflows/release.yml`.
 
-The release workflow is intentionally delivery-focused, not cloud-deployment-focused: it validates the project, builds the WebGIS, and uploads docs plus frontend build artifacts for tagged milestones.
+The delivery layer is intentionally static-artifact focused: CI validates the project, GitHub Pages serves the WebGIS/docs from `docs/`, and tagged releases package docs plus frontend build artifacts. The FastAPI/PostGIS backend remains local-first until a hosted dynamic backend is required.
+
