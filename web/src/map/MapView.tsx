@@ -564,7 +564,6 @@ export function MapView({
             <dt>Monitoring signal</dt><dd>${monitoredSignal}</dd>
             <dt>Process</dt><dd>${processLabel}</dd>
             <dt>Reliability</dt><dd>${reliabilityLabel}</dd>
-            <dt>Review note</dt><dd>${String(properties.review_reason ?? 'not assigned').replaceAll('_', ' ')}</dd>
             <dt>Optical dates</dt><dd>${opticalWindow}</dd>
             ${radarSupportRow}
             <dt>Confidence</dt><dd>${Number(properties.confidence ?? 0).toFixed(2)}</dd>
