@@ -292,8 +292,3 @@ docs/app/
 - Upgrade the self-supervised track toward stronger temporal or transformer-based encoders.
 - Use embedding-based review samples to guide future expert labeling and U-Net retraining.
 - Deploy the full FastAPI/PostGIS stack when hosted dynamic backend access is required.
-
-Raw Sentinel imagery and heavy local processing artifacts should remain local
-unless deliberately exported as small demo assets.
-
-
