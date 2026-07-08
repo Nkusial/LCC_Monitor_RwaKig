@@ -1,37 +1,218 @@
 # Architecture
 
-## System Overview
+## Architecture Goals
+
+This project is a local-first GeoAI monitoring platform for a 20 km x 20 km
+Kigali peri-urban AOI. The architecture is designed to make land-cover change
+candidates reproducible, inspectable, and honest about uncertainty when field
+reference data is not yet available.
+
+The system separates five concerns:
+
+- open satellite and weak-reference data acquisition
+- AOI-windowed geospatial processing on a shared master grid
+- change detection, weak-supervised ML, and reliability scoring
+- local API/database services for dynamic inspection
+- lightweight public WebGIS/docs delivery for portfolio review
+
+## System Context
+
+```mermaid
+flowchart TB
+    analyst["Analyst / reviewer"]
+    github["GitHub repository<br/>code, docs, CI, release history"]
+    pages["GitHub Pages<br/>static WebGIS and documentation"]
+    local["Local workstation<br/>Conda, Docker, processing workspace"]
+    postgis["Local PostGIS<br/>change polygons, AOI, summaries"]
+    api["FastAPI backend<br/>health, AOI, scenes, changes"]
+    webgis["MapLibre WebGIS<br/>filters, popups, reliability views"]
+
+    analyst --> pages
+    analyst --> webgis
+    github --> pages
+    local --> github
+    local --> postgis
+    postgis --> api
+    api --> webgis
+
+    classDef human fill:#f8fafc,stroke:#475569,color:#0f172a
+    classDef public fill:#e0f2fe,stroke:#0369a1,color:#0f172a
+    classDef local fill:#ecfdf5,stroke:#047857,color:#0f172a
+    classDef service fill:#fff7ed,stroke:#c2410c,color:#0f172a
+
+    class analyst human
+    class github,pages public
+    class local,postgis local
+    class api,webgis service
+```
+
+## Processing Architecture
 
 ```mermaid
 flowchart LR
-    A["Sentinel-2 L2A STAC"] --> B["Scene Search"]
-    C["Sentinel-1 RTC STAC"] --> B
-    B --> D["AOI-windowed Raster Preprocessing"]
-    D --> E["Feature Stack: NDVI, NDWI, NDBI, VV, VH, VV/VH"]
-    E --> F["Change Detection"]
-    F --> G["Confidence Scoring"]
-    G --> H["PostGIS change_polygons"]
-    H --> I["FastAPI"]
-    I --> J["React + MapLibre WebGIS"]
+    subgraph sources["Open and weak-reference sources"]
+        s2["Sentinel-2 L2A<br/>blue, green, red, NIR, SWIR"]
+        s1["Sentinel-1 RTC<br/>VV, VH"]
+        dw["Dynamic World<br/>weak class probabilities"]
+        esa["ESA WorldCover<br/>weak land-cover prior"]
+        osm["OpenStreetMap<br/>buildings, roads, landuse"]
+        dem["Terrain features<br/>elevation, slope"]
+    end
+
+    subgraph harmonize["Geospatial harmonization"]
+        aoi["AOI definition<br/>configs/aoi.geojson"]
+        grid["Master grid<br/>CRS, bounds, transform, resolution"]
+        preprocess["AOI-windowed preprocessing<br/>clip, reproject, resample, mask"]
+        qa["Alignment QA<br/>CRS, transform, extent, shift checks"]
+    end
+
+    subgraph features["Analysis feature stack"]
+        optical["Optical indices<br/>NDVI, NDWI, NDBI"]
+        radar["Radar features<br/>VV, VH, VV/VH"]
+        temporal["Temporal deltas<br/>T1 to T2 feature change"]
+        weak["Weak-label evidence<br/>agreement, disagreement, soft labels"]
+    end
+
+    subgraph models["Detection and reliability"]
+        rules["Explainable change detector<br/>thresholds and magnitude"]
+        unet["Weak-supervised U-Net baseline<br/>class probability, entropy, review zones"]
+        ssl["Label-free embedding baseline<br/>self-supervised review candidates"]
+        score["Reliability gate<br/>confidence, compatibility, temporal consensus"]
+    end
+
+    subgraph outputs["Publishable outputs"]
+        geojson["Change GeoJSON<br/>before/after class, date window, magnitude"]
+        reports["Validation reports<br/>QA, uncertainty, benchmark summaries"]
+        tiles["Static WebGIS assets<br/>small demo tiles and summaries"]
+        db["PostGIS tables<br/>AOI, scenes, change_polygons"]
+    end
+
+    s2 --> preprocess
+    s1 --> preprocess
+    dw --> weak
+    esa --> weak
+    osm --> weak
+    dem --> preprocess
+    aoi --> grid
+    grid --> preprocess
+    preprocess --> qa
+    qa --> optical
+    qa --> radar
+    optical --> temporal
+    radar --> temporal
+    weak --> unet
+    temporal --> rules
+    optical --> unet
+    radar --> unet
+    temporal --> ssl
+    rules --> score
+    unet --> score
+    ssl --> score
+    weak --> score
+    score --> geojson
+    score --> reports
+    score --> tiles
+    score --> db
+
+    classDef source fill:#eff6ff,stroke:#2563eb,color:#0f172a
+    classDef harmonize fill:#ecfdf5,stroke:#059669,color:#0f172a
+    classDef feature fill:#fefce8,stroke:#ca8a04,color:#0f172a
+    classDef model fill:#fdf2f8,stroke:#be185d,color:#0f172a
+    classDef output fill:#f8fafc,stroke:#475569,color:#0f172a
+
+    class s2,s1,dw,esa,osm,dem source
+    class aoi,grid,preprocess,qa harmonize
+    class optical,radar,temporal,weak feature
+    class rules,unet,ssl,score model
+    class geojson,reports,tiles,db output
 ```
+
+## Runtime And Delivery Architecture
+
+```mermaid
+flowchart TB
+    subgraph local_runtime["Local dynamic runtime"]
+        docker["Docker Compose"]
+        postgis["PostGIS service"]
+        fastapi["FastAPI app"]
+        local_web["Vite WebGIS dev server"]
+    end
+
+    subgraph static_release["Public static release"]
+        docs["docs/<br/>architecture, operations, validation"]
+        app["docs/app/<br/>prebuilt WebGIS"]
+        demo["docs/app/demo/<br/>small public demo assets"]
+        pages["GitHub Pages"]
+    end
+
+    subgraph automation["Quality and release automation"]
+        ci["CI workflow<br/>pytest, build checks"]
+        release["Release workflow<br/>tagged artifact packaging"]
+        checks["Geospatial checks<br/>master grid, co-registration, public-safe assets"]
+    end
+
+    docker --> postgis
+    postgis --> fastapi
+    fastapi --> local_web
+    docs --> pages
+    app --> pages
+    demo --> pages
+    ci --> checks
+    checks --> release
+    release --> pages
+
+    classDef runtime fill:#ecfdf5,stroke:#047857,color:#0f172a
+    classDef static fill:#e0f2fe,stroke:#0369a1,color:#0f172a
+    classDef automation fill:#fff7ed,stroke:#c2410c,color:#0f172a
+
+    class docker,postgis,fastapi,local_web runtime
+    class docs,app,demo,pages static
+    class ci,release,checks automation
+```
+
+## Key Data Contracts
+
+| Contract | Purpose | Main fields or assets |
+| --- | --- | --- |
+| AOI GeoJSON | Defines the project boundary and display fit | geometry, CRS assumptions |
+| Master grid | Forces consistent raster alignment | EPSG, transform, bounds, resolution, width, height |
+| Scene catalog | Records selected Sentinel-1/2 acquisitions | date, sensor, tile, cloud cover, orbit, asset links |
+| Feature stack | Analysis-ready raster inputs | NDVI, NDWI, NDBI, VV, VH, VV/VH, deltas |
+| Weak-label stack | Independent evidence and review masks | Dynamic World, ESA, OSM, Sentinel index evidence |
+| Change GeoJSON | Public WebGIS and API change records | before class, after class, date window, magnitude, confidence, reliability |
+| Validation reports | Reviewer-facing reliability evidence | alignment QA, weak-source compatibility, review burden, benchmark notes |
+
+## Quality Gates
+
+The platform does not publish change candidates only because a model produced a
+class. It applies staged reliability controls:
+
+1. **Geospatial alignment gate:** rasters must match the AOI master grid before
+   change detection or model inference.
+2. **Temporal gate:** change should be tied to an explicit before/after date
+   window, not an unspecified event date.
+3. **Weak-source gate:** Dynamic World, ESA WorldCover, OSM, and Sentinel
+   evidence are used as compatibility checks, not field accuracy labels.
+4. **Uncertainty gate:** low confidence, high entropy, and weak-source
+   disagreement are routed to review zones.
+5. **Benchmark gate:** held-out periods, such as the 2026 benchmark, must not be
+   used for model tuning and final evaluation at the same time.
 
 ## Design Choices
 
-- Local-first: all derived rasters, catalogs, and outputs are stored under `data/`.
-- AOI-windowed raster reads: Sentinel tiles are clipped by raster window before processing.
-- Explainable baseline: the first detector uses spectral/radar deltas, thresholds, and confidence scoring.
-- PostGIS-backed API: publish-ready polygons are stored in `change_polygons` with rich JSONB properties.
-- WebGIS inspection: published polygons are filterable by monitored land-cover group and confidence.
-
-## Data Flow
-
-1. Search Sentinel-2 scenes over the Kigali AOI.
-2. Build a multi-date Sentinel-1/2 monitoring stack.
-3. Clip rasters to the AOI and align analysis-ready features to the same grid.
-4. Compare consecutive monitoring dates.
-5. Create candidate change polygons with before/after states and change magnitude.
-6. Score final confidence and publish high-confidence records to PostGIS.
-7. Serve summaries and GeoJSON to the WebGIS.
+- **Local-first by default:** raw processing, PostGIS, and FastAPI run locally so
+  the project remains reproducible without cloud infrastructure.
+- **Static public demo:** GitHub Pages serves lightweight WebGIS assets and
+  documentation. This is continuous delivery for public artifacts, not full
+  backend cloud deployment.
+- **Master-grid discipline:** every raster-derived layer should be aligned to
+  the same CRS, transform, resolution, and AOI bounds before comparison.
+- **Explainability before complexity:** rule-based deltas, weak-source checks,
+  U-Net probabilities, entropy, and review zones are exposed to users rather
+  than hidden behind a single accuracy number.
+- **No field-accuracy claim:** weak labels and public demo outputs support
+  screening and prioritization; independent expert samples are still required
+  for formal accuracy assessment.
 
 ## Current Monitoring Groups
 
@@ -46,7 +227,12 @@ unknown
 
 ## Known Limitations
 
-- The current stack is portfolio-scale, not production-scale.
-- There are only three monitoring dates in the current demo stack.
-- Some radar-only changes may reflect orbit or moisture effects rather than true land-cover change.
-- The detector is explainable and rule-based; supervised ML needs labels and a larger time series.
+- The public WebGIS currently demonstrates selected monitoring intervals rather
+  than a complete operational 2023-2026 time-window alert history.
+- The U-Net baseline is weak-supervised and should be treated as a review aid,
+  not a field-validated classifier.
+- Mixed Sentinel pixels, topographic effects, moisture, haze, and seasonal
+  vegetation can produce ambiguous change evidence.
+- Full hosted backend deployment is not part of the current public release; the
+  FastAPI/PostGIS stack remains local-first until a dynamic hosted service is
+  required.
