@@ -55,34 +55,53 @@ without exposing a hosted database or backend service.
 
 ## Processing Architecture: Data Foundation
 
+### Source Registry
+
 ```mermaid
 flowchart TB
-    subgraph sources["Open and weak-reference sources"]
-        s2["Sentinel-2 L2A<br/>blue, green, red, NIR, SWIR"]
-        s1["Sentinel-1 RTC<br/>VV, VH"]
-        dw["Dynamic World<br/>weak class probabilities"]
-        esa["ESA WorldCover<br/>weak land-cover prior"]
-        osm["OpenStreetMap<br/>buildings, roads, landuse"]
-        dem["Terrain features<br/>elevation, slope"]
-    end
+    s2["Sentinel-2 L2A<br/>optical bands"]
+    s1["Sentinel-1 RTC<br/>VV and VH"]
+    weak["Weak references<br/>Dynamic World, ESA, OSM"]
+    dem["Terrain data<br/>elevation and slope"]
 
-    subgraph harmonize["Geospatial harmonization"]
-        aoi["AOI definition<br/>configs/aoi.geojson"]
-        grid["Master grid<br/>CRS, bounds, transform, resolution"]
-        preprocess["AOI-windowed preprocessing<br/>clip, reproject, resample, mask"]
-        qa["Alignment QA<br/>CRS, transform, extent, shift checks"]
-    end
+    catalog["Scene and source catalogs<br/>dates, cloud cover, orbit, assets"]
+    policy["Selection policy<br/>AOI, cloud threshold, split, benchmark rules"]
 
-    subgraph features["Analysis-ready features"]
-        optical["Optical indices<br/>NDVI, NDWI, NDBI"]
-        radar["Radar features<br/>VV, VH, VV/VH"]
-        temporal["Temporal deltas<br/>T1 to T2 feature change"]
-        weak["Weak-label evidence<br/>agreement, disagreement, soft labels"]
-    end
+    s2 --> catalog
+    s1 --> catalog
+    weak --> catalog
+    dem --> catalog
+    policy --> catalog
 
-    s2 --> preprocess
-    s1 --> preprocess
-    dem --> preprocess
+    classDef source fill:#eff6ff,stroke:#2563eb,color:#0f172a
+    classDef control fill:#fff7ed,stroke:#c2410c,color:#0f172a
+    classDef catalog fill:#f8fafc,stroke:#475569,color:#0f172a
+
+    class s2,s1,weak,dem source
+    class policy control
+    class catalog catalog
+```
+
+**Notes:** Source registration is separated from raster processing. This keeps
+sensor metadata, weak-reference provenance, cloud cover, orbit, date windows,
+and train/test split rules visible before any model or change detector is run.
+
+### Grid-Aligned Feature Preparation
+
+```mermaid
+flowchart TB
+    catalog["Scene and source catalogs"]
+    aoi["AOI boundary<br/>20 km x 20 km"]
+    grid["Master grid<br/>CRS, resolution, bounds, transform"]
+    preprocess["AOI-windowed preprocessing<br/>clip, reproject, resample, mask"]
+    qa["Alignment QA<br/>CRS, transform, extent, shift checks"]
+
+    optical["Optical features<br/>NDVI, NDWI, NDBI"]
+    radar["Radar features<br/>VV, VH, VV/VH"]
+    temporal["Temporal deltas<br/>T1 to T2 feature change"]
+    weak_evidence["Weak-label evidence<br/>agreement, disagreement, soft labels"]
+
+    catalog --> preprocess
     aoi --> grid
     grid --> preprocess
     preprocess --> qa
@@ -90,19 +109,17 @@ flowchart TB
     qa --> radar
     optical --> temporal
     radar --> temporal
-    dw --> weak
-    esa --> weak
-    osm --> weak
-    optical --> weak
-    radar --> weak
+    optical --> weak_evidence
+    radar --> weak_evidence
+    catalog --> weak_evidence
 
-    classDef source fill:#eff6ff,stroke:#2563eb,color:#0f172a
     classDef harmonized fill:#ecfdf5,stroke:#059669,color:#0f172a
     classDef feature fill:#fefce8,stroke:#ca8a04,color:#0f172a
+    classDef catalog fill:#f8fafc,stroke:#475569,color:#0f172a
 
-    class s2,s1,dw,esa,osm,dem source
+    class catalog catalog
     class aoi,grid,preprocess,qa harmonized
-    class optical,radar,temporal,weak feature
+    class optical,radar,temporal,weak_evidence feature
 ```
 
 **Notes:** All raster-derived evidence must pass through the same AOI and master
@@ -171,45 +188,51 @@ is publishable and what remains a review priority.
 
 ## Runtime And Delivery Architecture
 
+### Local Dynamic Runtime
+
 ```mermaid
 flowchart TB
-    subgraph local_runtime["Local dynamic runtime"]
-        docker["Docker Compose"]
-        postgis["PostGIS service"]
-        fastapi["FastAPI app"]
-        local_web["Vite WebGIS dev server"]
-    end
-
-    subgraph static_release["Public static release"]
-        docs["docs/<br/>architecture, operations, validation"]
-        app["docs/app/<br/>prebuilt WebGIS"]
-        demo["docs/app/demo/<br/>small public demo assets"]
-        pages["GitHub Pages"]
-    end
-
-    subgraph automation["Quality and release automation"]
-        ci["CI workflow<br/>pytest, build checks"]
-        release["Release workflow<br/>tagged artifact packaging"]
-        checks["Geospatial checks<br/>master grid, co-registration, public-safe assets"]
-    end
+    docker["Docker Compose"]
+    postgis["PostGIS service<br/>spatial tables"]
+    fastapi["FastAPI backend<br/>health, AOI, scenes, changes"]
+    web["Local WebGIS dev server<br/>Vite and MapLibre"]
 
     docker --> postgis
     postgis --> fastapi
-    fastapi --> local_web
-    docs --> pages
-    app --> pages
-    demo --> pages
-    ci --> checks
-    checks --> release
-    release --> pages
+    fastapi --> web
 
     classDef runtime fill:#ecfdf5,stroke:#047857,color:#0f172a
-    classDef static fill:#e0f2fe,stroke:#0369a1,color:#0f172a
-    classDef automation fill:#fff7ed,stroke:#c2410c,color:#0f172a
+    class docker,postgis,fastapi,web runtime
+```
 
-    class docker,postgis,fastapi,local_web runtime
-    class docs,app,demo,pages static
-    class ci,release,checks automation
+**Notes:** The local runtime is the dynamic version of the system. It is used for
+backend development, database-backed API testing, and local WebGIS inspection.
+It is not required for the public static GitHub Pages demo.
+
+### Static Delivery And Automation
+
+```mermaid
+flowchart TB
+    ci["CI workflow<br/>pytest and build checks"]
+    qa["Geospatial QA<br/>master grid and co-registration checks"]
+    build["WebGIS build<br/>static app assets"]
+    docs["Documentation<br/>architecture, operations, validation"]
+    pages["GitHub Pages<br/>public WebGIS and docs"]
+    release["Tagged release<br/>packaged artifacts"]
+
+    ci --> qa
+    qa --> build
+    build --> pages
+    docs --> pages
+    ci --> release
+    build --> release
+    docs --> release
+
+    classDef automation fill:#fff7ed,stroke:#c2410c,color:#0f172a
+    classDef static fill:#e0f2fe,stroke:#0369a1,color:#0f172a
+
+    class ci,qa,release automation
+    class build,docs,pages static
 ```
 
 **Notes:** CI validates the code and build. CD is static-artifact delivery: the
