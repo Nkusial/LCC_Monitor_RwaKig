@@ -15,6 +15,9 @@ The system separates five concerns:
 - local API/database services for dynamic inspection
 - lightweight public WebGIS/docs delivery for portfolio review
 
+The diagrams below are intentionally split into compact views so they remain
+readable in GitHub preview, even when the page is zoomed.
+
 ## System Context
 
 ```mermaid
@@ -46,10 +49,14 @@ flowchart TB
     class api,webgis service
 ```
 
-## Processing Architecture
+**Notes:** GitHub Pages is the public static delivery target. FastAPI and
+PostGIS are part of the local dynamic runtime, so the public site can be viewed
+without exposing a hosted database or backend service.
+
+## Processing Architecture: Data Foundation
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph sources["Open and weak-reference sources"]
         s2["Sentinel-2 L2A<br/>blue, green, red, NIR, SWIR"]
         s1["Sentinel-1 RTC<br/>VV, VH"]
@@ -66,18 +73,61 @@ flowchart LR
         qa["Alignment QA<br/>CRS, transform, extent, shift checks"]
     end
 
-    subgraph features["Analysis feature stack"]
+    subgraph features["Analysis-ready features"]
         optical["Optical indices<br/>NDVI, NDWI, NDBI"]
         radar["Radar features<br/>VV, VH, VV/VH"]
         temporal["Temporal deltas<br/>T1 to T2 feature change"]
         weak["Weak-label evidence<br/>agreement, disagreement, soft labels"]
     end
 
-    subgraph models["Detection and reliability"]
+    s2 --> preprocess
+    s1 --> preprocess
+    dem --> preprocess
+    aoi --> grid
+    grid --> preprocess
+    preprocess --> qa
+    qa --> optical
+    qa --> radar
+    optical --> temporal
+    radar --> temporal
+    dw --> weak
+    esa --> weak
+    osm --> weak
+    optical --> weak
+    radar --> weak
+
+    classDef source fill:#eff6ff,stroke:#2563eb,color:#0f172a
+    classDef harmonized fill:#ecfdf5,stroke:#059669,color:#0f172a
+    classDef feature fill:#fefce8,stroke:#ca8a04,color:#0f172a
+
+    class s2,s1,dw,esa,osm,dem source
+    class aoi,grid,preprocess,qa harmonized
+    class optical,radar,temporal,weak feature
+```
+
+**Notes:** All raster-derived evidence must pass through the same AOI and master
+grid logic before comparison. This is the control point that prevents apparent
+change from being caused by CRS, transform, resolution, or extent mismatch.
+
+## Processing Architecture: Detection And Reliability
+
+```mermaid
+flowchart TB
+    subgraph inputs["Aligned feature evidence"]
+        temporal["Temporal deltas<br/>optical and radar change"]
+        weak["Weak-label evidence<br/>Dynamic World, ESA, OSM, Sentinel support"]
+        features["Feature stack<br/>NDVI, NDWI, NDBI, VV, VH, VV/VH"]
+    end
+
+    subgraph models["Detection and model tracks"]
         rules["Explainable change detector<br/>thresholds and magnitude"]
         unet["Weak-supervised U-Net baseline<br/>class probability, entropy, review zones"]
         ssl["Label-free embedding baseline<br/>self-supervised review candidates"]
-        score["Reliability gate<br/>confidence, compatibility, temporal consensus"]
+    end
+
+    subgraph gate["Reliability gate"]
+        score["Publish/review decision<br/>confidence, compatibility, temporal consensus"]
+        review["Review zones<br/>low confidence, high entropy, disagreement"]
     end
 
     subgraph outputs["Publishable outputs"]
@@ -87,24 +137,10 @@ flowchart LR
         db["PostGIS tables<br/>AOI, scenes, change_polygons"]
     end
 
-    s2 --> preprocess
-    s1 --> preprocess
-    dw --> weak
-    esa --> weak
-    osm --> weak
-    dem --> preprocess
-    aoi --> grid
-    grid --> preprocess
-    preprocess --> qa
-    qa --> optical
-    qa --> radar
-    optical --> temporal
-    radar --> temporal
-    weak --> unet
     temporal --> rules
-    optical --> unet
-    radar --> unet
-    temporal --> ssl
+    features --> unet
+    weak --> unet
+    features --> ssl
     rules --> score
     unet --> score
     ssl --> score
@@ -113,19 +149,25 @@ flowchart LR
     score --> reports
     score --> tiles
     score --> db
+    score --> review
+    review --> reports
+    review --> tiles
 
-    classDef source fill:#eff6ff,stroke:#2563eb,color:#0f172a
-    classDef harmonize fill:#ecfdf5,stroke:#059669,color:#0f172a
-    classDef feature fill:#fefce8,stroke:#ca8a04,color:#0f172a
+    classDef input fill:#fefce8,stroke:#ca8a04,color:#0f172a
     classDef model fill:#fdf2f8,stroke:#be185d,color:#0f172a
+    classDef gate fill:#fff7ed,stroke:#c2410c,color:#0f172a
     classDef output fill:#f8fafc,stroke:#475569,color:#0f172a
 
-    class s2,s1,dw,esa,osm,dem source
-    class aoi,grid,preprocess,qa harmonize
-    class optical,radar,temporal,weak feature
-    class rules,unet,ssl,score model
+    class temporal,weak,features input
+    class rules,unet,ssl model
+    class score,review gate
     class geojson,reports,tiles,db output
 ```
+
+**Notes:** The platform does not treat a U-Net class as truth. Rule-based change
+signals, weak-supervised U-Net evidence, self-supervised review candidates, and
+weak-source compatibility all feed the reliability gate. The gate decides what
+is publishable and what remains a review priority.
 
 ## Runtime And Delivery Architecture
 
@@ -169,6 +211,11 @@ flowchart TB
     class docs,app,demo,pages static
     class ci,release,checks automation
 ```
+
+**Notes:** CI validates the code and build. CD is static-artifact delivery: the
+WebGIS and documentation are published through GitHub Pages, while tagged
+releases package reproducible artifacts. Hosted FastAPI/PostGIS deployment is a
+future step, not part of the current public release.
 
 ## Key Data Contracts
 
