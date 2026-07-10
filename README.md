@@ -150,12 +150,20 @@ tests/       Regression and validation tests
 web/         React, TypeScript, and MapLibre WebGIS
 ```
 
+## Naming Convention
+
+- Public repository: `LCC_Monitor_RwaKig`
+- Example local clone folder: `path\to\LCC_Monitor_RwaKig`
+- Conda environment: `realtime_LCC_Rwkig`
+
+`realtime_LCC_Rwkig` is the Conda environment name used by the local Python/geospatial stack. It is not a second repository.
+
 ## Quick Start
 
 Create the Conda environment if needed:
 
 ```powershell
-cd path\to\Geospatial_MLops
+cd path\to\LCC_Monitor_RwaKig
 conda env create -f environment.yml
 conda activate realtime_LCC_Rwkig
 ```
@@ -163,7 +171,7 @@ conda activate realtime_LCC_Rwkig
 Start backend services:
 
 ```powershell
-cd path\to\Geospatial_MLops
+cd path\to\LCC_Monitor_RwaKig
 conda activate realtime_LCC_Rwkig
 docker compose up -d postgis
 uvicorn backend.app.main:app --reload
@@ -172,7 +180,7 @@ uvicorn backend.app.main:app --reload
 In a second terminal:
 
 ```powershell
-cd path\to\Geospatial_MLops\web
+cd path\to\LCC_Monitor_RwaKig\web
 conda activate realtime_LCC_Rwkig
 npm run dev
 ```

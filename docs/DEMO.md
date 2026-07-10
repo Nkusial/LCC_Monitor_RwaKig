@@ -6,8 +6,10 @@ Show a local-first, confidence-aware land-cover change monitoring workflow for a
 
 ## Before the Demo
 
+Use `LCC_Monitor_RwaKig` as the local project folder and `realtime_LCC_Rwkig` as the Conda environment.
+
 ```powershell
-cd path\to\Geospatial_MLops
+cd path\to\LCC_Monitor_RwaKig
 conda activate realtime_LCC_Rwkig
 docker compose up -d postgis
 python pipelines/07_validate_outputs.py

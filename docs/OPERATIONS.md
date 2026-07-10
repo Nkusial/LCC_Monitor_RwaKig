@@ -1,9 +1,13 @@
 # Local Operations
 
+## Naming Note
+
+`LCC_Monitor_RwaKig` is the public GitHub repository and the recommended local clone folder name. `realtime_LCC_Rwkig` is only the Conda environment used to run the local geospatial stack; it is not a second repository.
+
 ## Start Services
 
 ```powershell
-cd path\to\Geospatial_MLops
+cd path\to\LCC_Monitor_RwaKig
 conda activate realtime_LCC_Rwkig
 docker compose up -d postgis
 uvicorn backend.app.main:app --reload
@@ -12,7 +16,7 @@ uvicorn backend.app.main:app --reload
 In a second terminal:
 
 ```powershell
-cd path\to\Geospatial_MLops\web
+cd path\to\LCC_Monitor_RwaKig\web
 conda activate realtime_LCC_Rwkig
 npm run dev
 ```
