@@ -39,7 +39,3 @@ This page lists the main scientific and technical sources behind the project. Th
 | PostGIS | [PostGIS](https://postgis.net/) | Supports spatial storage and querying for AOIs, scenes, summaries, and change polygons. |
 | FastAPI | [FastAPI documentation](https://fastapi.tiangolo.com/) | Supports the local API layer for health checks, AOI metadata, scenes, and change outputs. |
 | MapLibre | [MapLibre](https://maplibre.org/) | Supports the interactive WebGIS interface and hosted static map delivery. |
-
-## Interpretation Boundary
-
-These sources support the project's methodology and implementation choices. They do not replace field or expert reference samples. The current prototype should therefore present confidence, weak-source agreement, and review-zone evidence as decision-support information, not as final field-validated accuracy.
