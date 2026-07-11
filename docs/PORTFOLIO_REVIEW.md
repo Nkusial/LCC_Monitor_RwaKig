@@ -8,6 +8,7 @@ This project is a local-first near-real-time land-cover change monitoring system
 
 - Hosted WebGIS: <https://nkusial.github.io/LCC_Monitor_RwaKig/app/>
 - GitHub repository: <https://github.com/Nkusial/LCC_Monitor_RwaKig>
+- References and scientific basis: [docs/REFERENCES.md](REFERENCES.md)
 - Local WebGIS, when running the dev server: <http://127.0.0.1:5173>
 - Local API docs, when running FastAPI: <http://127.0.0.1:8000/docs>
 
@@ -94,5 +95,3 @@ How to present it:
 - `python pipelines/07_validate_outputs.py` reports `status: ok`.
 - `python pipelines/09_unsupervised_validation.py` reports the best Phase 20B configuration.
 - `pytest -q` passes.
-
-

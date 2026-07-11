@@ -35,6 +35,7 @@ Mean confidence:   0.88
 - [API examples](API_EXAMPLES.md)
 - [Demo script](DEMO.md)
 - [Portfolio review guide](PORTFOLIO_REVIEW.md)
+- [References and scientific basis](REFERENCES.md)
 - [Unsupervised validation](UNSUPERVISED_VALIDATION.md)
 - [Class harmonization](CLASS_HARMONIZATION.md)
 - [Weak labels](WEAK_LABELS.md)
@@ -57,4 +58,3 @@ GitHub repository:
 ```text
 https://github.com/Nkusial/LCC_Monitor_RwaKig
 ```
-
