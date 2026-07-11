@@ -220,8 +220,8 @@ See [Operations](docs/OPERATIONS.md) for the full command reference.
 - [Operations](docs/OPERATIONS.md): commands for running services, pipeline stages, and tests.
 - [Validation and reliability](docs/VALIDATION.md): confidence, uncertainty, weak-source checks, and review zones.
 - [Project phases](docs/PHASES.md): completed work phase by phase.
-- [Portfolio review guide](docs/PORTFOLIO_REVIEW.md): reviewer-facing explanation and demo talking points.
-- [References and scientific basis](docs/REFERENCES.md): primary sources and peer-reviewed support for the data, methods, and limitations.
+- [Portfolio review guide](docs/PORTFOLIO_REVIEW.md): portfolio explanation and demo talking points.
+- [References and scientific basis](docs/REFERENCES.md): scientific and technical sources supporting the data, methods, and limitations.
 - [Changelog](CHANGELOG.md): chronological release progress.
 - [CI/CD](docs/CI_CD.md): automated checks, static WebGIS delivery, and release packaging.
 - [Hosted docs](docs/HOSTED_DOCS.md): GitHub Pages publishing structure.
