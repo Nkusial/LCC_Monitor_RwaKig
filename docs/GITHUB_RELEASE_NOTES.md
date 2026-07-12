@@ -106,18 +106,3 @@ validation_report.json status: ok
 - The current detector is an explainable baseline rather than a supervised deep learning model.
 - Raw Sentinel assets and derived rasters are intentionally excluded from Git.
 
-## Suggested Repository Topics
-
-```text
-geoai
-geospatial
-sentinel-2
-sentinel-1
-postgis
-fastapi
-maplibre
-land-cover-change
-remote-sensing
-mlops
-```
-
